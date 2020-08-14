@@ -2,8 +2,14 @@
 <html>
 <head>
 	<title></title>
+	<style type="text/css">
+		video{
+			border: 1px solid red;
+		}
+	</style>
 </head>
 <body>
+	<button onclick="environment_cam()">전방 카메라</button> <button onclick="user_cam()">후방 카메라</button>
 	<video id="video" width="640" height="480" autoplay></video>
 	<button id="snap">Snap Photo</button>
 	<canvas id="canvas" width="640" height="480"></canvas>
@@ -12,6 +18,13 @@
 	// Grab elements, create settings, etc.
 	var video = document.getElementById('video');
 	let camara = { facingMode: { exact: "environment" } };
+
+	function environment_cam() {
+		camara = { facingMode: { exact: "environment" } };
+	}
+	function user_cam() {
+		camara = { facingMode: "user" };
+	}
 
 	// Get access to the camera!
 	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
