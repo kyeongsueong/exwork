@@ -1,153 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Emergency rescue</title>
-	<meta charset="utf-8">
- 	<meta name="viewport" content="user-scalable=no, width=device-width">
- 	
- 	<link rel="stylesheet" href="./Emergency.css">
+	<title></title>
 </head>
-<body class="main">
-	<div style="text-align: center;">
-		<a href="#">긴급구난</a>
-		<a href="#">긴급구난 출동비</a>
-	</div>
-	<div>
-		<span class="firstBox" >
-			<span>□</span>
-			<span>일</span>
-			<div style="display: inline-block; float: right;">
-				<span>시</span>
-				<span>:</span>
-			</div>
-		</span>
-		<input type="text" id="text1" class="firstInput">
-		<br>
-		<span class="firstBox" >
-			<span>□</span>
-			<span>구</span>
-			<span class="firstCenter">난</span>
-			<span class="firstCenter">업</span>
-			<span class="firstCenter">체</span>
-			<div style="display: inline-block; float: right;">
-				<span>명</span>
-				<span>:</span>
-			</div>
-		</span>
-		<input type="text" id="text2" class="firstInput">
-		<br>
-		<span class="firstBox" >
-			<span>□</span>
-			<span>구</span>
-			<span class="firstCenter">난</span>
-			<span class="firstCenter">장</span>
-			<span class="firstCenter">소</span>
-			<div class="firstCenter2">
-				<span>(구 간)</span>
-			</div>
-			<div style="display: inline-block; float: right;">
-				<span>:</span>
-			</div>
-		</span>
-		<input type="text" id="text3" class="firstInput">
-		<br>
-		<span class="firstBox" >
-			<span>□</span>
-			<span>견</span>
-			<span class="firstCenter">인</span>
-			<span class="firstCenter">요</span>
-			<span class="firstCenter">소</span>
-			<div style="display: inline-block; float: right;">
-				<span>금</span>
-				<span>:</span>
-			</div>
-		</span>
-		<input type="text" id="text4" class="payInput">
-		<span class="firstBox2" style="" >
-			<span>□</span>
-			<span>견</span>
-			<span>인</span>
-			<span>거</span>
-			<span>리</span>
-			<span>:</span>
-		</span>
-		<input type="text" id="text5" class="payInput2">
-		<br>
-		<div class="tooBox">
-			<table>
-				<tr>
-					<td rowspan="2">차 종 명 <br> (규격) </td>
-					<td rowspan="2">등록번호</td>
-					<td colspan="2">피견인 운전자 현황</td>
-					<td rowspan="2">구난사유</td>
-					<td rowspan="2">보험사</td>
-				</tr>
-				<tr>
-					<td>성 명</td>
-					<td>연 락 처</td>
-				</tr>
-				<tr>
-					<td> 
-						<input type="text" id="tabletx1" class="userinfoInput"> <br> 
-						<input type="text" id="tabletx2" class="userinfoInput"> 
-					</td> 
-					<td><input type="text" id="tabletx3" class="userinfoInput"></td>
-					<td><input type="text" id="tabletx4" class="userinfoInput"></td>
-					<td><input type="text" id="tabletx5" class="userinfoInput"></td>
-					<td><input type="text" id="tabletx6" class="userinfoInput"></td>
-					<td><input type="text" id="tabletx7" class="userinfoInput"></td>
-				</tr>
-				<tr>
-					<td colspan="6">사 진 대 지</td>
-				</tr>
-			</table>
-			<div class="imgContener">
-				<form id="Emergency_form" method="POST" enctype="multipart/form-data">
-					<input type="file" name="Emergency_img1" class="file1" id="file1" onchange="files1(event)">
-					<input type="file" name="Emergency_img2" class="file2" id="file2" onchange="files2(event)">
-					<input type="text" name="Emergency_Datas" id="Emergency_Datas" hidden="">
-				</form>
-				<img src="./img/hom3.png" class="imgStyle" id="img1"></td>
-				<img src="./img/hom6.png" class="imgStyle" id="img2"></td>
-			</div>
-		</div>
-		<div class="lastYear">
-			<input type="text" id="text6" class="lastInput">
-		</div>
-		<div class="lastName1">
-			작성자 : 상황실근무자 <input type="text" id="text7" class="lastInput">( 인 )
-		</div>
-		<div class="lastName2">
-			작성자 : 
-			<span class="lastName3">교</span>
-			<span class="lastName3">통</span>
-			<span class="lastName3">차</span>
-			<span class="lastName3">장</span> <input type="text" id="text8" class="lastInput">( 인 )
-		</div>
-		<div>
-			<button onclick="Save()">Save</button>
-		</div>
-	</div>
+<body>
+	<video id="video" width="640" height="480" autoplay></video>
+	<button id="snap">Snap Photo</button>
+	<canvas id="canvas" width="640" height="480"></canvas>
 </body>
-<script src="./Emergency.js"></script>
 <script type="text/javascript">
-	function processFile(file,view) {
-        let reader = new FileReader();
-        reader.onload = function () {
-            view.src = reader.result;
-        };
-        
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    }
-    function files1(event) {
-    	let file1s = document.getElementById("img1");
-    	processFile(event.target.files[0], file1s);
-    }
-    function files2(event) {
-    	let file2s = document.getElementById("img2");
-    	processFile(event.target.files[0], file2s);
-    }
+	// Grab elements, create settings, etc.
+	var video = document.getElementById('video');
+
+	// Get access to the camera!
+	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+	    // Not adding `{ audio: true }` since we only want video now
+	    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+	        //video.src = window.URL.createObjectURL(stream);
+	        video.srcObject = stream;
+	        video.play();
+	    });
+	}
+
+		var canvas = document.getElementById('canvas');
+		var context = canvas.getContext('2d');
+		var video = document.getElementById('video');
+
+		// Trigger photo take
+		document.getElementById("snap").addEventListener("click", function() {
+		context.drawImage(video, 0, 0, 640, 480);
+	});
+
 </script>
 </html>
