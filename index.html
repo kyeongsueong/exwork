@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>mobile</title>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="user-scalable=no, width=device-width">
 	<style type="text/css">
 		video{
 			border: 1px solid red;
@@ -21,19 +23,27 @@
 
 	function environment_cam() {
 		camara = { facingMode: { exact: "environment" } };
+			// Get access to the camera!
+		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+		    // Not adding `{ audio: true }` since we only want video now
+		    navigator.mediaDevices.getUserMedia({ video: camara }).then(function(stream) {
+		        //video.src = window.URL.createObjectURL(stream);
+		        video.srcObject = stream;
+		        video.play();
+		    });
+		}
 	}
 	function user_cam() {
 		camara = { facingMode: "user" };
-	}
-
-	// Get access to the camera!
-	if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+		// Get access to the camera!
+		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 	    // Not adding `{ audio: true }` since we only want video now
 	    navigator.mediaDevices.getUserMedia({ video: camara }).then(function(stream) {
-	        //video.src = window.URL.createObjectURL(stream);
-	        video.srcObject = stream;
-	        video.play();
-	    });
+		        //video.src = window.URL.createObjectURL(stream);
+		        video.srcObject = stream;
+		        video.play();
+		    });
+		}
 	}
 
 		var canvas = document.getElementById('canvas');
