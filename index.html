@@ -102,8 +102,11 @@
 				</tr>
 			</table>
 			<div class="imgContener">
-				<input type="file" class="file1" id="file1" onchange="files1(event)">
-				<input type="file" class="file2" id="file2" onchange="files2(event)">
+				<form id="Emergency_form" method="POST" enctype="multipart/form-data">
+					<input type="file" name="Emergency_img1" class="file1" id="file1" onchange="files1(event)">
+					<input type="file" name="Emergency_img2" class="file2" id="file2" onchange="files2(event)">
+					<input type="text" name="Emergency_Datas" id="Emergency_Datas" hidden="">
+				</form>
 				<img src="./img/hom3.png" class="imgStyle" id="img1"></td>
 				<img src="./img/hom6.png" class="imgStyle" id="img2"></td>
 			</div>

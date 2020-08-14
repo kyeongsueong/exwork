@@ -2,15 +2,21 @@ let data = '';
 function Save() {
 	for (this.i = 1; this.i <= 8; this.i++) {
 		this.text_id = "text" + this.i;
-		data += document.getElementById(this.text_id).value;
+		data += document.getElementById(this.text_id).value + "^,*";
 	}
 	for (this.j = 1; this.j <= 7; this.j++) {
 		this.table_id = "tabletx" + this.j;
-		data += document.getElementById(this.table_id).value;
+		data += document.getElementById(this.table_id).value + "^,*";
 	}
-	data += document.getElementById("file1").value;
-	data += document.getElementById("file2").value;
-	alert(data);
+	//페이크 주소 이미지 12자리 자르기, 이미지 회전값 넣기
+	data += document.getElementById("file1").value + "^,*";
+	data += document.getElementById("file2").value + "^,*";
+	//alert(data);
+
+	let sendData = document.getElementById('Emergency_form');
+	document.getElementById('Emergency_Datas').value = data;
+	sendData.action = './server.php';
+	sendData.submit();	
 }
 
 class mydate {
