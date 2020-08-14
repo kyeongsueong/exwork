@@ -8,6 +8,8 @@ function Save() {
 		this.table_id = "tabletx" + this.j;
 		data += document.getElementById(this.table_id).value;
 	}
+	data += document.getElementById("file1").value;
+	data += document.getElementById("file2").value;
 	alert(data);
 }
 

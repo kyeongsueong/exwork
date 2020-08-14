@@ -38,6 +38,9 @@
 	text-align: center;
 	width: 90%;
 }
+.lastInput{
+	text-align: center;
+}
 .file1{
 	position: absolute;
 }
@@ -128,5 +131,12 @@ th, td{
 		border: 1px solid black;
 		width: 48.8%;
 		height: 270px;
+	}
+	.file1{
+		position: absolute;
+	}
+	.file2{
+		position: absolute;
+		right: 0.1px;
 	}
 }

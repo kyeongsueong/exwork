@@ -102,24 +102,24 @@
 				</tr>
 			</table>
 			<div class="imgContener">
-				<input type="file" class="file1">
-				<input type="file" class="file2">
-				<img src="./img/hom3.png" class="imgStyle" id="file1"></td>
-				<img src="./img/hom6.png" class="imgStyle" id="file2"></td>
+				<input type="file" class="file1" id="file1" onchange="files1(event)">
+				<input type="file" class="file2" id="file2" onchange="files2(event)">
+				<img src="./img/hom3.png" class="imgStyle" id="img1"></td>
+				<img src="./img/hom6.png" class="imgStyle" id="img2"></td>
 			</div>
 		</div>
 		<div class="lastYear">
-			<input type="text" id="text6">
+			<input type="text" id="text6" class="lastInput">
 		</div>
 		<div class="lastName1">
-			작성자 : 상황실근무자 <input type="text" id="text7">( 인 )
+			작성자 : 상황실근무자 <input type="text" id="text7" class="lastInput">( 인 )
 		</div>
 		<div class="lastName2">
 			작성자 : 
 			<span class="lastName3">교</span>
 			<span class="lastName3">통</span>
 			<span class="lastName3">차</span>
-			<span class="lastName3">장</span> <input type="text" id="text8">( 인 )
+			<span class="lastName3">장</span> <input type="text" id="text8" class="lastInput">( 인 )
 		</div>
 		<div>
 			<button onclick="Save()">Save</button>
@@ -127,51 +127,24 @@
 	</div>
 </body>
 <script src="./Emergency.js"></script>
-
 <script type="text/javascript">
-	if (navigator.mediaDevices === undefined) {
-		navigator.mediaDevices = {};
-	}
-
-	// Some browsers partially implement mediaDevices. We can't just assign an object
-	// with getUserMedia as it would overwrite existing properties.
-	// Here, we will just add the getUserMedia property if it's missing.
-	if (navigator.mediaDevices.getUserMedia === undefined) {
-		navigator.mediaDevices.getUserMedia = function(constraints) {
-
-	    // First get ahold of the legacy getUserMedia, if present
-	    var getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-
-	    // Some browsers just don't implement it - return a rejected promise with an error
-	    // to keep a consistent interface
-	    if (!getUserMedia) {
-	    	return Promise.reject(new Error('getUserMedia is not implemented in this browser'));
-	    }
-
-	    // Otherwise, wrap the call to the old navigator.getUserMedia with a Promise
-	    return new Promise(function(resolve, reject) {
-	    	getUserMedia.call(navigator, constraints, resolve, reject);
-	    });
-	}
-}
-
-navigator.mediaDevices.getUserMedia({ audio: true, video: true })
-.then(function(stream) {
-	var video = document.querySelector('video');
-	  // Older browsers may not have srcObject
-	  if ("srcObject" in video) {
-	  	video.srcObject = stream;
-	  } else {
-	    // Avoid using this in new browsers, as it is going away.
-	    video.src = window.URL.createObjectURL(stream);
-	}
-	video.onloadedmetadata = function(e) {
-		video.play();
-	};
-})
-.catch(function(err) {
-	console.log(err.name + ": " + err.message);
-	alert(err.name + ": " + err.message);
-});
+	function processFile(file,view) {
+        let reader = new FileReader();
+        reader.onload = function () {
+            view.src = reader.result;
+        };
+        
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+    function files1(event) {
+    	let file1s = document.getElementById("img1");
+    	processFile(event.target.files[0], file1s);
+    }
+    function files2(event) {
+    	let file2s = document.getElementById("img2");
+    	processFile(event.target.files[0], file2s);
+    }
 </script>
 </html>
