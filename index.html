@@ -5,55 +5,77 @@
 	<meta charset="utf-8">
  	<meta name="viewport" content="user-scalable=no, width=device-width">
 	<style type="text/css">
+		body{
+			margin: 0px;
+			padding: 0px;
+		}
 		video{
 			border: 1px solid red;
+		}
+		canvas{
+			border: 1px solid red;
+		}
+		.firstbox{
+			display: flex;
+			padding: 0px;
+			justify-content: flex-end;
+		}
+		.toobox{
+			display: flex;
+			padding: 0px;
+			width: 100%;
+			flex-direction: column;
+			align-items: center;
+		}
+		ul{
+			list-style: none;
 		}
 	</style>
 </head>
 <body>
-	<button onclick="environment_cam()">전방 카메라</button> <button onclick="user_cam()">후방 카메라</button>
-	<video id="video" width="640" height="480" autoplay></video>
-	<button id="snap">Snap Photo</button>
-	<canvas id="canvas" width="640" height="480"></canvas>
+	<ul class="firstbox">
+		<li><button onclick="environment_cam()">후방 카메라</button></li>
+		<li><button onclick="user_cam()">전방 카메라</button></li>
+	</ul>
+	<ul class="toobox">
+		<li><video id="video" width="640" height="480" autoplay></video></li>
+		<li><button id="snap" onclick="snap()">Snap Photo</button></li>
+		<li><canvas id="canvas" width="640" height="480"></canvas></li>
+	</ul>
 </body>
 <script type="text/javascript">
 	// Grab elements, create settings, etc.
-	var video = document.getElementById('video');
-	let camara = { facingMode: { exact: "environment" } };
+	let video = document.getElementById('video');
+	let camera;
 
 	function environment_cam() {
-		camara = { facingMode: { exact: "environment" } };
-			// Get access to the camera!
-		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-		    // Not adding `{ audio: true }` since we only want video now
-		    navigator.mediaDevices.getUserMedia({ video: camara }).then(function(stream) {
-		        //video.src = window.URL.createObjectURL(stream);
-		        video.srcObject = stream;
-		        video.play();
-		    });
-		}
+		camera = { facingMode: { exact: "environment" } };
+		cameraStream();
 	}
 	function user_cam() {
-		camara = { facingMode: "user" };
-		// Get access to the camera!
+		camera = { facingMode: "user" };
+		cameraStream();
+	}
+	
+	function cameraStream() {
 		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-	    // Not adding `{ audio: true }` since we only want video now
-	    navigator.mediaDevices.getUserMedia({ video: camara }).then(function(stream) {
+	    	// Not adding `{ audio: true }` since we only want video now
+	    	navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
 		        //video.src = window.URL.createObjectURL(stream);
 		        video.srcObject = stream;
 		        video.play();
-		    });
+	    	});
 		}
 	}
+	
 
-		var canvas = document.getElementById('canvas');
-		var context = canvas.getContext('2d');
-		var video = document.getElementById('video');
 
-		// Trigger photo take
-		document.getElementById("snap").addEventListener("click", function() {
+	let canvas = document.getElementById('canvas');
+	let context = canvas.getContext('2d');
+	let video = document.getElementById('video');
+
+	function snap () {
 		context.drawImage(video, 0, 0, 640, 480);
-	});
-
+	}
 </script>
 </html>
