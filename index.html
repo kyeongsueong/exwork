@@ -52,17 +52,14 @@
 
 	function environment_cam() {
 		camera = { facingMode: { exact: "environment" } };
-		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-	    	// Not adding `{ audio: true }` since we only want video now
-	    	navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
-		        //video.src = window.URL.createObjectURL(stream);
-		        video.srcObject = stream;
-		        video.play();
-	    	});
-		}
+		cameraStream();
 	}
 	function user_cam() {
 		camera = { facingMode: "user" };
+		cameraStream();
+	}
+	
+	function cameraStream(camera) {
 		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 	    	// Not adding `{ audio: true }` since we only want video now
 	    	navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
@@ -72,14 +69,12 @@
 	    	});
 		}
 	}
-	
-	
 	
 
 
 	let canvas = document.getElementById('canvas');
 	let context = canvas.getContext('2d');
-	let video = document.getElementById('video');
+	video = document.getElementById('video');
 
 	function snap () {
 		context.drawImage(video, 0, 0, 640, 480);
