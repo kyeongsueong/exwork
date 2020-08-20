@@ -33,7 +33,7 @@
 			list-style: none;
 		}
 		.content_li{
-			width: 99%;
+			width: 99%; 
 		}
 	</style>
 </head>
@@ -55,6 +55,20 @@
 	</ul>
 </body>
 <script type="text/javascript">
+	class mycanvas{
+		constructor(startX, startY, width, height){
+			this.canvas = document.getElementById('canvas');
+			this.context = this.canvas.getContext('2d');
+			this.startX = startX;
+			this.startY = startY;
+			this.width = width;
+			this.height = height;
+		}
+
+		draw(video){
+			context.drawImage(video, this.startX, this.startY, this.width, this.height);
+		}
+	}
 	// Grab elements, create settings, etc.
 	let video = document.getElementById('video');
 	let camera;
@@ -81,12 +95,14 @@
 	
 
 
-	let canvas = document.getElementById('canvas');
-	let context = canvas.getContext('2d');
+	//let canvas = document.getElementById('canvas');
+	//let context = canvas.getContext('2d');
+	const ks_canvas = new mycanvas(0, 0, 640, 480);
 	video = document.getElementById('video');
 
 	function snap () {
-		context.drawImage(video, 0, 0, 640, 480);
+		//context.drawImage(video, 0, 0, 640, 480);
+		ks_canvas.draw(video);
 	}
 </script>
 </html>
