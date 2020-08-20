@@ -65,10 +65,11 @@
 			this.startY = startY;
 			this.width = width;
 			this.height = height;
+			this.dataUrl = this.canvas.toDataURL('image/jpeg', 1.0);
 		}
 
 		draw(video){
-			this.context.drawImage(video, this.startX, this.startY);
+			this.context.drawImage(video, this.startX, this.startY, this.width, this.height);
 		}
 	}
 	// Grab elements, create settings, etc.
@@ -95,16 +96,21 @@
 	    }
 	}
 	
-
-
 	//let canvas = document.getElementById('canvas');
 	//let context = canvas.getContext('2d');
-	const ks_canvas = new mycanvas(0, 0);
+	const ks_canvas = new mycanvas(0, 0, 50, 50);
 	video = document.getElementById('video');
 
 	function snap () {
-		//context.drawImage(video, 0, 0, 30000, 30000);
+		//context.drawImage(video, 0, 0, 640, 480);
 		ks_canvas.draw(video);
+		let data = ks_canvas.dataUrl;
+		sendMsg(data);
 	}
+
+	function sendMsg(data) {
+		window.parent.postMessage( data, "http://14.42.255.205");
+	}
+
 </script>
 </html>
