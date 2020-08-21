@@ -98,19 +98,25 @@
 	
 	//let canvas = document.getElementById('canvas');
 	//let context = canvas.getContext('2d');
-	const ks_canvas = new mycanvas(0, 0, 190, 140);
+	const ks_canvas = new mycanvas(0, 0, 50, 50);
 	video = document.getElementById('video');
 
 	function snap () {
 		//context.drawImage(video, 0, 0, 640, 480);
 		ks_canvas.draw(video);
-		let data = ks_canvas.dataUrl;
-		sendMsg(data);
-	}
+		//let data = ks_canvas.dataUrl;
 
-	function sendMsg(data) {
-		window.parent.postMessage( data, "http://14.42.255.205");
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		    	alert(xhttp.responseText);
+		    }
+		};
+		let data = '';
+		data += 'imgdata='+ ks_canvas.dataUrl;
+		xhttp.open("POST", "http://14.42.255.205/ai/view/");
+		xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhttp.send(data);
 	}
-
 </script>
 </html>
