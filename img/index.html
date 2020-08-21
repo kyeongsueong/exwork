@@ -11,10 +11,11 @@
 <script type="text/javascript">
 
 	window.onmessage = function (event) {
-		if (event.origin == 'https://kyeongsueong.github.io/exwork/') {
-			document.getElementById('output').innerHTML = event.data;
-			console.log(event.data);
-		}
+		document.getElementById('output').innerHTML = event.data;
+		console.log(event.data);
+		localStorage.setItem("eventData", event.data);
 	}
+	let	localData = localStorage.getItem("eventData");
+	document.getElementById('output').innerHTML = localData;
 </script>
 </html>
