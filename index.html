@@ -99,7 +99,7 @@
 	
 	//let canvas = document.getElementById('canvas');
 	//let context = canvas.getContext('2d');
-	const ks_canvas = new mycanvas(0, 0, 170, 140);
+	const ks_canvas = new mycanvas(0, 0, 230, 145);
 	video = document.getElementById('video');
 
 	function snap () {
@@ -107,7 +107,7 @@
 		ks_canvas.draw(video);
 		//let data = ks_canvas.dataUrl;
 
-		var xhttp = new XMLHttpRequest();
+		let xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 		    if (this.readyState == 4 && this.status == 200) {
 		    	//alert(xhttp.responseText);
@@ -115,7 +115,7 @@
 		};
 		let data = '';
 		data += 'imgdata='+ ks_canvas.dataUrl;
-		xhttp.open("POST", "http://14.42.255.205/ai/view/");
+		xhttp.open("POST", "http://14.42.255.205/ai/view/", true);
 		xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		xhttp.send(data);
 	}
