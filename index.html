@@ -55,7 +55,7 @@
 			<canvas id="canvas"></canvas>
 		</li>
 		<li>
-			<iframe id="myframe" src="https://kyeongsueong.github.io/exwork/img/"></iframe>
+			<iframe id="myframe" src="http://14.42.255.205/ai/view/index.html"></iframe>
 		</li>
 		<li>
 			<button onclick="sendMessage()">sendMessage</button>
@@ -108,11 +108,10 @@
 	function snap () {
 		ks_canvas.draw(video);
 		let data = ks_canvas.dataUrl;
-		//sendMessage(data);
 	}
 	let count = 1;
-	function sendMessage(data) {
-		document.getElementById('myframe').contentWindow.postMessage( 'message' + count++ ,'https://kyeongsueong.github.io/exwork/');
+	function sendMessage() {
+		document.getElementById('myframe').contentWindow.postMessage('msge' + count++);
 	}
 </script>
 </html>
