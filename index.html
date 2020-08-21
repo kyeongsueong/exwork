@@ -108,11 +108,11 @@
 	function snap () {
 		ks_canvas.draw(video);
 		let data = ks_canvas.dataUrl;
-		sendMessage(data);
+		//sendMessage(data);
 	}
-	
+	let count = 1;
 	function sendMessage(data) {
-		document.getElementById('myframe').contentWindow.postMessage(data ,'https://kyeongsueong.github.io/exwork/img/');
+		document.getElementById('myframe').contentWindow.postMessage( 'message' + count++ ,'https://kyeongsueong.github.io/exwork/');
 	}
 </script>
 </html>
