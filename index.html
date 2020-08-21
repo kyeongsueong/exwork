@@ -4,7 +4,6 @@
 	<title>mobile</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width">
-	
 	<style type="text/css">
 		body{
 			margin: 0px;
@@ -55,6 +54,12 @@
 		<li class="content_li">
 			<canvas id="canvas"></canvas>
 		</li>
+		<li>
+			<iframe id="myframe" src="http://14.42.255.205/ai/view/index.html"></iframe>
+		</li>
+		<li>
+			<button onclick="sendMessage()">sendMessage</button>
+		</li>
 	</ul>
 </body>
 <script type="text/javascript">
@@ -88,36 +93,26 @@
 	
 	function cameraStream(camera) {
 		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-	    	// Not adding `{ audio: true }` since we only want video now
+	    	
 	    	navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
-		        //video.src = window.URL.createObjectURL(stream);
+		        
 		        video.srcObject = stream;
 		        video.play();
 		    });
 	    }
 	}
-	
-	//let canvas = document.getElementById('canvas');
-	//let context = canvas.getContext('2d');
-	const ks_canvas = new mycanvas(0, 0, 230, 145);
+
+	const ks_canvas = new mycanvas(0, 0, 290, 145);
 	video = document.getElementById('video');
 
 	function snap () {
-		//context.drawImage(video, 0, 0, 640, 480);
 		ks_canvas.draw(video);
-		//let data = ks_canvas.dataUrl;
-
-		let xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-		    if (this.readyState == 4 && this.status == 200) {
-		    	//alert(xhttp.responseText);
-		    }
-		};
-		let data = '';
-		data += 'imgdata='+ ks_canvas.dataUrl;
-		xhttp.open("POST", "http://14.42.255.205/ai/view/index.php", true);
-		xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhttp.send(data);
+		let data = ks_canvas.dataUrl;
+		sendMessage(data);
+	}
+	
+	function sendMessage(data) {
+		document.getElementById('myframe').contentWindow.postMessage(data ,'http://14.42.255.205');
 	}
 </script>
 </html>
