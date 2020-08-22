@@ -18,7 +18,7 @@
 		document.getElementById('output').value = event.data;
 		console.log(event.data);
 		localStorage.setItem("eventData", event.data);
-		document.getElementById('form').submit();
+		document.getElementById('submit').submit();
 	}
 	let	localData = localStorage.getItem("eventData");
 	document.getElementById('output').value = localData;
