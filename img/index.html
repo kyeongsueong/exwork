@@ -6,7 +6,7 @@
 	<meta name="viewport" content="user-scalable=no, width=device-width">
 </head>
 <body>
-	<form id="form" action="http://14.42.255.205/ai/view/index.php" method="POST">
+	<form id="form" method="POST">
 		<input name="imgdata" id="output" value="1"></input>
 		
 	</form>
@@ -14,17 +14,20 @@
 	
 </body>
 <script type="text/javascript">
-	/*
+
 	window.onmessage = function (event) {
 		document.getElementById('output').value = event.data;
 		console.log(event.data);
 		localStorage.setItem("eventData", event.data);
+
+		let	localData = localStorage.getItem("eventData");
+		document.getElementById('output').value = localData;
 	}
-	let	localData = localStorage.getItem("eventData");
-	document.getElementById('output').value = localData;
-	*/
+	
 	function send() {
-		document.getElementById('form').submit();
+		const forms = document.getElementById('form');
+		//forms.action = 'http://14.42.255.205/ai/view/index.php';
+		forms.submit();
 	}
 </script>
 </html>
