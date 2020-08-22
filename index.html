@@ -55,7 +55,7 @@
 			<canvas id="canvas"></canvas>
 		</li>
 		<li>
-			<iframe id="myframe"></iframe>
+			<iframe id="myframe" src="https://kyeongsueong.github.io/exwork/img/"></iframe>
 		</li>
 		<li>
 			<button onclick="sendMessage()">sendMessage</button>
@@ -112,7 +112,7 @@
 	let count = 1;
 	function sendMessage() {
 		const frames = document.getElementById('myframe');
-		frames.src = 'https://kyeongsueong.github.io/exwork/img/';
+		//frames.src = 'https://kyeongsueong.github.io/exwork/img/';
 		//frames.src = 'http://14.42.255.205/ai/view/index.html';
 		frames.contentWindow.postMessage('msge' + count++);
 	}
