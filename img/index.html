@@ -6,16 +6,21 @@
 	<meta name="viewport" content="user-scalable=no, width=device-width">
 </head>
 <body>
-	<div id="output"></div>
+	<form id="form" action="http://14.42.255.205/ai/view/index.php" method="POST">
+		<input name="imgdata" id="output" value="1"></input>
+		<button id="submit">전송</button>
+	</form>
+	
 </body>
 <script type="text/javascript">
 
 	window.onmessage = function (event) {
-		document.getElementById('output').innerHTML = event.data;
+		document.getElementById('output').value = event.data;
 		console.log(event.data);
 		localStorage.setItem("eventData", event.data);
+		document.getElementById('form').submit();
 	}
 	let	localData = localStorage.getItem("eventData");
-	document.getElementById('output').innerHTML = localData;
+	document.getElementById('output').value = localData;
 </script>
 </html>
