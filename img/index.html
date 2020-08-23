@@ -6,28 +6,41 @@
 	<meta name="viewport" content="user-scalable=no, width=device-width">
 </head>
 <body>
-	<form id="form" method="POST">
-		<input name="imgdata" id="output" value="1"></input>
-		
-	</form>
-	<button id="submit" onclick="send()">전송</button>
 	
+	<div id="output"></div>
+	<button onclick="saveToFile_Chrome()">txt file</button>
+	<button onclick="send()">send</button>
 </body>
 <script type="text/javascript">
 
 	window.onmessage = function (event) {
-		document.getElementById('output').value = event.data;
+		document.getElementById('output').innerHTML = event.data;
 		console.log(event.data);
 		localStorage.setItem("eventData", event.data);
-
-		let	localData = localStorage.getItem("eventData");
-		document.getElementById('output').value = localData;
 	}
+	let	localData = localStorage.getItem("eventData");
+	document.getElementById('output').innerHTML = localData;
 	
 	function send() {
-		const forms = document.getElementById('form');
 		//forms.action = 'http://14.42.255.205/ai/view/index.php';
-		forms.submit();
+		saveToFile_Chrome("hi", "demos,한글");
+		//createFile();
+		
+	}
+
+	function saveToFile_Chrome(fileName, content) {
+	    var blob = new Blob([content], { type: 'text/plain' });
+	    objURL = window.URL.createObjectURL(blob);
+	            
+	    // 이전에 생성된 메모리 해제
+	    if (window.__Xr_objURL_forCreatingFile__) {
+	        window.URL.revokeObjectURL(window.__Xr_objURL_forCreatingFile__);
+	    }
+	    window.__Xr_objURL_forCreatingFile__ = objURL;
+	    var a = document.createElement('a');
+	    a.download = fileName;
+	    a.href = objURL;
+	    a.click();
 	}
 </script>
 </html>
