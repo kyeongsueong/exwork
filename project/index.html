@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>project</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width">
+	<link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+	<div class="top_content">
+		<select>
+			<option></option>
+		</select>
+		<span>안전 순찰 일지</span>
+		<div id="mySidenav" class="sidevar">
+			<a href="javascript:void(0)" class="closebtn"  onclick="closeNav()">&times;</a>
+		</div>
+		<span class="sidevarbt" onclick="openNav()">&#9776;</span>
+	</div>
+	
+	<ul class="middle_content"></ul>
+	
+	<div class="footer" onclick="save()">Save</div>
+</body>
+	<script type="text/javascript" src="./index.js"></script>
+	<script type="text/javascript">
+		function save() {
+			document.querySelector('.footer').style.backgroundColor = "hotpink";
+		}
+		function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+		}
+
+		function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+		}
+	</script>
+</html>
