@@ -78,12 +78,12 @@ ul{
 	text-align: center;
 	padding-top: 7px;
 }
-#PlusBtn{
+.plusBt{
 	background-color: blue;
 	color: white;
 	font-size: 20px;
 }
-#subtraction{
+.subtractionBt{
 	background-color: red;
 	color: white;
 	font-size: 20px;

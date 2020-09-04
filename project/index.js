@@ -1,24 +1,52 @@
-let sideArray = ["사고처리", "노면잡물", "동물사고", "중요시설물", "작업장", "법규위반", "고객지원", "기타", "안개발생", "기타특이사항","회수"];
+let sideArray = ["일지", "사고처리", "노면잡물", "동물사고", "중요시설물", "작업장", "법규위반", "고객지원", "기타", "안개발생", "기타특이사항","회수"];
+let buttonName = ["Pls+","Sbt-"];
+let plusbtName = ["PlusBtn", "btAccident"];
+let subtbtName = ["subtraction", "btAccidentm"];
+let pagesName = ["write", "Accidentm_write"];
 let side_count = 0;
-class create_line {
+class createBt{
 	constructor(){
-		this.ul = document.querySelector('.middle_content');
 		this.button = document.createElement('button');
-
-		this.ulbt = document.createElement('ul');
-		this.ulbt.className = "middleBtn";
-
-		this.button.innerHTML = "Pls+";
+		this.button.innerHTML = buttonName[0];
+		this.button.className = "plusBt";
 		this.button.id = "PlusBtn";
 
 		this.buttonm = document.createElement('button');
-		this.buttonm.innerHTML = "Sbt-";
+		this.buttonm.innerHTML = buttonName[1];
+		this.buttonm.className = "subtractionBt"
 		this.buttonm.id = "subtraction";
 
-		this.side = document.getElementById('mySidenav');
-	}
+		this.btAccident = document.createElement('button');
+		this.btAccident.innerHTML = buttonName[0];
+		this.btAccident.className = "plusBt";
+		this.btAccident.id = "btAccident";
 
+		this.btAccidentm = document.createElement('button');
+		this.btAccidentm.innerHTML = buttonName[1];
+		this.btAccidentm.className = "subtractionBt"
+		this.btAccidentm.id = "btAccidentm";
+	}
+}
+class create_line extends createBt {
+	constructor(){
+		super();
+		this.ul = document.querySelector('.middle_content');
+	
+		this.ulbt = document.createElement('ul');
+		this.ulbt.className = "middleBtn";
+
+		this.side = document.getElementById('mySidenav');
+
+	}
+	pages(){
+		for (this.i = 0; this.i < pagesName.length; this.i++) {
+			this.pages = document.createElement('li');
+			this.pages.id = pagesName[this.i];
+			this.ul.appendChild(this.pages);
+		}
+	}
 	create(number, type){
+		this.page = document.getElementById(pagesName[0]);
 		this.li = document.createElement('li');
 		this.li.id = number;
 		this.li.innerHTML = number + ".";
@@ -62,7 +90,7 @@ class create_line {
 		this.input_content.id = `write${number}_7`;
 		
 		if (type == 0) {
-			this.ul.appendChild(this.div);
+			this.page.appendChild(this.div);
 			this.div.appendChild(this.span);
 			this.span.appendChild(this.li);
 			this.span.appendChild(this.input_time1);
@@ -76,17 +104,32 @@ class create_line {
 			this.div.appendChild(this.li_input);
 			this.li_input.appendChild(this.input_content);
 
-			this.ul.appendChild(this.ulbt);
+			this.page.appendChild(this.ulbt);
 			this.ulbt.appendChild(this.button);
 			this.ulbt.appendChild(this.buttonm);
 		}else{
-			this.ul.removeChild(this.ul.childNodes[number]);
-			this.ul.appendChild(this.ulbt);
+			this.page.removeChild(this.page.childNodes[number]);
+			this.page.appendChild(this.ulbt);
 			this.ulbt.appendChild(this.button);
 			this.ulbt.appendChild(this.buttonm);
 		}
 	}
-
+	createAccident(number, type){
+		this.page = document.getElementById(pagesName[1]);
+		this.spans = document.createElement('span');
+		this.spans.innerHTML = "사고처리";
+		this.page.appendChild(this.spans);
+		if (type == 0) {
+			this.page.appendChild(this.ulbt);
+			this.ulbt.appendChild(this.btAccident);
+			this.ulbt.appendChild(this.btAccidentm);
+		}else{
+			this.page.removeChild(this.page.childNodes[number]);
+			this.page.appendChild(this.ulbt);
+			this.ulbt.appendChild(this.btAccident);
+			this.ulbt.appendChild(this.btAccidentm);
+		}
+	}
 	sidevar(){
 		for (this.i = 0; this.i < sideArray.length; this.i++) {
 			this.a = document.createElement('a');
@@ -99,37 +142,108 @@ class create_line {
 	sideselect(number, type){
 		this.spans = document.createElement('span');
 		this.spans.innerHTML = sideArray[number];
-		this.ul.appendChild(this.spans);
+		console.log(this.spans);
 		
-		this.ul.appendChild(this.ulbt);
-		this.ulbt.appendChild(this.button);
-		this.ulbt.appendChild(this.buttonm);
+		while (this.ulbt.hasChildNodes()) {
+			this.ulbt.removeChild(this.ulbt.firstChild);
+		}
+		
+		if (number == 0) {
+			this.page = document.getElementById(pagesName[0]);
+			this.page.appendChild(this.ulbt);
+			this.ulbt.appendChild(this.button);
+			this.ulbt.appendChild(this.buttonm);
+			return sideArray[number];
+		}else if (number == 1) {
+			this.page = document.getElementById(pagesName[1]);
+			this.page.appendChild(this.ulbt);
+			this.ulbt.appendChild(this.btAccident);
+			this.ulbt.appendChild(this.btAccidentm);
+			return sideArray[number];
+		}
 	}
 }
 
 const creat = new create_line();
-creat.create(1,0);
 creat.sidevar();
-let middle_content_count = 1;
-document.getElementById('PlusBtn').addEventListener('click', function() {
-	middle_content_count++;
-	creat.create(middle_content_count,0);
-	document.getElementById(`PlusBtn`).focus();
-});
-document.getElementById('subtraction').addEventListener('click', function() {
-	if (middle_content_count > 1) {
-		middle_content_count--;
-		creat.create(middle_content_count);
-	}
-});
+creat.pages();
+let middle_content_count = 0;
+let middle_content_accident = 0;
 
+
+function button_event(type) {
+	document.getElementById(plusbtName[type]).onclick = function () {
+		switch (type){
+			case 0:
+				middle_content_count++;
+				creat.create(middle_content_count,0);
+				document.getElementById(plusbtName[type]).focus();
+				break;
+			case 1:
+				middle_content_accident++;
+				creat.createAccident(middle_content_accident,0);
+				document.getElementById(plusbtName[type]).focus();
+				break;
+		}
+	};
+	document.getElementById(subtbtName[type]).onclick = function () {
+		switch (type){
+			case 0:
+				if (middle_content_count > 0) {
+					middle_content_count--;
+					creat.create(middle_content_count);
+				}
+				break;
+			case 1:
+				if (middle_content_accident > 0) {
+					middle_content_accident--;
+					creat.createAccident(middle_content_accident);
+				}
+				break;
+		}
+	};
+	// document.getElementById('PlusBtn').addEventListener('click', function() {
+	// 	if (type == "일지") {
+	// 		middle_content_count++;
+	// 		creat.create(middle_content_count,0);
+	// 	}else if (type == "사고처리") {
+	// 		middle_content_accident++;
+	// 		creat.createAccident(middle_content_accident,0);
+	// 	}
+		
+	// 	document.getElementById('PlusBtn').focus();
+	// });
+	// document.getElementById('subtraction').addEventListener('click', function() {
+		
+	// 	if (type == "일지") {
+	// 		if (middle_content_count > 0) {
+	// 			middle_content_count--;
+	// 			creat.create(middle_content_count);
+	// 		}
+	// 	}else if (type == "사고처리") {
+	// 		if (middle_content_accident > 0) {
+	// 			middle_content_accident--;
+	// 			creat.createAccident(middle_content_accident);
+	// 		}
+	// 	}
+		
+	// });
+}
 function side_selecte() {
 	for (this.i = 0; this.i < sideArray.length; this.i++) {
 		let sideId = "side_Id" + this.i;
 		let number = this.i;
 		document.getElementById(sideId).addEventListener('click', function() {
-			creat.sideselect(number);
+			let selecte = creat.sideselect(number);
+			if (selecte == "일지") {
+				button_event(number);
+				closeNav();
+			}else if (selecte == "사고처리") {
+				button_event(number);
+				closeNav();
+			}
 		});
+		
 	}
 }
 side_selecte();
