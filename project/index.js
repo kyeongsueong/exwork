@@ -1,8 +1,8 @@
 let sideArray = ["일지", "사고처리", "노면잡물", "동물사고", "중요시설물", "작업장", "법규위반", "고객지원", "기타", "안개발생", "기타특이사항","회수"];
 let buttonName = ["Pls+","Sbt-"];
-let plusbtName = ["PlusBtn", "btAccident"];
-let subtbtName = ["subtraction", "btAccidentm"];
-let pagesName = ["write", "Accidentm_write"];
+let plusbtName = ["PlusBtn", "btAccident" , "btFalling"];
+let subtbtName = ["subtraction", "btAccidentm", "btFallingm"];
+let pagesName = ["write", "Accidentm_write", "Falling_write"];
 let side_count = 0;
 class createBt_date{
 	constructor(){
@@ -25,6 +25,16 @@ class createBt_date{
 		this.btAccidentm.innerHTML = buttonName[1];
 		this.btAccidentm.className = "subtractionBt"
 		this.btAccidentm.id = "btAccidentm";
+
+		this.btFalling = document.createElement('button');
+		this.btFalling.innerHTML = buttonName[0];
+		this.btFalling.className = "plusBt";
+		this.btFalling.id = "btFalling";
+
+		this.btFallingm = document.createElement('button');
+		this.btFallingm.innerHTML = buttonName[1];
+		this.btFallingm.className = "subtractionBt"
+		this.btFallingm.id = "btFallingm";
 	}
 }
 class create_line extends createBt_date {
@@ -146,6 +156,37 @@ class create_line extends createBt_date {
 			this.ulbt.appendChild(this.btAccidentm);
 		}
 	}
+	createFallingobjects(number,type){
+		this.page = document.getElementById(pagesName[2]);
+		this.div = document.createElement('div');
+		this.li = document.createElement('li');
+		this.li.innerHTML = number + ".";
+		this.span = document.createElement('span');
+		this.span.className = "middle_Box";
+		this.input = document.createElement('input');
+		this.input.className = "middle_write_content";
+		this.input.id = `falling_write${number}`;
+		this.spans = document.createElement('span');
+		this.spans.innerHTML = "노면잡물";
+
+		if (type == 0) {
+			this.page.appendChild(this.div);
+			this.div.appendChild(this.span);
+			this.span.appendChild(this.li);
+			this.span.appendChild(this.spans);
+			this.div.appendChild(this.input);
+
+			this.page.appendChild(this.ulbt);
+			this.ulbt.appendChild(this.btFalling);
+			this.ulbt.appendChild(this.btFallingm);
+		}else{
+			console.log(this.page.childNodes[0]);
+			this.page.removeChild(this.page.childNodes[number]);
+			this.page.appendChild(this.ulbt);
+			this.ulbt.appendChild(this.btFalling);
+			this.ulbt.appendChild(this.btFallingm);
+		}
+	}
 	sidevar(){
 		for (this.i = 0; this.i < sideArray.length; this.i++) {
 			this.a = document.createElement('a');
@@ -176,6 +217,12 @@ class create_line extends createBt_date {
 			this.ulbt.appendChild(this.btAccident);
 			this.ulbt.appendChild(this.btAccidentm);
 			return sideArray[number];
+		}else if (number == 2) {
+			this.page = document.getElementById(pagesName[2]);
+			this.page.appendChild(this.ulbt);
+			this.ulbt.appendChild(this.btFalling);
+			this.ulbt.appendChild(this.btFallingm);
+			return sideArray[number];
 		}
 	}
 }
@@ -185,6 +232,7 @@ creat.sidevar();
 creat.pages();
 let middle_content_count = 0;
 let middle_content_accident = 0;
+let middle_content_falling = 0;
 
 
 function button_event(type) {
@@ -198,6 +246,11 @@ function button_event(type) {
 			case 1:
 				middle_content_accident++;
 				creat.createAccident(middle_content_accident,0);
+				document.getElementById(plusbtName[type]).focus();
+				break;
+			case 2:
+				middle_content_falling++;
+				creat.createFallingobjects(middle_content_falling,0);
 				document.getElementById(plusbtName[type]).focus();
 				break;
 		}
@@ -216,6 +269,13 @@ function button_event(type) {
 					creat.createAccident(middle_content_accident);
 				}
 				break;
+			case 2:
+				if (middle_content_accident > 0) {
+					middle_content_falling--;
+					creat.createFallingobjects(middle_content_accident,0);
+					document.getElementById(plusbtName[type]).focus();
+				}
+				break;
 		}
 	};
 }
@@ -229,6 +289,9 @@ function side_selecte() {
 				button_event(number);
 				closeNav();
 			}else if (selecte == "사고처리") {
+				button_event(number);
+				closeNav();
+			}else if (selecte == "노면잡물") {
 				button_event(number);
 				closeNav();
 			}
