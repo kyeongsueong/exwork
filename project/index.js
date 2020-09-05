@@ -4,7 +4,7 @@ let plusbtName = ["PlusBtn", "btAccident"];
 let subtbtName = ["subtraction", "btAccidentm"];
 let pagesName = ["write", "Accidentm_write"];
 let side_count = 0;
-class createBt{
+class createBt_date{
 	constructor(){
 		this.button = document.createElement('button');
 		this.button.innerHTML = buttonName[0];
@@ -27,7 +27,7 @@ class createBt{
 		this.btAccidentm.id = "btAccidentm";
 	}
 }
-class create_line extends createBt {
+class create_line extends createBt_date {
 	constructor(){
 		super();
 		this.ul = document.querySelector('.middle_content');
@@ -116,14 +116,30 @@ class create_line extends createBt {
 	}
 	createAccident(number, type){
 		this.page = document.getElementById(pagesName[1]);
+		this.div = document.createElement('div');
+		this.li = document.createElement('li');
+		this.li.innerHTML = number + ".";
+		this.span = document.createElement('span');
+		this.span.className = "middle_Box";
+		this.text = document.createElement('textarea');
+		this.text.id = "accident_write" + number;
+		this.text.className = "text_write";
+		this.text.value = ":";
 		this.spans = document.createElement('span');
 		this.spans.innerHTML = "사고처리";
-		this.page.appendChild(this.spans);
+		
 		if (type == 0) {
+			this.page.appendChild(this.div);
+			this.div.appendChild(this.span);
+			this.span.appendChild(this.li);
+			this.span.appendChild(this.spans);
+			this.div.appendChild(this.text);
+
 			this.page.appendChild(this.ulbt);
 			this.ulbt.appendChild(this.btAccident);
 			this.ulbt.appendChild(this.btAccidentm);
 		}else{
+			console.log(this.page.childNodes[0]);
 			this.page.removeChild(this.page.childNodes[number]);
 			this.page.appendChild(this.ulbt);
 			this.ulbt.appendChild(this.btAccident);
@@ -202,32 +218,6 @@ function button_event(type) {
 				break;
 		}
 	};
-	// document.getElementById('PlusBtn').addEventListener('click', function() {
-	// 	if (type == "일지") {
-	// 		middle_content_count++;
-	// 		creat.create(middle_content_count,0);
-	// 	}else if (type == "사고처리") {
-	// 		middle_content_accident++;
-	// 		creat.createAccident(middle_content_accident,0);
-	// 	}
-		
-	// 	document.getElementById('PlusBtn').focus();
-	// });
-	// document.getElementById('subtraction').addEventListener('click', function() {
-		
-	// 	if (type == "일지") {
-	// 		if (middle_content_count > 0) {
-	// 			middle_content_count--;
-	// 			creat.create(middle_content_count);
-	// 		}
-	// 	}else if (type == "사고처리") {
-	// 		if (middle_content_accident > 0) {
-	// 			middle_content_accident--;
-	// 			creat.createAccident(middle_content_accident);
-	// 		}
-	// 	}
-		
-	// });
 }
 function side_selecte() {
 	for (this.i = 0; this.i < sideArray.length; this.i++) {

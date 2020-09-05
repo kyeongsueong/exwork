@@ -74,6 +74,9 @@ ul{
 	border-bottom: 1px solid blue;
 	background-color: #ffffe6;
 }
+.text_write{
+	width: 100%;
+}
 .middleBtn{
 	text-align: center;
 	padding-top: 7px;
