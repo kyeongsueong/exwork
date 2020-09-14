@@ -8,10 +8,10 @@
 </head>
 <body>
 	<div class="top_content">
-		<select>
-			<option></option>
-		</select>
-		<span>안전 순찰 일지</span>
+		
+		<div class="loadbt" onclick="nowloadfile()">Loade</div>
+		
+		<span><b class="top_font">안전 순찰 일지</b></span>
 		<div id="mySidenav" class="sidevar">
 			<a href="javascript:void(0)" class="closebtn"  onclick="closeNav()">&times;</a>
 		</div>
@@ -19,13 +19,119 @@
 	</div>
 	
 	<ul class="middle_content"></ul>
+	<ul class="user_work_date">
+		<li>
+			<button onclick="servar_load_data()">데이터 불러오기</button>
+			<button onclick="write_now()">작성중인 데이터 불러오기</button>
+		</li>
+	</ul>
+	<ul class="user_work_date">
+		<div class="liframe">
+			<div class="frameBt" onclick="close_frame()">닫기</div>
+			<iframe class="frames" src="./search.php" title="search-data"></iframe>
+		</div>
+		<form action="./save/savedb.php" method="POST" id="fom">
+			<li>
+				<select name="worktime" id="worktime">
+					<option>근무</option>
+					<option>초번</option>
+					<option>중번</option>
+					<option>말번</option>
+				</select>
+				<input class="user_date" name="nY" id="nY">
+				<input class="user_date" name="nM" id="nM">
+				<input class="user_date" name="nD" id="nD">
+			</li>
+			<li>
+				<span>조장:</span><input type="text" class="user_name" name="userNames" id="user1">
+				<span>조원:</span><input type="text" class="user_name" name="userName2" id="user2">
+			</li>
+			<li>
+				<span>공구:</span><input type="text" class="user_name" name="nosun" id="nosun">
+			</li>
+			<li>
+				<input type="text" name="patrolcontent" id="patrolcontent" hidden="">
+				<input type="text" name="findecontent" id="findecontent" hidden="">
+			</li>
+		</form>
+	</ul>
 	
-	<div class="footer" onclick="save()">Save</div>
+	
+	
+	<div class="footer" onclick="save()" ontouchstart="savetouchs()" ontouchend="savetouche()">Save</div>
+	<div class="submitbt" onclick="submit_fom()">일지 제출</div>
+
+	<div>
+		<table>
+			<tr>
+				<td>순찰</td>
+				<td>사고</td>
+				<td>잡물</td>
+				<td>동물</td>
+				<td>시설물</td>
+				<td>작업장</td>
+				<td>법규</td>
+				<td>고객</td>
+			</tr>
+			<tr>
+				<td class="tds"><span id="nob1"></span> 회</td>
+				<td class="tds"><span id="nob2"></span> 회</td>
+				<td class="tds"><span id="nob3"></span> 회</td>
+				<td class="tds"><span id="nob4"></span> 회</td>
+				<td class="tds"><span id="nob5"></span> 개소</td>
+				<td class="tds"><span id="nob6"></span> 개소</td>
+				<td class="tds"><span id="nob7"></span> 건</td>
+				<td class="tds"><span id="nob8"></span> 건</td>
+			</tr>
+		</table>
+	</div>
 </body>
 	<script type="text/javascript" src="./index.js"></script>
 	<script type="text/javascript">
-		function save() {
+		function submit_fom() {
+			this.worktime = document.getElementById(user_Data[0]).value;
+			this.submit_check = saves(1,1);
+			this.id = document.getElementById('fom');
+			document.querySelector('.submitbt').style.backgroundColor = "lightBlue";
+			
+			if (this.worktime != "근무" && this.submit_check != 0) {
+				this.id.submit();
+			}else{
+				document.querySelector('.submitbt').style.backgroundColor = "blue";
+			}
+		}
+		function write_now() {
+			this.temp = localStorage.getItem("temp_save_data");
+			localStorage.setItem("now_save_data", this.temp);
+			nowloadfile();
+		}
+		let startTimer_ks;
+		function servar_load_data() {
+			document.querySelector('.frames').style.display = 'block';
+			document.querySelector('.frameBt').style.display = 'block';
+				startTimer_ks = setInterval(function(){
+				console.log("timer");
+				this.dataSelect = sessionStorage.getItem("searchBt");
+				if (this.dataSelect == "inBt") {
+					sessionStorage.setItem("searchBt","not");
+					nowloadfile();
+					close_frame();
+				}
+			}, 500);
+		}
+		function close_frame() {
+			clearInterval(startTimer_ks);
+			document.querySelector('.frames').style.display = 'none';
+			document.querySelector('.frameBt').style.display = 'none';
+		}
+		function savetouchs() {
 			document.querySelector('.footer').style.backgroundColor = "hotpink";
+		}
+		function save() {
+			saves(1);
+		}
+		function savetouche() {
+			document.querySelector('.footer').style.backgroundColor = "red";
 		}
 		function openNav() {
 			document.getElementById("mySidenav").style.width = "250px";

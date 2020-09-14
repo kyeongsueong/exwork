@@ -1,4 +1,16 @@
-body{}
+body{
+	background-color: #e6e6e6;
+}
+table{ margin-top: 10px; width: 100%; border-collapse: collapse;}
+td{
+	background-color: black;
+	color: white;
+	border: 1px solid white;
+	text-align: center;
+}
+.tds{
+	text-align: right;
+}
 ul{
 	list-style: none;
 	margin: 0;
@@ -6,8 +18,12 @@ ul{
 }
 .top_content{
 	display: flex;
-	border: 1px solid black;
+	border: 0px solid black;
 	justify-content: space-between;
+}
+.top_font{
+	font-weight: 900;
+	font-style: oblique;
 }
 .sidevar{
 	height: 100%;
@@ -43,7 +59,7 @@ ul{
 	padding-top: 10px;
 	display: flex;
 	flex-direction: column;
-	border: 1px solid black;
+	border: 3px solid blue;
 	overflow: auto;
 	height: 25em;
 	background-color: #ffffcc;
@@ -75,7 +91,8 @@ ul{
 	background-color: #ffffe6;
 }
 .text_write{
-	width: 100%;
+	width: 100em;
+	background-color: #ffffe6; 
 }
 .middleBtn{
 	text-align: center;
@@ -91,13 +108,73 @@ ul{
 	color: white;
 	font-size: 20px;
 }
+.user_work_date{
+	margin-top: 10px;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid black;
+	background-color: #ccccff;
+}
+.user_date{
+	width: 26%;
+	border: 0px;
+	border-bottom: 1px solid blue;
+	background-color: #ffffe6;
+	text-align: center;
+}
+.user_name{
+	width: 40%;
+	text-align: center;
+	border: 0px;
+	border-bottom: 1px solid blue;
+	border-right: 0px;
+	background-color: #ffffe6;
+}
+.liframe{
+	position: absolute;
+	border: 0px solid red;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+.frames{
+	border: 1px solid black;
+	width: 100%;
+	background-color: white;
+	overflow: auto;
+	display: none;
+}
+.frameBt{
+	display: none;
+	border: 2px solid blue;
+	background-color: blue;
+	color: white;
+	border-radius: 15%;
+	text-align: center;
+}
 .footer{
-	position: fixed;
-	left: 0;
-	bottom: 0;
+	margin-top: 10px;
+	bottom: 0px;
 	width: 100%;
 	background-color: red;
+	border: 1px solid blue;
 	color: white;
 	text-align: center;
 	font-size: 30px;
+}
+.submitbt{
+	margin-top: 10px;
+	width: 100%;
+	background-color: blue;
+	border: 1px solid red;
+	color: white;
+	text-align: center;
+	font-size: 30px;
+}
+.loadbt{
+	border: 2px solid blue;
+	background-color: blue;
+	color: white;
+	border-radius: 25%;
 }
