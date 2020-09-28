@@ -1,0 +1,18 @@
+.top{
+	color: red;
+}
+.middl{
+	display: flex;
+}
+.inbox{
+	display: flex;
+	border: 1px solid black;
+	justify-content: space-between;
+}
+.in7box{
+	display: flex;
+	flex-grow: 1;
+	text-align: center;
+	border: 1px solid red;
+	flex-direction: column;
+}
