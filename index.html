@@ -103,6 +103,7 @@
 
 	function snap () {
 		ks_canvas.draw(video);
+		predict();
 		let data = ks_canvas.dataUrl;
 	}
 	let count = 1;
@@ -112,5 +113,51 @@
 		//frames.src = 'http://14.42.255.205/ai/view/index.html';
 		frames.contentWindow.postMessage('msge' + count++);
 	}
+
+	const URL = "https://teachablemachine.withgoogle.com/models/CsrqWxd_4/";
+
+    let model, webcam, maxPredictions;
+    // Load the image model and setup the webcam
+    async function init() {
+       
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        predict();
+        alert("Ready ok");
+      
+    }
+   
+     async function predict() {
+      
+        var image = document.getElementById('canvas');
+
+        const prediction = await model.predict(image, false);
+        
+        let arrays = [];
+         for (let i = 0; i < maxPredictions; i++) {
+             const classPrediction =
+             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+             arrays[i] = prediction[i].probability.toFixed(2);
+         }
+         let cars = arrays[0];
+         let shadows = arrays[1];
+         let way = arrays[2];
+
+         if ( cars > 0.79) {
+            document.getElementById('data').value = "car"
+            document.getElementById('data1').innerHTML = cars * 100;
+         }else if ( shadows > 0.70) {
+            document.getElementById('data').value = "shadow"
+            document.getElementById('data1').innerHTML = shadows * 100;
+         }else if ( way > 0.70) {
+            document.getElementById('data').value = "Way"
+            document.getElementById('data1').innerHTML = way * 100;
+         }
+         snap();
+    }
 </script>
 </html>
