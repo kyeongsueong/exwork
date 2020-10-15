@@ -62,18 +62,16 @@
 </body>
 <script type="text/javascript">
 	class mycanvas{
-		constructor(startX, startY, width, height){
+		constructor(width, height){
 			this.canvas = document.getElementById('canvas');
 			this.context = this.canvas.getContext('2d');
-			this.startX = startX;
-			this.startY = startY;
-			this.width = width;
-			this.height = height;
+			this.canvas.width = width;
+			this.canvas.height = height;
 			this.dataUrl = this.canvas.toDataURL('image/jpeg', 1.0);
 		}
 
 		draw(video){
-			this.context.drawImage(video, this.startX, this.startY, this.width, this.height);
+			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
 		}
 	}
 	// Grab elements, create settings, etc.
@@ -100,7 +98,7 @@
 	    }
 	}
 
-	const ks_canvas = new mycanvas(0, 0, 290, 145);
+	const ks_canvas = new mycanvas(500, 500);
 	video = document.getElementById('video');
 
 	function snap () {
