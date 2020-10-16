@@ -121,7 +121,7 @@
 		frames.contentWindow.postMessage('msge' + count++);
 	}
 
-	const URL = "https://teachablemachine.withgoogle.com/models/CsrqWxd_4/";
+	const URL = "https://teachablemachine.withgoogle.com/models/XlpEGD_eD/";
 
     let model, webcam, maxPredictions;
     // Load the image model and setup the webcam
@@ -155,13 +155,13 @@
          let way = arrays[2];
 
          if ( cars > 0.79) {
-            document.getElementById('data').value = "car"
+            document.getElementById('data').value = "적재불량"
             document.getElementById('data1').innerHTML = cars * 100;
          }else if ( shadows > 0.70) {
-            document.getElementById('data').value = "shadow"
+            document.getElementById('data').value = "화물차"
             document.getElementById('data1').innerHTML = shadows * 100;
          }else if ( way > 0.70) {
-            document.getElementById('data').value = "Way"
+            document.getElementById('data').value = "일반차량"
             document.getElementById('data1').innerHTML = way * 100;
          }
          snap();
