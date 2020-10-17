@@ -56,10 +56,7 @@
 			<canvas id="canvas_ai" width="500" height="500"></canvas>
 		</li>
 		<li>
-			< <button class="moveButton" onmousedown="up()" onmouseup="clearBt()" ontouchstart="up()" ontouchend="clearBt()">Up</button> <br>
-            <button class="moveButton" onmousedown="left()" onmouseup="clearBt()" ontouchstart="left()" ontouchend="clearBt()"> <-- </button>
-            <button class="moveButton" onmousedown="down()" onmouseup="clearBt()" ontouchstart="down()" ontouchend="clearBt()">down</button>
-            <button class="moveButton" onmousedown="right()" onmouseup="clearBt()" ontouchstart="right()" ontouchend="clearBt()"> --> </button>
+			
 		</li>
 		<li>
 			<input type="text" id="data" name="" value='과적테스트'>
@@ -183,35 +180,6 @@
 init();
 	
 	
-	 ////////bt
-     let button_start;
 
-     function clearBt() {
-        clearInterval(button_start);
-    }
-     function up() {
-        button_start = setInterval(moveup, 30);
-    }
-    function moveup() {
-        ks_canvas.x = ks_canvas.x - 5;
-    }
-    function left() {
-        button_start = setInterval(moveleft, 30);
-    }
-    function moveleft() {
-          ks_canvas.x = ks_canvas.x - 5;
-    }
-    function right() {
-        button_start = setInterval(moveright, 30);
-    }
-    function moveright() {
-        ks_canvas.x = ks_canvas.x + 5;
-        
-    function down() {
-        button_start = setInterval(movedown, 30);
-    }
-    function movedown() {
-        ks_canvas.y = ks_canvas.y + 5;
-    }
 </script>
 </html>
