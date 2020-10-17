@@ -134,7 +134,7 @@
 		predict();
 		let data = ks_canvas.dataUrl;
 	}
-	const URL = "https://teachablemachine.withgoogle.com/models/XlpEGD_eD/";
+	const URL = "https://teachablemachine.withgoogle.com/models/pMhNlClaU/";
 
     let model, webcam, maxPredictions;
     // Load the image model and setup the webcam
@@ -164,18 +164,34 @@
              prediction[i].className + ": " + prediction[i].probability.toFixed(2);
              arrays[i] = prediction[i].probability.toFixed(2);
          }
-         let cars = arrays[0];
-         let shadows = arrays[1];
-         let way = arrays[2];
+         let carslaw = arrays[0];
+         let truck = arrays[1];
+         let car = arrays[2];
+	 let excar = arrays[3];
+         let ptroll = arrays[4];
+         let sisul = arrays[5];
+	 let way = arrays[6];    
 
-         if ( cars > 0.79) {
+         if ( carslaw > 0.85) {
             document.getElementById('data').value = "적재불량"
             document.getElementById('data1').innerHTML = cars * 100;
-         }else if ( shadows > 0.70) {
+         }else if ( truck > 0.70) {
             document.getElementById('data').value = "화물차"
             document.getElementById('data1').innerHTML = shadows * 100;
-         }else if ( way > 0.70) {
+         }else if ( car > 0.70) {
             document.getElementById('data').value = "일반차량"
+            document.getElementById('data1').innerHTML = way * 100;
+         }else if ( excar > 0.70) {
+            document.getElementById('data').value = "작업차량"
+            document.getElementById('data1').innerHTML = way * 100;
+         }else if ( ptroll > 0.70) {
+            document.getElementById('data').value = "순찰차"
+            document.getElementById('data1').innerHTML = way * 100;
+         }else if ( sisul > 0.70) {
+            document.getElementById('data').value = "시설물"
+            document.getElementById('data1').innerHTML = way * 100;
+         }else if ( way > 0.70) {
+            document.getElementById('data').value = "노면"
             document.getElementById('data1').innerHTML = way * 100;
          }
          snap();
