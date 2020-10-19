@@ -54,7 +54,7 @@
 		</li>
 		
 		<li>
-			<input type="text" id="data" name="" value='과적테스트'>
+			<span id="data"></span>
 			<span id="data1"></span>
 		</li>
 		<li hidden="">
@@ -181,25 +181,25 @@ this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 2
 	 let way = arrays[6];    
 
          if ( carslaw > 0.90) {
-            document.getElementById('data').value = "적재불량"
+            document.getElementById('data').innerHTML = "적재불량"
             document.getElementById('data1').innerHTML = carslaw * 100 + "%";
          }else if ( truck > 0.70) {
-            document.getElementById('data').value = "화물차"
+            document.getElementById('data').innerHTML = "화물차"
             document.getElementById('data1').innerHTML = truck * 100 + "%";
          }else if ( car > 0.70) {
-            document.getElementById('data').value = "일반차량"
+            document.getElementById('data').innerHTML = "일반차량"
             document.getElementById('data1').innerHTML = car * 100 + "%";
          }else if ( excar > 0.70) {
-            document.getElementById('data').value = "작업차량"
+            document.getElementById('data').innerHTML = "작업차량"
             document.getElementById('data1').innerHTML = excar * 100 + "%";
          }else if ( ptroll > 0.70) {
-            document.getElementById('data').value = "순찰차"
+            document.getElementById('data').innerHTML = "순찰차"
             document.getElementById('data1').innerHTML = ptroll * 100 + "%";
          }else if ( sisul > 0.70) {
-            document.getElementById('data').value = "시설물"
+            document.getElementById('data').innerHTML = "시설물"
             document.getElementById('data1').innerHTML = sisul * 100 + "%";
          }else if ( way > 0.70) {
-            document.getElementById('data').value = "노면"
+            document.getElementById('data').innerHTML = "노면"
             document.getElementById('data1').innerHTML = way * 100 + "%";
          }
          snap();
