@@ -116,7 +116,7 @@
 			this.link = document.getElementById('link');
 			this.link.setAttribute('download', 'MintyPaper.png'); 
 			this.link.setAttribute('href', this.canvas3.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-			this.link.click();
+			document.getElementById("link").click();
 		}
 	}
 	let links = document.getElementById('link');
