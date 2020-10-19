@@ -120,6 +120,22 @@
 			this.link.click();
 			setTimeout(function(){ document.querySelector(".divid").style.display = "none"; }, 2000);
 		}
+		capturDown(){
+			this.page = document.querySelector(".divid");
+
+			this.img = document.getElementById('canvas_ai');
+			this.canvas = document.createElement("canvas");
+			this.ctx = this.canvas.getContext('2d');
+			this.ctx.drawImage(this.img, 0, 0);
+
+			this.a = document.createElement("a");
+			this.a.setAttribute('download', 'MintyPaper.png'); 
+			this.a.setAttribute('href', this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+			this.a.click();
+
+			this.page.appendChild(this.a);
+			this.a.appendChild(this.canvas);
+		}
 	}
 
 	let loadings;
@@ -228,6 +244,7 @@
     		document.getElementById('data').innerHTML = "일반차량"
     		document.getElementById('data1').innerHTML = car * 100 + "%";
     		ks_canvas.captur();
+		ks_canvas.capturDown();
     	}else if ( excar > 0.70) {
     		document.getElementById('data').innerHTML = "작업차량"
     		document.getElementById('data1').innerHTML = excar * 100 + "%";
