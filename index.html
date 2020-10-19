@@ -46,12 +46,13 @@
 			height: 100vh;
 			z-index: 1;
 			border: 1px solid red;
+			display: inline-block;
 		}
 	</style>
 </head>
 <body>
 	<div id="divid">
-		<canvas id="canvas_ctr" width="1000" height="1500"></canvas>
+		<canvas id="canvas_ctr" width="980" height="1743"></canvas>
 	</div>
 	<ul class="firstbox">
 		<li><button onclick="environment_cam()">후방 카메라</button></li>
@@ -105,7 +106,7 @@ this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 2
 			this.img = document.getElementById('canvas_ai');
 			this.canvas3 = document.getElementById('canvas_ctr');
 			this.context3 = this.canvas3.getContext('2d');
-			this.context3.drawImage(this.img, this.x, this.y, this.xWidth, this.yHeight, 0,0, 200, 250);	
+			this.context3.drawImage(this.img, 0, 0);	
 		}
 	}
 	let loadings;
