@@ -117,7 +117,7 @@
 			this.canvas3 = document.getElementById('canvas_ctr');
 			this.context3 = this.canvas3.getContext('2d');
 			this.context3.drawImage(this.img, 0, 0, 400, 700);
-
+			document.getElementById('link').style.display = "block";
 			setTimeout(function(){ document.querySelector(".divid").style.display = "none"; }, 2000);
 		}
 		capturDown(){
@@ -180,6 +180,7 @@
 
 	function opneDown() {
 		document.querySelector(".divid").style.display="block";
+		document.getElementById('link').style.display="none";
 	}
 	function closeDown() {
 		document.querySelector(".divid").style.display="none";
