@@ -53,6 +53,9 @@
 </head>
 <body>
 	<div class="divid">
+		<div style="float: right;">
+			<a href="#" onclick="closeDown()">Cloas</a>
+		</div>
 		<a id="link">
 			<canvas id="canvas_ctr" width="400" height="700"></canvas>
 		</a>
@@ -181,7 +184,9 @@
 	function opneDown() {
 		document.querySelector(".divid").style.display="block";
 	}
-
+	function closeDown() {
+		document.querySelector(".divid").style.display="none";
+	}
 	let focusRect = {
 		x: 130,
 		y: 100,
