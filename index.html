@@ -117,10 +117,12 @@
 			this.link = document.getElementById('link');
 			this.link.setAttribute('download', 'MintyPaper.png'); 
 			this.link.setAttribute('href', this.canvas3.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-			document.getElementById("link").click();
+			
 		}
 	}
-
+	function autoCaptur() {
+		document.getElementById("link").click();
+	}
 	let loadings;
 	let indexdot = 0;
 	function loading(num) {
@@ -227,6 +229,7 @@
     		document.getElementById('data').innerHTML = "일반차량"
     		document.getElementById('data1').innerHTML = car * 100 + "%";
     		ks_canvas.captur();
+    		autoCaptur();
     	}else if ( excar > 0.70) {
     		document.getElementById('data').innerHTML = "작업차량"
     		document.getElementById('data1').innerHTML = excar * 100 + "%";
