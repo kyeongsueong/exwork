@@ -57,7 +57,7 @@
 			<input type="text" id="data" name="" value='과적테스트'>
 			<span id="data1"></span>
 		</li>
-		<li>
+		<li hidden="">
 			<canvas id="canvas_ai" width="200" height="250"></canvas>
 		</li>
 	</ul>
@@ -79,9 +79,9 @@
 		}
 
 		draw(video){
-			this.context.globalAlpha = 1;
-			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
-			this.context.globalAlpha = 1;
+			//this.context.globalAlpha = 1;
+			//this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
+			//this.context.globalAlpha = 1;
 			this.context.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, this.x, this.y, this.xWidth, this.yHeight);
 			this.context.strokeStyle = "#FF0000";
                         this.context.strokeRect(this.x, this.y, this.xWidth, this.yHeight);
