@@ -61,8 +61,8 @@
 		</li>
 		
 		<li>
-			<button>UP</button>
-			<button>Down</button>
+			<button onclick = upf()>UP</button>
+			<button onclick = downf()>Down</button>
 		</li>
 		<li hidden="">
 			<canvas id="canvas_ai" width="200" height="250"></canvas>
@@ -142,7 +142,16 @@ this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 2
 	};
 	const ks_canvas = new mycanvas(500, 500, focusRect.x, focusRect.y, focusRect.xWidth, focusRect.yHeight);
 	video = document.getElementById('video');
-
+	fuction upf(){
+		this.y = focusRect.y;
+		this.y -= 10;
+		focusRect.y = this.y;
+	}
+	fuction downf(){
+		this.y = focusRect.y;
+		this.y += 10;
+		focusRect.y = this.y;
+	}
 	function snap () {
 		ks_canvas.draw(video);
 		predict();
