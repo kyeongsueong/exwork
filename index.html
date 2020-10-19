@@ -60,6 +60,7 @@
 	<ul class="firstbox">
 		<li><button onclick="environment_cam()">후방 카메라</button></li>
 		<li><button onclick="user_cam()">전방 카메라</button></li>
+		<li><button onclick="opneDown()">다운로드 보기</button></li>
 	</ul>
 	<ul class="toobox">
 		<li class="content_li" hidden="">
@@ -177,7 +178,9 @@
 		}
 	}
 
-
+	function opneDown() {
+		document.querySelector(".divid").style.display="block";
+	}
 
 	let focusRect = {
 		x: 130,
