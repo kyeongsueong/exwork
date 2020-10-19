@@ -64,15 +64,15 @@
 </body>
 <script type="text/javascript">
 	class mycanvas{
-		constructor(width, height){
+		constructor(width, height, x, y, xWidth, yHeight){
 			this.canvas = document.getElementById('canvas');
 			this.context = this.canvas.getContext('2d');
 			this.canvas.width = width;
 			this.canvas.height = height;
-			this.x = 130;
-			this.y = 100;
-			this.xWidth = 230;
-			this.yHeight = 230;
+			this.x = x;
+			this.y = y;
+			this.xWidth = xWidth;
+			this.yHeight = yHeight;
 			
 			this.canvas2 = document.getElementById('canvas_ai');
 			this.context2 = this.canvas2.getContext('2d');
@@ -133,7 +133,7 @@ this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 2
 		xWidth : 230,
 		yHeight : 230
 	};
-	const ks_canvas = new mycanvas(500, 500);
+	const ks_canvas = new mycanvas(500, 500, focusRect.x, focusRect.y, focusRect.xWidth, focusRect.yHeight);
 	video = document.getElementById('video');
 
 	function snap () {
