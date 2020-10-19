@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="user-scalable=no, width=device-width">
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
-    	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 	<style type="text/css">
 		body{
 			margin: 0px;
@@ -45,7 +45,9 @@
 			width: 100%;
 			height: 100vh;
 			z-index: 1;
-			border: 1px solid blue;
+			border: 0px solid blue;
+			display: none;
+			text-align: center;
 		}
 	</style>
 </head>
@@ -65,8 +67,8 @@
 			<h2 id="Loding">Loding.........</h2>
 			<span id="data"></span>
 			<span id="data1"></span>
-                        <a id="link"></a>
-   		</li>
+			<a id="link"></a>
+		</li>
 		<li class="content_li">
 			<canvas id="canvas"width="1000" height="1500" style="border:0px solid black; width: 100%; height: 100%;"></canvas>
 		</li>
@@ -90,6 +92,8 @@
 			
 			this.canvas2 = document.getElementById('canvas_ai');
 			this.context2 = this.canvas2.getContext('2d');
+
+			this.capturDiv = document.querySelector(".divid");
 		}
 
 		draw(video){
@@ -98,22 +102,24 @@
 			//this.context.globalAlpha = 1;
 			this.context.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, this.x, this.y, this.xWidth, this.yHeight);
 			this.context.strokeStyle = "#FF0000";
-                        this.context.strokeRect(this.x, this.y, this.xWidth, this.yHeight);
+			this.context.strokeRect(this.x, this.y, this.xWidth, this.yHeight);
 			
-this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 200, 250);
+			this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 200, 250);
 		}
 		captur(){
+			this.capturDiv.style.display = "block";
 			this.img = document.getElementById('canvas_ai');
 			this.canvas3 = document.getElementById('canvas_ctr');
 			this.context3 = this.canvas3.getContext('2d');
 			this.context3.drawImage(this.img, 0, 0, 400, 700);
 
-	                this.link = document.getElementById('link');
-                        this.link.setAttribute('download', 'MintyPaper.png'); 
-                        this.link.setAttribute('href', this.canvas3.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-                        this.link.click();
+			this.link = document.getElementById('link');
+			this.link.setAttribute('download', 'MintyPaper.png'); 
+			this.link.setAttribute('href', this.canvas3.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+			this.link.click();
 		}
 	}
+	let links = document.getElementById('link');
 	let loadings;
 	let indexdot = 0;
 	function loading(num) {
@@ -144,13 +150,13 @@ this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 2
 	environment_cam();
 	function cameraStream(camera) {
 		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-	    	
-	    	navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
-		        
-		        video.srcObject = stream;
-		        video.play();
-		    });
-	    }
+
+			navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
+
+				video.srcObject = stream;
+				video.play();
+			});
+		}
 	}
 
 
@@ -169,73 +175,77 @@ this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 2
 		predict();
 		let data = ks_canvas.dataUrl;
 	}
+
+	//const URL = "https://teachablemachine.withgoogle.com/models/XlpEGD_eD/";//적재불량
 	const URL = "https://teachablemachine.withgoogle.com/models/MngODkBou/";
 
-    let model, webcam, maxPredictions;
+	let model, webcam, maxPredictions;
     // Load the image model and setup the webcam
     async function init() {
-       
-        const modelURL = URL + "model.json";
-        const metadataURL = URL + "metadata.json";
 
-        model = await tmImage.load(modelURL, metadataURL);
-        maxPredictions = model.getTotalClasses();
+    	const modelURL = URL + "model.json";
+    	const metadataURL = URL + "metadata.json";
 
-        predict();
-        alert("Ready ok");
-      	clearInterval(loadings);
-	document.getElementById('Loding').innerHTML = "";
-	localStorage.setItem("test", "plzchapter");
+    	model = await tmImage.load(modelURL, metadataURL);
+    	maxPredictions = model.getTotalClasses();
+
+    	predict();
+    	alert("Ready ok");
+    	clearInterval(loadings);
+    	document.getElementById('Loding').innerHTML = "";
+    	localStorage.setItem("test", "plzchapter");
     }
-   
-     async function predict() {
-      
-        var image = document.getElementById('canvas_ai');
 
-        const prediction = await model.predict(image, false);
-        
-        let arrays = [];
-         for (let i = 0; i < maxPredictions; i++) {
-             const classPrediction =
-             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-             arrays[i] = prediction[i].probability.toFixed(2);
-         }
-         let carslaw = arrays[0];
-         let truck = arrays[1];
-         let car = arrays[2];
-	 let excar = arrays[3];
-         let ptroll = arrays[4];
-         let sisul = arrays[5];
-	 let way = arrays[6];    
+    async function predict() {
 
-         if ( carslaw > 0.90) {
-            document.getElementById('data').innerHTML = "적재불량"
-            document.getElementById('data1').innerHTML = carslaw * 100 + "%";
-         }else if ( truck > 0.70) {
-            document.getElementById('data').innerHTML = "화물차"
-            document.getElementById('data1').innerHTML = truck * 100 + "%";
-         }else if ( car > 0.70) {
-            document.getElementById('data').innerHTML = "일반차량"
-            document.getElementById('data1').innerHTML = car * 100 + "%";
-		 ks_canvas.captur();
-         }else if ( excar > 0.70) {
-            document.getElementById('data').innerHTML = "작업차량"
-            document.getElementById('data1').innerHTML = excar * 100 + "%";
-         }else if ( ptroll > 0.70) {
-            document.getElementById('data').innerHTML = "순찰차"
-            document.getElementById('data1').innerHTML = ptroll * 100 + "%";
-         }else if ( sisul > 0.70) {
-            document.getElementById('data').innerHTML = "시설물"
-            document.getElementById('data1').innerHTML = sisul * 100 + "%";
-         }else if ( way > 0.70) {
-            document.getElementById('data').innerHTML = "노면"
-            document.getElementById('data1').innerHTML = way * 100 + "%";
-         }
-         snap();
+    	var image = document.getElementById('canvas_ai');
+
+    	const prediction = await model.predict(image, false);
+
+    	let arrays = [];
+    	for (let i = 0; i < maxPredictions; i++) {
+    		const classPrediction =
+    		prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+    		arrays[i] = prediction[i].probability.toFixed(2);
+    	}
+    	let carslaw = arrays[0];
+    	let truck = arrays[1];
+    	let car = arrays[2];
+    	let excar = arrays[3];
+    	let ptroll = arrays[4];
+    	let sisul = arrays[5];
+    	let way = arrays[6];    
+
+    	if ( carslaw > 0.90) {
+    		document.getElementById('data').innerHTML = "적재불량"
+    		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
+    	}else if ( truck > 0.70) {
+    		document.getElementById('data').innerHTML = "화물차"
+    		document.getElementById('data1').innerHTML = truck * 100 + "%";
+    	}else if ( car > 0.70) {
+    		document.getElementById('data').innerHTML = "일반차량"
+    		document.getElementById('data1').innerHTML = car * 100 + "%";
+    		ks_canvas.captur();
+    		links.click();
+    		
+    	}else if ( excar > 0.70) {
+    		document.getElementById('data').innerHTML = "작업차량"
+    		document.getElementById('data1').innerHTML = excar * 100 + "%";
+    	}else if ( ptroll > 0.70) {
+    		document.getElementById('data').innerHTML = "순찰차"
+    		document.getElementById('data1').innerHTML = ptroll * 100 + "%";
+    	}else if ( sisul > 0.70) {
+    		document.getElementById('data').innerHTML = "시설물"
+    		document.getElementById('data1').innerHTML = sisul * 100 + "%";
+    	}else if ( way > 0.70) {
+    		document.getElementById('data').innerHTML = "노면"
+    		document.getElementById('data1').innerHTML = way * 100 + "%";
+    	}
+    	snap();
     }
-init();
-	
-	
+    init();
+
+
 
 </script>
 </html>
