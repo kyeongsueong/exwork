@@ -51,7 +51,7 @@
 </head>
 <body>
 	<div class="divid">
-		<canvas id="canvas_ctr" width="600" height="700"></canvas>
+		<canvas id="canvas_ctr" width="450" height="700"></canvas>
 	</div>
 	<ul class="firstbox">
 		<li><button onclick="environment_cam()">후방 카메라</button></li>
@@ -105,7 +105,7 @@ this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 2
 			this.img = document.getElementById('canvas_ai');
 			this.canvas3 = document.getElementById('canvas_ctr');
 			this.context3 = this.canvas3.getContext('2d');
-			this.context3.drawImage(this.img, 0, 0, 0, 0, 0, 0, 600, 700);	
+			this.context3.drawImage(this.img, 0, 0, 0, 0, 0, 0, 450, 700);	
 		}
 	}
 	let loadings;
