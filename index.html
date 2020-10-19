@@ -108,10 +108,10 @@ this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 2
 			this.context3 = this.canvas3.getContext('2d');
 			this.context3.drawImage(this.img, 0, 0, 400, 700);
 
-	                var link = document.getElementById('link');
-                        link.setAttribute('download', 'MintyPaper.png'); 
-                        link.setAttribute('href', this.canvas3.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-                        link.click();
+	                this.link = document.getElementById('link');
+                        this.link.setAttribute('download', 'MintyPaper.png'); 
+                        this.link.setAttribute('href', this.canvas3.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+                        this.link.click();
 		}
 	}
 	let loadings;
