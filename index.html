@@ -118,7 +118,7 @@
 			this.link.setAttribute('download', 'MintyPaper.png'); 
 			this.link.setAttribute('href', this.canvas3.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 			this.link.click();
-			setTimeout(function(){ this.capturDiv.style.display = "none"; }, 2000);
+			setTimeout(function(){ document.querySelector(".divid").style.display = "none"; alert(123); }, 2000);
 		}
 	}
 
