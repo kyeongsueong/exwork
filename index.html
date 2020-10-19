@@ -118,10 +118,6 @@
 			this.context3 = this.canvas3.getContext('2d');
 			this.context3.drawImage(this.img, 0, 0, 400, 700);
 
-			this.link = document.getElementById('link');
-			this.link.setAttribute('download', 'MintyPaper.png'); 
-			this.link.setAttribute('href', this.canvas3.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-			this.link.click();
 			setTimeout(function(){ document.querySelector(".divid").style.display = "none"; }, 2000);
 		}
 		capturDown(){
@@ -137,8 +133,7 @@
 			this.a = document.createElement("a");
 			this.a.setAttribute('download', 'MintyPaper.png'); 
 			this.a.setAttribute('href', this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-			this.a.click();
-
+			
 			this.page.appendChild(this.a);
 			this.a.appendChild(this.canvas);
 		}
