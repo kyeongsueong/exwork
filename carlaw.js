@@ -194,6 +194,7 @@ class mycanvas{
     	}else if ( car > 0.70) {
     		document.getElementById('data').innerHTML = "일반차량"
     		document.getElementById('data1').innerHTML = car * 100 + "%";
+                ks_canvas.capturDown();
     	}else if ( excar > 0.70) {
     		document.getElementById('data').innerHTML = "작업차량"
     		document.getElementById('data1').innerHTML = excar * 100 + "%";
