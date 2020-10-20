@@ -39,10 +39,10 @@ class mycanvas{
 
 			this.img = document.getElementById('canvas_ai');
 			this.canvas = document.createElement("canvas");
-			this.canvas.width = 600;
-			this.canvas.height = 600;
+			this.canvas.width = 420;
+			this.canvas.height = 500;
 			this.ctx = this.canvas.getContext('2d');
-			this.ctx.drawImage(this.img, 0, 0, 600, 600);
+			this.ctx.drawImage(this.img, 0, 0, 420, 500);
 			
 			this.a = document.createElement("a");
 			this.a.setAttribute('download', 'MintyPaper.png'); 
