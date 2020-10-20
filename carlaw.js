@@ -43,6 +43,13 @@ class mycanvas{
 			this.canvas.height = 250;
 			this.ctx = this.canvas.getContext('2d');
 			this.ctx.drawImage(this.img, 0, 0, 200, 250);
+			
+			this.img2 = document.getElementById('canvas');
+			this.canvas2 = document.createElement("canvas");
+			this.canvas2.width = 200;
+			this.canvas2.height = 250;
+			this.ctx2 = this.canvas2.getContext('2d');
+			this.ctx2.drawImage(this.img2, 0, 0, 200, 250);
 
 			this.a = document.createElement("a");
 			this.a.setAttribute('download', 'MintyPaper.png'); 
@@ -50,6 +57,9 @@ class mycanvas{
 			
 			this.page.appendChild(this.a);
 			this.a.appendChild(this.canvas);
+			
+			this.page.appendChild(this.a);
+			this.a.appendChild(this.canvas2);
 		}
 	}
 
@@ -157,7 +167,7 @@ class mycanvas{
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
     		ks_canvas.captur();
-			ks_canvas.capturDown();
+		ks_canvas.capturDown();
     	}else if ( truck > 0.70) {
     		document.getElementById('data').innerHTML = "화물차"
     		document.getElementById('data1').innerHTML = truck * 100 + "%";
