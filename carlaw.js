@@ -132,8 +132,8 @@ class mycanvas{
 	let focusRect = {
 		x: 130,
 		y: 100,
-		xWidth : 230,
-		yHeight : 230
+		xWidth : 260,
+		yHeight : 260
 	};
 	const ks_canvas = new mycanvas(500, 500, focusRect.x, focusRect.y, focusRect.xWidth, focusRect.yHeight);
 	video = document.getElementById('video');
