@@ -69,7 +69,7 @@ class mycanvas{
 		loading(indexdot);
 	}
 	// Grab elements, create settings, etc.
-	let video = document.getElementById('video');
+	//let video = document.getElementById('video');
 	let camera;
         
 	function environment_cam() {
@@ -115,7 +115,7 @@ class mycanvas{
 	}
 
 const constraints =  { "video": { width: { exact: 320 }}};
-var videoTag = document.getElementById('video-tag');
+var videoTag = document.getElementById('video');
 var imageTag = document.getElementById('image-tag');
 var zoomSlider = document.getElementById("zoom-slider");
 var zoomSliderValue = document.getElementById("zoom-slider-value");
