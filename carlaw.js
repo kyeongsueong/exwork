@@ -94,10 +94,12 @@ class mycanvas{
 
 	function opneDown() {
 		document.querySelector(".divid").style.display="block";
+		document.querySelector(".toobox").style.display="none";
 		document.getElementById('link').style.display="none";
 	}
 	function closeDown() {
 		document.querySelector(".divid").style.display="none";
+		document.querySelector(".toobox").style.display="block";
 	}
 	let focusRect = {
 		x: 130,
