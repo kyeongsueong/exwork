@@ -39,6 +39,7 @@ span{
 	border: 0px solid blue;
 	display: none;
 	text-align: center;
+	background-color: white;
 }
 table, tr, td{
 	text-align: center;
