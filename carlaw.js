@@ -84,7 +84,16 @@ class mycanvas{
 		start();
 	}
 	environment_cam();
-	
+	function cameraStream(camera) {
+		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+
+			navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
+
+				video.srcObject = stream;
+				video.play();
+			});
+		}
+	}
 	var videoTag = document.getElementById('video');
 	var zoomSlider = document.getElementById("zoom-slider");
 	var zoomSliderValue = document.getElementById("zoom-slider-value");
