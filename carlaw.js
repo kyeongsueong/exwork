@@ -16,7 +16,7 @@ class mycanvas{
 		}
 
 		draw(video){
-			this.context.globalAlpha = 1;
+			//this.context.globalAlpha = 1;
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
 			//this.context.globalAlpha = 1;
 			//this.context.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, this.x, this.y, this.xWidth, this.yHeight);
@@ -25,7 +25,7 @@ class mycanvas{
 			//this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 200, 250);
 		}
 		captur(){
-			this.capturDiv.style.display = "block";
+			this.capturDiv.style.zIndex = "2";
 			this.img = document.getElementById('canvas');
 			this.canvas3 = document.getElementById('canvas_ctr');
 			this.context3 = this.canvas3.getContext('2d');
