@@ -74,30 +74,18 @@ class mycanvas{
         
 	function environment_cam() {
 		camera = { facingMode: { exact: "environment" } };
-		cameraStream(camera);
 		start();
 		
 	}
 	function user_cam() {
 		camera = { facingMode: "user" };
-		cameraStream(camera);
 		start();
 	}
 	environment_cam();
-	function cameraStream(camera) {
-		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-
-			navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
-
-				video.srcObject = stream;
-				video.play();
-			});
-		}
-	}
+	
 	var videoTag = document.getElementById('video');
 	var zoomSlider = document.getElementById("zoom-slider");
 	var zoomSliderValue = document.getElementById("zoom-slider-value");
-	var imageCapturer;
 
 	function start() {
 	  navigator.mediaDevices.getUserMedia({ video: camera })
@@ -107,11 +95,9 @@ class mycanvas{
 
 	function gotMedia(mediastream) {
 	  videoTag.srcObject = mediastream;
-	  document.getElementById('start').disabled = true;
 	  
 	  var videoTrack = mediastream.getVideoTracks()[0];
-	  imageCapturer = new ImageCapture(videoTrack);
-
+		
 	  // Timeout needed in Chrome, see https://crbug.com/711524
 	  setTimeout(() => {
 	    const capabilities = videoTrack.getCapabilities()
