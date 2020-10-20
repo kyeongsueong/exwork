@@ -38,8 +38,23 @@
 		<li hidden="">
 			<canvas id="canvas_ai" width="200" height="250"></canvas>
 		</li>
+		<p><button id="start" onclick="start()">start camera!</button></p>
+
+<div>
+ <div style="float:left;margin-right:5px;">
+  <p><video id="video-tag" width="240" height="180" autoplay=true/></p>
+ </div>
+ <div style="float:left">
+  <p><img id="image-tag" width="240"> </img></p>
+ </div>
+</div>
+  
+<div style="width: 240px">
+  <p><button onclick="takePhoto()">take photo</button></p>
  <input type="range" id="zoom-slider" min="0", max="0">
  <output id="zoom-slider-value"></output>
+</div>
+
 		<li hidden="">
 			<table>
 				<tr>
