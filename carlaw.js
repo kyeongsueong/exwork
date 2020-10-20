@@ -37,10 +37,10 @@ class mycanvas{
 			this.page = document.querySelector(".divid");
 
 			this.img = document.getElementById('canvas');
-			this.canvas = document.createElement("canvas");
-			this.canvas.width = 250;
-			this.canvas.height = 300;
-			this.ctx = this.canvas.getContext('2d');
+			this.canvasc = document.createElement("canvas");
+			this.canvasc.width = 250;
+			this.canvasc.height = 300;
+			this.ctx = this.canvasc.getContext('2d');
 			this.ctx.drawImage(this.img, 0, 0, 250, 300);
 			
 			this.a = document.createElement("a");
@@ -48,7 +48,7 @@ class mycanvas{
 			this.a.setAttribute('href', this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 			
 			this.page.appendChild(this.a);
-			this.a.appendChild(this.canvas);
+			this.a.appendChild(this.canvasc);
 		}
 	}
 
