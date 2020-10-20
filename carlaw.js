@@ -186,7 +186,7 @@ class mycanvas{
     	if ( carslaw > 0.70) {
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
-    		ks_canvas.captur();
+    		//ks_canvas.captur();
 		ks_canvas.capturDown();
     	}else if ( truck > 0.80) {
     		document.getElementById('data').innerHTML = "화물차"
@@ -203,6 +203,7 @@ class mycanvas{
     	}else if ( sisul > 0.70) {
     		document.getElementById('data').innerHTML = "시설물"
     		document.getElementById('data1').innerHTML = sisul * 100 + "%";
+                ks_canvas.capturDown();
     	}else if ( way > 0.70) {
     		document.getElementById('data').innerHTML = "노면"
     		document.getElementById('data1').innerHTML = way * 100 + "%";
