@@ -75,10 +75,13 @@ class mycanvas{
 	function environment_cam() {
 		camera = { facingMode: { exact: "environment" } };
 		cameraStream(camera);
+		start();
+		
 	}
 	function user_cam() {
 		camera = { facingMode: "user" };
 		cameraStream(camera);
+		start();
 	}
 	environment_cam();
 	function cameraStream(camera) {
