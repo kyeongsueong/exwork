@@ -72,8 +72,6 @@ class mycanvas{
 	let video = document.getElementById('video');
 	let camera;
         
-var zoomSlider = document.getElementById("zoom-slider");
-var zoomSliderValue = document.getElementById("zoom-slider-value");
 	function environment_cam() {
 		camera = { facingMode: { exact: "environment" } };
 		cameraStream(camera);
@@ -85,20 +83,7 @@ var zoomSliderValue = document.getElementById("zoom-slider-value");
 	environment_cam();
 	function cameraStream(camera) {
 		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                        var videoTrack = mediastream.getVideoTracks()[0];
-    zoomSlider.min = capabilities.zoom.min;
-    zoomSlider.max = capabilities.zoom.max;
-    zoomSlider.step = capabilities.zoom.step;
-
-    zoomSlider.value = zoomSliderValue.value = videoTrack.getSettings().zoom;
-    zoomSliderValue.value = zoomSlider.value;
-    
-    zoomSlider.oninput = function() {
-      zoomSliderValue.value = zoomSlider.value;
-      videoTrack.applyConstraints({advanced : [{zoom: zoomSlider.value}] });
-    }
-  }, 500);
-  
+                       
       			navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
 
 				video.srcObject = stream;
@@ -128,6 +113,61 @@ var zoomSliderValue = document.getElementById("zoom-slider-value");
 		predict();
 		let data = ks_canvas.dataUrl;
 	}
+
+const constraints =  { "video": { width: { exact: 320 }}};
+var videoTag = document.getElementById('video-tag');
+var imageTag = document.getElementById('image-tag');
+var zoomSlider = document.getElementById("zoom-slider");
+var zoomSliderValue = document.getElementById("zoom-slider-value");
+var imageCapturer;
+
+function start() {
+  navigator.mediaDevices.getUserMedia(constraints)
+    .then(gotMedia)
+    .catch(e => { console.error('getUserMedia() failed: ', e); });
+}
+
+function gotMedia(mediastream) {
+  videoTag.srcObject = mediastream;
+  document.getElementById('start').disabled = true;
+  
+  var videoTrack = mediastream.getVideoTracks()[0];
+  imageCapturer = new ImageCapture(videoTrack);
+
+  // Timeout needed in Chrome, see https://crbug.com/711524
+  setTimeout(() => {
+    const capabilities = videoTrack.getCapabilities()
+    // Check whether zoom is supported or not.
+    if (!capabilities.zoom) {
+      return;
+    }
+    
+    zoomSlider.min = capabilities.zoom.min;
+    zoomSlider.max = capabilities.zoom.max;
+    zoomSlider.step = capabilities.zoom.step;
+
+    zoomSlider.value = zoomSliderValue.value = videoTrack.getSettings().zoom;
+    zoomSliderValue.value = zoomSlider.value;
+    
+    zoomSlider.oninput = function() {
+      zoomSliderValue.value = zoomSlider.value;
+      videoTrack.applyConstraints({advanced : [{zoom: zoomSlider.value}] });
+    }
+  }, 500);
+  
+}
+
+function takePhoto() {
+  imageCapturer.takePhoto()
+    .then((blob) => {
+      console.log("Photo taken: " + blob.type + ", " + blob.size + "B")
+      imageTag.src = URL.createObjectURL(blob);
+    })
+    .catch((err) => { 
+      console.error("takePhoto() failed: ", e);
+    });
+}
+
 
 	//const URL = "https://teachablemachine.withgoogle.com/models/XlpEGD_eD/";//적재불량
 	const URL = "https://teachablemachine.withgoogle.com/models/MngODkBou/";
