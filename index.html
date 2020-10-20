@@ -35,40 +35,12 @@
 			<canvas id="canvas"width="1000" height="1500" style="border:0px solid black; width: 100%; height: 100%;"></canvas>
 		</li>
 		<li>
+			<span>줌</span>
 			 <input type="range" id="zoom-slider" min="0", max="0">
 			 <output id="zoom-slider-value"></output>
 		</li>
 		<li hidden="">
 			<canvas id="canvas_ai" width="200" height="250"></canvas>
-		</li>
-		
-<div hidden="">
-	<p><button id="start" onclick="start()">start camera!</button></p>
-
- <div style="float:left;margin-right:5px;">
-  <p><video id="video-tag" width="240" height="180" autoplay=true/></p>
- </div>
- <div style="float:left">
-  <p><img id="image-tag" width="240"> </img></p>
- </div>
-</div>
-  
-<div style="width: 240px" hidden="">
-  <p><button onclick="takePhoto()">take photo</button></p>
-</div>
-
-		<li hidden="">
-			<table>
-				<tr>
-					<td></td><td><button onclick="upf()">up</button></td><td></td>
-				</tr>
-				<tr>
-					<td><button onclick="leftf()">left</button></td><td><button onclick="resetf()">reset</button></td> <td><button onclick="rightf()">right</button></td>
-				</tr>
-				<tr>
-					<td></td><td><button onclick="downf()">dw</button></td><td></td>
-				</tr>
-			</table>
 		</li>
 	</ul>
 </body>
