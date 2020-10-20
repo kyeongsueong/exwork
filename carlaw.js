@@ -165,7 +165,7 @@ class mycanvas{
 
     async function predict() {
 
-    	var image = document.getElementById('canvas_ai');
+    	var image = document.getElementById('canvas');
 
     	const prediction = await model.predict(image, false);
 
