@@ -44,26 +44,12 @@ class mycanvas{
 			this.ctx = this.canvas.getContext('2d');
 			this.ctx.drawImage(this.img, 0, 0, 200, 250);
 			
-			this.img2 = document.getElementById('canvas');
-			this.canvas2 = document.createElement("canvas");
-			this.canvas2.width = 200;
-			this.canvas2.height = 250;
-			this.ctx2 = this.canvas2.getContext('2d');
-			this.ctx2.drawImage(this.img2, 0, 0, 200, 250);
-
 			this.a = document.createElement("a");
 			this.a.setAttribute('download', 'MintyPaper.png'); 
 			this.a.setAttribute('href', this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 			
-			this.a2 = document.createElement("a");
-			this.a2.setAttribute('download', 'MintyPaper.png'); 
-			this.a2.setAttribute('href', this.canvas2.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-			
 			this.page.appendChild(this.a);
 			this.a.appendChild(this.canvas);
-			
-			this.page.appendChild(this.a2);
-			this.a2.appendChild(this.canvas2);
 		}
 	}
 
