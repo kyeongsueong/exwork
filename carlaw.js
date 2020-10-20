@@ -55,11 +55,15 @@ class mycanvas{
 			this.a.setAttribute('download', 'MintyPaper.png'); 
 			this.a.setAttribute('href', this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 			
+			this.a2 = document.createElement("a");
+			this.a2.setAttribute('download', 'MintyPaper.png'); 
+			this.a2.setAttribute('href', this.canvas2.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+			
 			this.page.appendChild(this.a);
 			this.a.appendChild(this.canvas);
 			
-			this.page.appendChild(this.a);
-			this.a.appendChild(this.canvas2);
+			this.page.appendChild(this.a2);
+			this.a2.appendChild(this.canvas2);
 		}
 	}
 
