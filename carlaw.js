@@ -39,10 +39,10 @@ class mycanvas{
 
 			this.img = document.getElementById('canvas_ai');
 			this.canvas = document.createElement("canvas");
-			this.canvas.width = 1000;
-			this.canvas.height = 1000;
+			this.canvas.width = 600;
+			this.canvas.height = 600;
 			this.ctx = this.canvas.getContext('2d');
-			this.ctx.drawImage(this.img, 0, 0, 1000, 1000);
+			this.ctx.drawImage(this.img, 0, 0, 600, 600);
 			
 			this.a = document.createElement("a");
 			this.a.setAttribute('download', 'MintyPaper.png'); 
@@ -164,8 +164,6 @@ class mycanvas{
     	}else if ( car > 0.70) {
     		document.getElementById('data').innerHTML = "일반차량"
     		document.getElementById('data1').innerHTML = car * 100 + "%";
-		ks_canvas.captur();
-		ks_canvas.capturDown();
     	}else if ( excar > 0.70) {
     		document.getElementById('data').innerHTML = "작업차량"
     		document.getElementById('data1').innerHTML = excar * 100 + "%";
