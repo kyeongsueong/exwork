@@ -122,7 +122,7 @@ var zoomSliderValue = document.getElementById("zoom-slider-value");
 var imageCapturer;
 
 function start() {
-  navigator.mediaDevices.getUserMedia(constraints)
+  navigator.mediaDevices.getUserMedia({ video: camera })
     .then(gotMedia)
     .catch(e => { console.error('getUserMedia() failed: ', e); });
 }
