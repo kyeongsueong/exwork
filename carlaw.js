@@ -19,15 +19,14 @@ class mycanvas{
 			this.context.globalAlpha = 1;
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
 			//this.context.globalAlpha = 1;
-			this.context.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, this.x, this.y, this.xWidth, this.yHeight);
-			this.context.strokeStyle = "#FF0000";
-			this.context.strokeRect(this.x, this.y, this.xWidth, this.yHeight);
-			
-			this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 200, 250);
+			//this.context.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, this.x, this.y, this.xWidth, this.yHeight);
+			//this.context.strokeStyle = "#FF0000";
+			//this.context.strokeRect(this.x, this.y, this.xWidth, this.yHeight);
+			//this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 200, 250);
 		}
 		captur(){
 			this.capturDiv.style.display = "block";
-			this.img = document.getElementById('canvas_ai');
+			this.img = document.getElementById('canvas');
 			this.canvas3 = document.getElementById('canvas_ctr');
 			this.context3 = this.canvas3.getContext('2d');
 			this.context3.drawImage(this.img, 0, 0, 400, 700);
