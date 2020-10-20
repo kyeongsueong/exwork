@@ -71,7 +71,9 @@ class mycanvas{
 	// Grab elements, create settings, etc.
 	let video = document.getElementById('video');
 	let camera;
-
+        
+var zoomSlider = document.getElementById("zoom-slider");
+var zoomSliderValue = document.getElementById("zoom-slider-value");
 	function environment_cam() {
 		camera = { facingMode: { exact: "environment" } };
 		cameraStream(camera);
@@ -83,8 +85,21 @@ class mycanvas{
 	environment_cam();
 	function cameraStream(camera) {
 		if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                        var videoTrack = mediastream.getVideoTracks()[0];
+    zoomSlider.min = capabilities.zoom.min;
+    zoomSlider.max = capabilities.zoom.max;
+    zoomSlider.step = capabilities.zoom.step;
 
-			navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
+    zoomSlider.value = zoomSliderValue.value = videoTrack.getSettings().zoom;
+    zoomSliderValue.value = zoomSlider.value;
+    
+    zoomSlider.oninput = function() {
+      zoomSliderValue.value = zoomSlider.value;
+      videoTrack.applyConstraints({advanced : [{zoom: zoomSlider.value}] });
+    }
+  }, 500);
+  
+      			navigator.mediaDevices.getUserMedia({ video: camera }).then(function(stream) {
 
 				video.srcObject = stream;
 				video.play();
