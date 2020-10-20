@@ -88,6 +88,7 @@ class mycanvas{
 	var videoTag = document.getElementById('video');
 	var zoomSlider = document.getElementById("zoom-slider");
 	var zoomSliderValue = document.getElementById("zoom-slider-value");
+	var imageCapturer;
 
 	function start() {
 	  navigator.mediaDevices.getUserMedia({ video: camera })
@@ -97,7 +98,11 @@ class mycanvas{
 
 	function gotMedia(mediastream) {
 	  videoTag.srcObject = mediastream;
+	  document.getElementById('start').disabled = true;
+	  
 	  var videoTrack = mediastream.getVideoTracks()[0];
+	  imageCapturer = new ImageCapture(videoTrack);
+
 	  // Timeout needed in Chrome, see https://crbug.com/711524
 	  setTimeout(() => {
 	    const capabilities = videoTrack.getCapabilities()
@@ -105,20 +110,20 @@ class mycanvas{
 	    if (!capabilities.zoom) {
 	      return;
 	    }
-
+	    
 	    zoomSlider.min = capabilities.zoom.min;
 	    zoomSlider.max = capabilities.zoom.max;
 	    zoomSlider.step = capabilities.zoom.step;
 
 	    zoomSlider.value = zoomSliderValue.value = videoTrack.getSettings().zoom;
 	    zoomSliderValue.value = zoomSlider.value;
-
+	    
 	    zoomSlider.oninput = function() {
 	      zoomSliderValue.value = zoomSlider.value;
 	      videoTrack.applyConstraints({advanced : [{zoom: zoomSlider.value}] });
 	    }
 	  }, 500);
-
+	  
 	}
 
 
@@ -132,8 +137,8 @@ class mycanvas{
 	let focusRect = {
 		x: 130,
 		y: 100,
-		xWidth : 260,
-		yHeight : 260
+		xWidth : 250,
+		yHeight : 250
 	};
 	const ks_canvas = new mycanvas(500, 500, focusRect.x, focusRect.y, focusRect.xWidth, focusRect.yHeight);
 	video = document.getElementById('video');
