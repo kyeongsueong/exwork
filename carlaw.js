@@ -16,8 +16,8 @@ class mycanvas{
 		}
 
 		draw(video){
-			//this.context.globalAlpha = 1;
-			//this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
+			this.context.globalAlpha = 1;
+			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
 			//this.context.globalAlpha = 1;
 			this.context.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, this.x, this.y, this.xWidth, this.yHeight);
 			this.context.strokeStyle = "#FF0000";
@@ -37,12 +37,12 @@ class mycanvas{
 		capturDown(){
 			this.page = document.querySelector(".divid");
 
-			this.img = document.getElementById('canvas_ai');
+			this.img = document.getElementById('canvas');
 			this.canvas = document.createElement("canvas");
-			this.canvas.width = 420;
-			this.canvas.height = 500;
+			this.canvas.width = 250;
+			this.canvas.height = 300;
 			this.ctx = this.canvas.getContext('2d');
-			this.ctx.drawImage(this.img, 0, 0, 420, 500);
+			this.ctx.drawImage(this.img, 0, 0, 250, 300);
 			
 			this.a = document.createElement("a");
 			this.a.setAttribute('download', 'MintyPaper.png'); 
