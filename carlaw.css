@@ -1,0 +1,42 @@
+body{
+	margin: 0px;
+	padding: 0px;
+}
+video{
+	border: 1px solid red;
+	width: 100%;
+	height: 35em;
+}
+canvas{
+	border: 1px solid red;
+}
+.firstbox{
+	display: flex;
+	padding: 0px;
+	justify-content: flex-end;
+}
+.toobox{
+	display: flex;
+	padding: 0px;
+	width: 100%;
+	flex-direction: column;
+	align-items: center;
+}
+ul{
+	list-style: none;
+}
+.content_li{
+	width: 99%;
+}
+span{
+	font-size: 25px;
+}
+.divid{
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	z-index: 1;
+	border: 0px solid blue;
+	display: none;
+	text-align: center;
+}
