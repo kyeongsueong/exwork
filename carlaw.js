@@ -26,11 +26,11 @@ class mycanvas{
 		}
 		captur(){
 			this.capturDiv.style.zIndex = "2";
-			this.img = document.getElementById('canvas');
-			this.canvas3 = document.getElementById('canvas_ctr');
-			this.context3 = this.canvas3.getContext('2d');
-			this.context3.drawImage(this.img, 0, 0, 400, 700);
-			document.getElementById('link').style.display = "block";
+			//this.img = document.getElementById('canvas');
+			//this.canvas3 = document.getElementById('canvas_ctr');
+			//this.context3 = this.canvas3.getContext('2d');
+			//this.context3.drawImage(this.img, 0, 0, 400, 700);
+			//document.getElementById('link').style.display = "block";
 			setTimeout(function(){ document.querySelector(".divid").style.zIndex = "-1"; }, 2000);
 		}
 		capturDown(){
