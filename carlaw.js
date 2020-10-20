@@ -9,8 +9,8 @@ class mycanvas{
 			this.xWidth = xWidth;
 			this.yHeight = yHeight;
 			
-			this.canvas2 = document.getElementById('canvas_ai');
-			this.context2 = this.canvas2.getContext('2d');
+			//this.canvas2 = document.getElementById('canvas_ai');
+			//this.context2 = this.canvas2.getContext('2d');
 
 			this.capturDiv = document.querySelector(".divid");
 		}
