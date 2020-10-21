@@ -183,7 +183,7 @@ class mycanvas{
     	let sisul = arrays[5];
     	let way = arrays[6];    
 
-    	if ( carslaw > 0.80) {
+    	if ( carslaw > 0.85) {
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
     		//ks_canvas.captur();
