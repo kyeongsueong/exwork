@@ -134,7 +134,7 @@ class mycanvas{
 		xWidth : 260,
 		yHeight : 270
 	};
-	const ks_canvas = new mycanvas(500, 700, focusRect.x, focusRect.y, focusRect.xWidth, focusRect.yHeight);
+	const ks_canvas = new mycanvas(500, 800, focusRect.x, focusRect.y, focusRect.xWidth, focusRect.yHeight);
 	video = document.getElementById('video');
 	
 	function snap () {
