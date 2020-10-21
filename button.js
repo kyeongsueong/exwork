@@ -1,34 +1,16 @@
-function upf() {
-	focusRect.y -= 10; 
-	if (focusRect.y < 0) {
-		focusRect.y = 0;
-	}
-	console.log(focusRect.y);
+function getLocation() {
+  if (navigator.geolocation) { // GPS를 지원하면
+    navigator.geolocation.getCurrentPosition(function(position) {
+      alert(position.coords.latitude + ' ' + position.coords.longitude);
+    }, function(error) {
+      console.error(error);
+    }, {
+      enableHighAccuracy: false,
+      maximumAge: 0,
+      timeout: Infinity
+    });
+  } else {
+    alert('GPS를 지원하지 않습니다');
+  }
 }
-function leftf() {
-	focusRect.x -= 10; 
-	if (focusRect.x < 0) {
-		focusRect.x = 0;
-	}
-	console.log(focusRect.x);
-}
-function resetf() {
-	focusRect.x = 130;
-	focusRect.y = 100;
-	focusRect.xWidth = 230;
-	focusRect.yHeight = 230;
-}
-function rightf() {
-	focusRect.x += 10; 
-	if (focusRect.x > 200) {
-		focusRect.x = 200;
-	}
-	console.log(focusRect.x);
-}
-function downf() {
-	focusRect.y += 10; 
-	if (focusRect.y > 200) {
-		focusRect.y = 200;
-	}
-	console.log(focusRect.y);
-}
+getLocation();
