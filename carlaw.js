@@ -160,7 +160,7 @@ class mycanvas{
     	predict();
     	clearInterval(loadings);
     	document.getElementById('Loding').innerHTML = "";
-    	localStorage.setItem("test", "plzchapter");
+   
     }
 
     async function predict() {
@@ -188,6 +188,7 @@ class mycanvas{
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
     		//ks_canvas.captur();
 		ks_canvas.capturDown();
+                snap();
     	}else if ( truck > 0.80) {
     		document.getElementById('data').innerHTML = "화물차"
     		document.getElementById('data1').innerHTML = truck * 100 + "%";
