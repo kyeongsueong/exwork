@@ -8,15 +8,12 @@ class mycanvas{
 			this.y = y;
 			this.xWidth = xWidth;
 			this.yHeight = yHeight;
-			
-			//this.canvas2 = document.getElementById('canvas_ai');
-			//this.context2 = this.canvas2.getContext('2d');
 
 			this.capturDiv = document.querySelector(".divid");
 		}
 
 		draw(video, dataText, dataText2){
-			//this.context.globalAlpha = 1;
+	
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
 			this.context.fillStyle = "white";
 			this.context.font = "30px Arial";
@@ -25,19 +22,9 @@ class mycanvas{
 			this.context.fillStyle = "white";
 			this.context.font = "30px Arial";
 			this.context.fillText(dataText2,0,60);
-			//this.context.globalAlpha = 1;
-			//this.context.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, this.x, this.y, this.xWidth, this.yHeight);
-			//this.context.strokeStyle = "#FF0000";
-			//this.context.strokeRect(this.x, this.y, this.xWidth, this.yHeight);
-			//this.context2.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, 0,0, 200, 250);
 		}
 		captur(){
 			this.capturDiv.style.zIndex = "2";
-			//this.img = document.getElementById('canvas');
-			//this.canvas3 = document.getElementById('canvas_ctr');
-			//this.context3 = this.canvas3.getContext('2d');
-			//this.context3.drawImage(this.img, 0, 0, 400, 700);
-			//document.getElementById('link').style.display = "block";
 			setTimeout(function(){ document.querySelector(".divid").style.zIndex = "-1"; }, 2000);
 		}
 		capturDown(){
@@ -74,8 +61,7 @@ class mycanvas{
 		}
 		loading(indexdot);
 	}
-	// Grab elements, create settings, etc.
-	//let video = document.getElementById('video');
+	
 	let camera;
         
 	function environment_cam() {
@@ -198,15 +184,13 @@ class mycanvas{
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
     		//ks_canvas.captur();
-		ks_canvas.capturDown();
-                
+		ks_canvas.capturDown();  
     	}else if ( truck > 0.80) {
     		document.getElementById('data').innerHTML = "화물차"
     		document.getElementById('data1').innerHTML = truck * 100 + "%";
     	}else if ( car > 0.70) {
     		document.getElementById('data').innerHTML = "일반차량"
     		document.getElementById('data1').innerHTML = car * 100 + "%";
-              
     	}else if ( excar > 0.70) {
     		document.getElementById('data').innerHTML = "작업차량"
     		document.getElementById('data1').innerHTML = excar * 100 + "%";
@@ -216,7 +200,6 @@ class mycanvas{
     	}else if ( sisul > 0.70) {
     		document.getElementById('data').innerHTML = "시설물"
     		document.getElementById('data1').innerHTML = sisul * 100 + "%";
-              
     	}else if ( way > 0.70) {
     		document.getElementById('data').innerHTML = "노면"
     		document.getElementById('data1').innerHTML = way * 100 + "%";
