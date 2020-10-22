@@ -15,12 +15,16 @@ class mycanvas{
 			this.capturDiv = document.querySelector(".divid");
 		}
 
-		draw(video, dataText){
+		draw(video, dataText, dataText2){
 			//this.context.globalAlpha = 1;
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
 			this.context.fillStyle = "white";
 			this.context.font = "30px Arial";
 			this.context.fillText(dataText,0,30);
+			
+			this.context.fillStyle = "white";
+			this.context.font = "30px Arial";
+			this.context.fillText(dataText2,0,60);
 			//this.context.globalAlpha = 1;
 			//this.context.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, this.x, this.y, this.xWidth, this.yHeight);
 			//this.context.strokeStyle = "#FF0000";
@@ -141,9 +145,11 @@ class mycanvas{
 	video = document.getElementById('video');
 	
 	let dataText = "";
+	let dataText2 = "";
 	function snap () {
-		dataText = mydate.writeDate() + "위도:" + late + "-" + "경도:" + long;
-		ks_canvas.draw(video, dataText);
+		dataText = mydate.writeDate();
+		dataText2 = "위도:" + late + "-" + "경도:" + long;
+		ks_canvas.draw(video, dataText, dataText2);
 		predict();
 		let data = ks_canvas.dataUrl;
 	}
