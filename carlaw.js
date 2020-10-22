@@ -142,7 +142,8 @@ class mycanvas{
 
 
 	//const URL = "https://teachablemachine.withgoogle.com/models/XlpEGD_eD/";//적재불량
-	const URL = "https://teachablemachine.withgoogle.com/models/MngODkBou/";
+	//const URL = "https://teachablemachine.withgoogle.com/models/MngODkBou/";
+	const URL = "./carlaw/";
 
 	let model, webcam, maxPredictions;
     // Load the image model and setup the webcam
