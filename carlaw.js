@@ -141,6 +141,7 @@ class mycanvas{
 	
 	let dataText = "";
 	function snap () {
+		dataText = mydate.writeDate();
 		ks_canvas.draw(video, dataText);
 		predict();
 		let data = ks_canvas.dataUrl;
