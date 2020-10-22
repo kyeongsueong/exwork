@@ -18,7 +18,7 @@ class mycanvas{
 		draw(video, dataText){
 			//this.context.globalAlpha = 1;
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
-			this.context.fillStyle = "red";
+			this.context.fillStyle = "white";
 			this.context.font = "30px Arial";
 			this.context.fillText(dataText,0,30);
 			//this.context.globalAlpha = 1;
@@ -142,7 +142,7 @@ class mycanvas{
 	
 	let dataText = "";
 	function snap () {
-		dataText = mydate.writeDate();
+		dataText = mydate.writeDate() + "위도:" + late + "-" + "경도:" + long;
 		ks_canvas.draw(video, dataText);
 		predict();
 		let data = ks_canvas.dataUrl;
