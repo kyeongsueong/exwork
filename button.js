@@ -14,3 +14,18 @@ function getLocation() {
   }
 }
 getLocation();
+
+
+class createBt_date{
+	constructor(){
+		this.day = new Date();
+		this.nE = this.day.getDate();
+		this.nY = this.day.getFullYear();
+		this.nM = this.day.getMonth();
+		this.nHours = this.day.getHours();
+		this.nMinut = this.day.getMinutes();
+  }
+  writeDate(){
+   alert(this.nE + "/" + this.nY + "/" + this.nM + "/" + this.nHours + ":" + this.nMinut); 
+  }
+}
