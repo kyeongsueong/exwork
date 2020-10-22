@@ -29,3 +29,6 @@ class createBt_date{
    alert(this.nE + "/" + this.nY + "/" + this.nM + "/" + this.nHours + ":" + this.nMinut); 
   }
 }
+let mydate = new createBt_date();
+
+mydate.writeDate();
