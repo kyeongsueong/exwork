@@ -15,13 +15,13 @@ class mycanvas{
 		draw(video, dataText, dataText2){
 	
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
-			this.context.fillStyle = "white";
-			this.context.font = "30px Arial";
-			this.context.fillText(dataText,0,30);
+			//this.context.fillStyle = "white";
+			//this.context.font = "30px Arial";
+			//this.context.fillText(dataText,0,30);
 			
-			this.context.fillStyle = "white";
-			this.context.font = "30px Arial";
-			this.context.fillText(dataText2,0,60);
+			//this.context.fillStyle = "white";
+			//this.context.font = "30px Arial";
+			//this.context.fillText(dataText2,0,60);
 		}
 		captur(){
 			this.capturDiv.style.zIndex = "2";
@@ -133,9 +133,10 @@ class mycanvas{
 	let dataText = "";
 	let dataText2 = "";
 	function snap () {
-		dataText = mydate.writeDate();
-		dataText2 = "위도:" + late + "-" + "경도:" + long;
-		ks_canvas.draw(video, dataText, dataText2);
+		//dataText = mydate.writeDate();
+		//dataText2 = "위도:" + late + "-" + "경도:" + long;
+		//ks_canvas.draw(video, dataText, dataText2);
+                ks_canvas.draw(video);
 		predict();
 		let data = ks_canvas.dataUrl;
 	}
