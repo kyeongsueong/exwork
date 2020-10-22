@@ -18,6 +18,8 @@ class mycanvas{
 		draw(video){
 			//this.context.globalAlpha = 1;
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
+			this.context.font = "10px Arial";
+			this.context.fillText("Hello World",0,30);
 			//this.context.globalAlpha = 1;
 			//this.context.drawImage(video, this.x, this.y, this.xWidth, this.yHeight, this.x, this.y, this.xWidth, this.yHeight);
 			//this.context.strokeStyle = "#FF0000";
