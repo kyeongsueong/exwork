@@ -18,6 +18,7 @@ class mycanvas{
 		draw(video, dataText){
 			//this.context.globalAlpha = 1;
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
+			this.context.fillStyle = "red";
 			this.context.font = "30px Arial";
 			this.context.fillText(dataText,0,30);
 			//this.context.globalAlpha = 1;
