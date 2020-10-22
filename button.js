@@ -20,15 +20,13 @@ getLocation();
 
 
 class createBt_date{
-	constructor(){
-		this.day = new Date();
-		this.nE = this.day.getDate();
-		this.nY = this.day.getFullYear();
-		this.nM = this.day.getMonth();
-		this.nHours = this.day.getHours();
-		this.nMinut = this.day.getMinutes();
-  }
   writeDate(){
+	this.day = new Date();
+	this.nE = this.day.getDate();
+	this.nY = this.day.getFullYear();
+	this.nM = this.day.getMonth();
+	this.nHours = this.day.getHours();
+	this.nMinut = this.day.getMinutes();
    return this.nY + "." + (this.nM+1) + "." + this.nE + "." + this.nHours + ":" + this.nMinut; 
   }
 }
