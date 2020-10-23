@@ -39,6 +39,8 @@ function exwaylocate(x,y) {
 		if (exlocate[this.i].includes(x) == true && exlocate[this.i].includes(y) == true) {
 			console.log(exlocate[this.i]);
 			exlocate = exlocate[this.i];
+		}else{
+			return "지명없음";	
 		}
 	}
 	this.exl = exlocate.split("	");
