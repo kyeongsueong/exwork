@@ -20,7 +20,7 @@ class mycanvas{
 			//this.capturDiv.style.zIndex = "2";
 			//setTimeout(function(){ document.querySelector(".divid").style.zIndex = "-1"; }, 2000);
 		}
-		capturDown(dataText, dataText2){
+		capturDown(dataText, dataText2, dataText3){
 			this.page = document.querySelector(".divid");
 
 			this.img = document.getElementById('canvas');
@@ -196,6 +196,7 @@ class mycanvas{
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
     		//ks_canvas.captur();
+		getLocation();
 		dataText = mydate.writeDate();
 		dataText2 = "위도:" + late + "-" + "경도:" + long;
 		dataText3 = exwaylocate(late, long);
