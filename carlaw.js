@@ -137,9 +137,6 @@ class mycanvas{
 	let dataText = "";
 	let dataText2 = "";
 	function snap () {
-		//dataText = mydate.writeDate();
-		//dataText2 = "위도:" + late + "-" + "경도:" + long;
-		//ks_canvas.draw(video, dataText, dataText2);
                 ks_canvas.draw(video);
 		predict();
 		let data = ks_canvas.dataUrl;
@@ -190,6 +187,9 @@ class mycanvas{
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
     		//ks_canvas.captur();
+		//dataText = mydate.writeDate();
+		//dataText2 = "위도:" + late + "-" + "경도:" + long;
+		//ks_canvas.capturDown(dataText, dataText2);
 		ks_canvas.capturDown();  
     	}else if ( truck > 0.80) {
     		document.getElementById('data').innerHTML = "화물차"
