@@ -117,9 +117,11 @@ class mycanvas{
 	function opneDown() {
 		document.querySelector(".divid").style.zIndex = "2";
 		document.getElementById('link').style.zIndex = "-1";
+                document.querySelector(".divid").style.visibility = 'visible';
 	}
 	function closeDown() {
 		document.querySelector(".divid").style.zIndex = "-1";
+                document.querySelector(".divid").style.visibility = 'hidden';
 	}
 	let focusRect = {
 		x: 130,
