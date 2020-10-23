@@ -38,13 +38,9 @@ function exwaylocate(x,y) {
 		if (exlocate[this.i].includes(x) == true && exlocate[this.i].includes(y) == true) {
 			console.log(exlocate[this.i]);
 			exlocation = exlocate[this.i];
-		}
+                        this.exl = exlocation.split("	");
+	                return this.exl[1] + this.exl[2] + "km";
+     		}
 	}
-        if( exlocation != null ){
-	    this.exl = exlocation.split("	");
-	    return this.exl[1] + this.exl[2] + "km";
-        }else{
-         return "0";
-        }
 }
 
