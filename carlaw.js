@@ -117,17 +117,17 @@ class mycanvas{
 
 
 	function opneDown() {
-		//document.querySelector(".divid").style.zIndex = "2";
 		//document.getElementById('link').style.zIndex = "-1";
                 document.querySelector(".divid").style.display = "block";
-		document.querySelector(".firstbox").style.display = "none";
-		document.querySelector(".toobox").style.display = "none";
+		document.querySelector(".divid").style.zIndex = "2";
+		//document.querySelector(".firstbox").style.display = "none";
+		//document.querySelector(".toobox").style.display = "none";
 	}
 	function closeDown() {
 		//document.querySelector(".divid").style.zIndex = "-1";
                 document.querySelector(".divid").style.display = "none";
-		document.querySelector(".firstbox").style.display = "block";
-		document.querySelector(".toobox").style.display = "block";
+		//document.querySelector(".firstbox").style.display = "block";
+		//document.querySelector(".toobox").style.display = "block";
 	}
 	let focusRect = {
 		x: 130,
