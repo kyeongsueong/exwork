@@ -211,6 +211,12 @@ class mycanvas{
     	}else if ( excar > 0.70) {
     		document.getElementById('data').innerHTML = "작업차량"
     		document.getElementById('data1').innerHTML = excar * 100 + "%";
+getLocation();
+		dataText = mydate.writeDate();
+		dataText2 = "위도:" + late + "-" + "경도:" + long;
+		dataText3 = exwaylocate(late, long);
+		ks_canvas.capturDown(dataText, dataText2, dataText3);
+		//ks_canvas.capturDown();
     	}else if ( ptroll > 0.70) {
     		document.getElementById('data').innerHTML = "순찰차"
     		document.getElementById('data1').innerHTML = ptroll * 100 + "%";
