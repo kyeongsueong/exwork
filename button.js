@@ -32,17 +32,19 @@ class createBt_date{
 }
 let mydate = new createBt_date();
 
-let exlocation;
+let exlocation = null;
 function exwaylocate(x,y) {
 	for (this.i = 0; this.i <= exlocate.length; this.i++) {
 		if (exlocate[this.i].includes(x) == true && exlocate[this.i].includes(y) == true) {
 			console.log(exlocate[this.i]);
 			exlocation = exlocate[this.i];
-		}else{
-                   return "";
-                }
+		}
 	}
-	this.exl = exlocation.split("	");
-	return this.exl[1] + this.exl[2] + "km";
+        if( exlocation != null ){
+	    this.exl = exlocation.split("	");
+	    return this.exl[1] + this.exl[2] + "km";
+        }else{
+         return "0";
+        }
 }
 
