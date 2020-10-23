@@ -17,8 +17,8 @@ class mycanvas{
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
 		}
 		captur(){
-			this.capturDiv.style.zIndex = "2";
-			setTimeout(function(){ document.querySelector(".divid").style.zIndex = "-1"; }, 2000);
+			//this.capturDiv.style.zIndex = "2";
+			//setTimeout(function(){ document.querySelector(".divid").style.zIndex = "-1"; }, 2000);
 		}
 		capturDown(dataText, dataText2){
 			this.page = document.querySelector(".divid");
