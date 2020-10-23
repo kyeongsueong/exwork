@@ -213,9 +213,6 @@ class mycanvas{
     	}else if ( way > 0.70) {
     		document.getElementById('data').innerHTML = "노면"
     		document.getElementById('data1').innerHTML = way * 100 + "%";
-		dataText = mydate.writeDate();
-		dataText2 = "위도:" + late + "-" + "경도:" + long;
-		ks_canvas.capturDown(dataText, dataText2);
     	}
     	snap();
     }
