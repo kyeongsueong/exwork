@@ -9,7 +9,7 @@ class mycanvas{
 			this.xWidth = xWidth;
 			this.yHeight = yHeight;
 
-			this.capturDiv = document.querySelector(".divid");
+			//this.capturDiv = document.querySelector(".divid");
 		}
 
 		draw(video){
