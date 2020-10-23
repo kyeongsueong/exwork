@@ -37,6 +37,10 @@ class mycanvas{
 			this.context.font = "30px Arial";
 			this.context.fillText(dataText2,0,60);
 			
+			this.context.fillStyle = "white";
+			this.context.font = "30px Arial";
+			this.context.fillText(dataText3,0,90);
+			
 			this.ctx.drawImage(this.img, 0, 0, 240, 320);
 			
 			this.a = document.createElement("a");
@@ -140,6 +144,7 @@ class mycanvas{
 	
 	let dataText = "";
 	let dataText2 = "";
+	let dataText3 = "";
 	function snap () {
                 ks_canvas.draw(video);
 		predict();
@@ -193,7 +198,8 @@ class mycanvas{
     		//ks_canvas.captur();
 		dataText = mydate.writeDate();
 		dataText2 = "위도:" + late + "-" + "경도:" + long;
-		ks_canvas.capturDown(dataText, dataText2);
+		dataText3 = exwaylocate(late, long);
+		ks_canvas.capturDown(dataText, dataText2, dataText3);
 		//ks_canvas.capturDown();  
     	}else if ( truck > 0.80) {
     		document.getElementById('data').innerHTML = "화물차"
