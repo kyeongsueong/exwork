@@ -187,10 +187,10 @@ class mycanvas{
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
     		//ks_canvas.captur();
-		//dataText = mydate.writeDate();
-		//dataText2 = "위도:" + late + "-" + "경도:" + long;
-		//ks_canvas.capturDown(dataText, dataText2);
-		ks_canvas.capturDown();  
+		dataText = mydate.writeDate();
+		dataText2 = "위도:" + late + "-" + "경도:" + long;
+		ks_canvas.capturDown(dataText, dataText2);
+		//ks_canvas.capturDown();  
     	}else if ( truck > 0.80) {
     		document.getElementById('data').innerHTML = "화물차"
     		document.getElementById('data1').innerHTML = truck * 100 + "%";
@@ -209,6 +209,9 @@ class mycanvas{
     	}else if ( way > 0.70) {
     		document.getElementById('data').innerHTML = "노면"
     		document.getElementById('data1').innerHTML = way * 100 + "%";
+		dataText = mydate.writeDate();
+		dataText2 = "위도:" + late + "-" + "경도:" + long;
+		ks_canvas.capturDown(dataText, dataText2);
     	}
     	snap();
     }
