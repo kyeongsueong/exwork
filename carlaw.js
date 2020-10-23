@@ -12,22 +12,15 @@ class mycanvas{
 			this.capturDiv = document.querySelector(".divid");
 		}
 
-		draw(video, dataText, dataText2){
+		draw(video){
 	
 			this.context.drawImage(video,0, 0, this.canvas.width, this.canvas.height);
-			//this.context.fillStyle = "white";
-			//this.context.font = "30px Arial";
-			//this.context.fillText(dataText,0,30);
-			
-			//this.context.fillStyle = "white";
-			//this.context.font = "30px Arial";
-			//this.context.fillText(dataText2,0,60);
 		}
 		captur(){
 			this.capturDiv.style.zIndex = "2";
 			setTimeout(function(){ document.querySelector(".divid").style.zIndex = "-1"; }, 2000);
 		}
-		capturDown(){
+		capturDown(dataText, dataText2){
 			this.page = document.querySelector(".divid");
 
 			this.img = document.getElementById('canvas');
@@ -35,6 +28,15 @@ class mycanvas{
 			this.canvasc.width = 240;
 			this.canvasc.height = 320;
 			this.ctx = this.canvasc.getContext('2d');
+			
+			//this.context.fillStyle = "white";
+			//this.context.font = "30px Arial";
+			//this.context.fillText(dataText,0,30);
+			
+			//this.context.fillStyle = "white";
+			//this.context.font = "30px Arial";
+			//this.context.fillText(dataText2,0,60);
+			
 			this.ctx.drawImage(this.img, 0, 0, 240, 320);
 			
 			this.a = document.createElement("a");
