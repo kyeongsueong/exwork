@@ -29,17 +29,17 @@ class mycanvas{
 			this.canvasc.height = 320;
 			this.ctx = this.canvasc.getContext('2d');
 			
-			this.context.fillStyle = "white";
-			this.context.font = "30px Arial";
-			this.context.fillText(dataText,0,30);
+			//this.context.fillStyle = "white";
+			//this.context.font = "30px Arial";
+			//this.context.fillText(dataText,0,30);
 			
-			this.context.fillStyle = "white";
-			this.context.font = "30px Arial";
-			this.context.fillText(dataText2,0,60);
+			//this.context.fillStyle = "white";
+			//this.context.font = "30px Arial";
+			//this.context.fillText(dataText2,0,60);
 			
-			this.context.fillStyle = "white";
-			this.context.font = "30px Arial";
-			this.context.fillText(dataText3,0,90);
+			//this.context.fillStyle = "white";
+			//this.context.font = "30px Arial";
+			//this.context.fillText(dataText3,0,90);
 			
 			this.ctx.drawImage(this.img, 0, 0, 240, 320);
 			
