@@ -38,12 +38,14 @@ let mydate = new createBt_date();
 function exwaylocate(x,y) {
 	for (this.i = 0; this.i <= exlocate.length; this.i++) {
 		if (exlocate[this.i].includes(x) == true && exlocate[this.i].includes(y) == true) {
-			this.exlocation = exlocate[this.i];
-                        this.exl = this.exlocation.split("	");
-	                return this.exl[1] + this.exl[2] + "km";
-     		}
+			console.log(exlocate[this.i]);
+			exlocate = exlocate[this.i];
+		}
 	}
-        return "no";
+	this.exl = exlocate.split("	");
+	exwaydata();
+	return this.exl[1] + this.exl[2] + "km";
 }
 
-alert(exlocate);
+let x = exwaylocate(35.56001277,126.6927703);
+console.log(x);
