@@ -16,6 +16,7 @@ function getLocation() {
     alert('GPS를 지원하지 않습니다');
   }
 }
+getLocation();
 
 class createBt_date{
   writeDate(){
