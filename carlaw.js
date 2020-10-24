@@ -220,7 +220,6 @@ class mycanvas{
     	}else if ( way > 0.70) {
     		document.getElementById('data').innerHTML = "노면"
     		document.getElementById('data1').innerHTML = way * 100 + "%";
-               ks_canvas.capturDown();
     	}
     	snap();
     }
