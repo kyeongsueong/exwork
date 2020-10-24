@@ -45956,4 +45956,8 @@ let exlocateString =
 6000	부산외곽순환선	50.5	35.28809188	129.2296298	402840.0371	301337.3595
 `;
 
-let exlocate = exlocateString.split("\n");
+let exlocate = "";
+async function exwaydata() {
+	exlocate = await exlocateString.split("\n");
+}
+exwaydata();
