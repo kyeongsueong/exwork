@@ -40,10 +40,10 @@ function exwaylocate(x,y) {
 		if (exlocate[this.i].includes(x) == true && exlocate[this.i].includes(y) == true) {
 			this.exlocation = exlocate[this.i];
                         this.exl = this.exlocation.split("	");
-	                alert( this.exl[1] + this.exl[2] + "km");
+	                return this.exl[1] + this.exl[2] + "km";
      		}
 	}
-        return 0;
+        return "no";
 }
 
-exwaylocate(12.33333,33.33333);
+alert(exwaylocate(12.33333,33.33333));
