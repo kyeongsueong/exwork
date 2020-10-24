@@ -6,8 +6,8 @@ function getLocation() {
       late = position.coords.latitude;
       long = position.coords.longitude;
 	    alert(late +"/"+ long);
-	    let yse = exwaylocate(late,long);
-	    alert(yse);
+	    let y = exwaylocate(late,long);
+	    alert(y);
     }, function(error) {
       console.error(error);
     }, {
