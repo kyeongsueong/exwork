@@ -126,7 +126,7 @@ class mycanvas{
 		document.querySelector(".divid").style.zIndex = "2";
 		//document.querySelector(".firstbox").style.display = "none";
 		//document.querySelector(".toobox").style.display = "none";
-		this.y = exwaylocate(late,long);
+		this.y = exwaylocate(35.56001277,126.6927703);
 		alert(this.y);
 	}
 	function closeDown() {
