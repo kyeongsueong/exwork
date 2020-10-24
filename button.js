@@ -46,3 +46,4 @@ function exwaylocate(x,y) {
         return 0;
 }
 
+exwaylocate(12.33333,33.33333);
