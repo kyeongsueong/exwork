@@ -44,4 +44,6 @@ function exwaylocate(x,y) {
 }
 
 let x = exwaylocate(35.56001277,126.6927703);
-console.log(x);
+alert(x);
+let y = exwaylocate(late,long);
+alert(y);
