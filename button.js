@@ -5,7 +5,6 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(function(position) {
       late = position.coords.latitude;
       long = position.coords.longitude;
-      return exwaylocate(position.coords.latitude,position.coords.longitude);
     }, function(error) {
       console.error(error);
     }, {
@@ -17,9 +16,6 @@ function getLocation() {
     alert('GPS를 지원하지 않습니다');
   }
 }
-let r = getLocation();
-alert(r);
-
 
 class createBt_date{
   writeDate(){
