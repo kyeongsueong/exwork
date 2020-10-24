@@ -43,5 +43,6 @@ function exwaylocate(x,y) {
 	                alert( this.exl[1] + this.exl[2] + "km");
      		}
 	}
+        return 0;
 }
 
