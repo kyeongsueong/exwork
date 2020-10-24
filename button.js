@@ -1,14 +1,11 @@
 let late = "";
 let long = "";
-let y = "";
 function getLocation() {
   if (navigator.geolocation) { // GPS를 지원하면
     navigator.geolocation.getCurrentPosition(function(position) {
-      late = position.coords.latitude;
-      long = position.coords.longitude;
+	    late = position.coords.latitude;
+	    long = position.coords.longitude;
 	    alert(late +"/"+ long);
-	    y = exwaylocate(late,long);
-	    alert(y);
     }, function(error) {
       console.error(error);
     }, {
