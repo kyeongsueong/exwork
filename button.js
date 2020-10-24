@@ -46,4 +46,4 @@ function exwaylocate(x,y) {
         return "no";
 }
 
-alert(exwaylocate(12.33333,33.33333));
+alert(exlocate[0]);
