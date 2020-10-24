@@ -40,7 +40,7 @@ function exwaylocate(x,y) {
                         this.exl = this.exlocation.split("	");
 	                return this.exl[1] + this.exl[2] + "km";
      		}
-                else if ( exlocate.length == this.i ){
+                else {
                         return 0;
                 }
 	}
