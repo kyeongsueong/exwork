@@ -5,6 +5,7 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(function(position) {
       late = position.coords.latitude;
       long = position.coords.longitude;
+	    alert(late +"/"+ long);
     }, function(error) {
       console.error(error);
     }, {
@@ -16,8 +17,9 @@ function getLocation() {
     alert('GPS를 지원하지 않습니다');
   }
 }
+
 getLocation();
-alert(late +"/"+ long);
+
 class createBt_date{
   writeDate(){
 	this.day = new Date();
