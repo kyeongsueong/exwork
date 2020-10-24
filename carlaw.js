@@ -121,6 +121,7 @@ class mycanvas{
 
 
 	function opneDown() {
+    getLocation();
 		//document.getElementById('link').style.zIndex = "-1";
                 document.querySelector(".divid").style.display = "block";
 		document.querySelector(".divid").style.zIndex = "2";
