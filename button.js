@@ -6,6 +6,8 @@ function getLocation() {
       late = position.coords.latitude;
       long = position.coords.longitude;
 	    alert(late +"/"+ long);
+	    let yse = exwaylocate(late,long);
+	    alert(yse);
     }, function(error) {
       console.error(error);
     }, {
@@ -51,5 +53,4 @@ function exwaylocate(x,y) {
 
 let x = exwaylocate(35.56001277,126.6927703);
 alert(x);
-let yse = exwaylocate(late,long);
-alert(yse);
+
