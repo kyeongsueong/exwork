@@ -149,6 +149,10 @@ class mycanvas{
                 ks_canvas.draw(video);
 		predict();
 		let data = ks_canvas.dataUrl;
+                getLocation();	
+         	dataText = mydate.writeDate();
+		dataText2 = "위도:" + late + "-" + "경도:" + long;
+		dataText3 = exwaylocate(late, long);
 	}
 
 
