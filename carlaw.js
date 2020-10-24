@@ -121,13 +121,11 @@ class mycanvas{
 
 
 	function opneDown() {
-    getLocation();
-		//document.getElementById('link').style.zIndex = "-1";
-                document.querySelector(".divid").style.display = "block";
+                getLocation();
+		document.querySelector(".divid").style.display = "block";
 		document.querySelector(".divid").style.zIndex = "2";
-		//document.querySelector(".firstbox").style.display = "none";
-		//document.querySelector(".toobox").style.display = "none";
-		this.y = exwaylocate(late, long);
+			
+		this.y = exwaylocate(35.28126034, 129.2034757);
 		alert(this.y);
 	}
 	function closeDown() {
