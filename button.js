@@ -36,7 +36,7 @@ let mydate = new createBt_date();
 async function exwaylocate(x,y) {
 	for (this.i = 0; this.i <= exlocate.length; this.i++) {
 		if (exlocate[this.i].includes(x) == true && exlocate[this.i].includes(y) == true) {
-			this.exlocation = await exlocate[this.i];
+			this.exlocation = exlocate[this.i];
                         this.exl = this.exlocation.split("	");
 	                return this.exl[1] + this.exl[2] + "km";
      		}
