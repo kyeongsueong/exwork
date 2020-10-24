@@ -6,6 +6,7 @@ function getLocation() {
       late = position.coords.latitude;
       long = position.coords.longitude;
       dataText3 = exwaylocate(late,long);
+      alert(dataText3);
     }, function(error) {
       console.error(error);
     }, {
