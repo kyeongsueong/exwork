@@ -37,11 +37,14 @@ function exwaylocate(x,y) {
 		if (exlocate[this.i].includes(x) == true && exlocate[this.i].includes(y) == true) {
 			console.log(exlocate[this.i]);
 			exlocate = exlocate[this.i];
+			
+			this.exl = exlocate.split("	");
+			exwaydata();
+			return this.exl[1] + this.exl[2] + "km";
 		}
 	}
-	this.exl = exlocate.split("	");
-	exwaydata();
-	return this.exl[1] + this.exl[2] + "km";
+	return 0;
+	
 }
 
 let x = exwaylocate(35.56001277,126.6927703);
