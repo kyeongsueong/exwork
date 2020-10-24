@@ -17,7 +17,7 @@ function getLocation() {
   }
 }
 getLocation();
-
+alert(late +"/"+ long);
 class createBt_date{
   writeDate(){
 	this.day = new Date();
@@ -46,5 +46,5 @@ function exwaylocate(x,y) {
 
 let x = exwaylocate(35.56001277,126.6927703);
 alert(x);
-let y = exwaylocate(late,long);
-alert(y);
+let yse = exwaylocate(late,long);
+alert(yse);
