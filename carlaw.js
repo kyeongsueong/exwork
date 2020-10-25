@@ -129,10 +129,10 @@ class mycanvas{
 		alert(this.y);
 	}
 	function closeDown() {
-		//document.querySelector(".divid").style.zIndex = "-1";
-                document.querySelector(".divid").style.display = "none";
-		//document.querySelector(".firstbox").style.display = "block";
-		//document.querySelector(".toobox").style.display = "block";
+		document.querySelector(".divid").style.display = "none";
+		getLocation();
+		this.y = exwaylocate(late, long);
+		alert(this.y);
 	}
 	let focusRect = {
 		x: 130,
