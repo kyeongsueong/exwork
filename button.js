@@ -44,7 +44,7 @@ function exwaylocate(x,y) {
 			exwaydata();
 			return this.exl[1] + this.exl[2] + "km";
 		}
-		if( this.i == exlocate.length ){ 
+		else if( this.i == exlocate.length ){ 
 			return `정보없음 // 위도: ${x} //경도: ${y}`;
 		}
 	}
