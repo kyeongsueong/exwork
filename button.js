@@ -43,6 +43,8 @@ function exwaylocate(x,y) {
 			this.exl = exlocate.split("	");
 			exwaydata();
 			return this.exl[1] + this.exl[2] + "km";
+		}else{ 
+			return "정보없음";
 		}
 	}
 	return 0;
