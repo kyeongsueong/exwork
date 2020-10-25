@@ -29,17 +29,17 @@ class mycanvas{
 			this.canvasc.height = 320;
 			this.ctx = this.canvasc.getContext('2d');
 			
-			//this.context.fillStyle = "white";
-			//this.context.font = "30px Arial";
-			//this.context.fillText(dataText,0,30);
+			this.context.fillStyle = "blue";
+			this.context.font = "30px Arial";
+			this.context.fillText(dataText,0,30);
 			
-			//this.context.fillStyle = "white";
-			//this.context.font = "30px Arial";
-			//this.context.fillText(dataText2,0,60);
+			this.context.fillStyle = "blue";
+			this.context.font = "30px Arial";
+			this.context.fillText(dataText2,0,60);
 			
-			//this.context.fillStyle = "white";
-			//this.context.font = "30px Arial";
-			//this.context.fillText(dataText3,0,90);
+			this.context.fillStyle = "blue";
+			this.context.font = "30px Arial";
+			this.context.fillText(dataText3,0,90);
 			
 			this.ctx.drawImage(this.img, 0, 0, 240, 320);
 			
@@ -194,12 +194,14 @@ class mycanvas{
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
     		//ks_canvas.captur();
-		//getLocation();
-		//dataText = mydate.writeDate();
+		getLocation();
+		dataText = mydate.writeDate();
 		//dataText2 = "위도:" + late + "-" + "경도:" + long;
+		dataText2 = "위도: " + late;
+		dataText3 = "경도: " + long;
 		//dataText3 = exwaylocate(late, long);
-		//ks_canvas.capturDown(dataText, dataText2, dataText3);
-		ks_canvas.capturDown();  
+		ks_canvas.capturDown(dataText, dataText2, dataText3);
+		//ks_canvas.capturDown();  
     	}else if ( truck > 0.80) {
     		document.getElementById('data').innerHTML = "화물차"
     		document.getElementById('data1').innerHTML = truck * 100 + "%";
