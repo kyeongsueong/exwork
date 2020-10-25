@@ -130,9 +130,6 @@ class mycanvas{
 	}
 	function closeDown() {
 		document.querySelector(".divid").style.display = "none";
-		getLocation();
-		this.y = exwaylocate(late, long);
-		alert(this.y);
 	}
 	let focusRect = {
 		x: 130,
