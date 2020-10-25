@@ -121,12 +121,12 @@ class mycanvas{
 
 
 	function opneDown() {
-                getLocation();
+                //getLocation();
 		document.querySelector(".divid").style.display = "block";
 		document.querySelector(".divid").style.zIndex = "2";
 			
-		this.y = exwaylocate(35.28126034, 129.2034757);
-		alert(this.y);
+		//this.y = exwaylocate(35.28126034, 129.2034757);
+		//alert(this.y);
 	}
 	function closeDown() {
 		document.querySelector(".divid").style.display = "none";
