@@ -5,7 +5,7 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(function(position) {
 	    late = position.coords.latitude;
 	    long = position.coords.longitude;
-	    alert(late +"/"+ long);
+	    //alert(late +"/"+ long);
     }, function(error) {
       console.error(error);
     }, {
@@ -52,6 +52,6 @@ function exwaylocate(x,y) {
 	
 }
 
-let x = exwaylocate(35.56001277,126.6927703);
-alert(x);
+//let x = exwaylocate(35.56001277,126.6927703);
+//alert(x);
 
