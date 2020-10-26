@@ -21,6 +21,13 @@ class mycanvas{
 			//setTimeout(function(){ document.querySelector(".divid").style.zIndex = "-1"; }, 2000);
 		}
 		capturDown(dataText, dataText2, dataText3){
+			this.day = new Date();
+			this.nY = this.day.getFullYear();
+			this.nM = this.day.getMonth();
+			this.nE = this.day.getDate();
+			this.nHours = this.day.getHours();
+			this.nMinut = this.day.getMinutes();
+			
 			this.page = document.getElementById("snapImgs");
 
 			this.img = document.getElementById('canvas');
@@ -45,16 +52,14 @@ class mycanvas{
 			this.context.fillText(dataText3,0,110);
 			
 			this.ctx.drawImage(this.img, 0, 0, 240, 320);
-			imgNameCount++;
 			this.a = document.createElement("a");
-			this.a.setAttribute('download', `MintyPaper.png${imgNameCount}`); 
+			this.a.setAttribute('download', `${this.nY}${this.nM}${this.nE}${this.nHours}${this.nMinut}.png`); 
 			this.a.setAttribute('href', this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 			
 			this.page.appendChild(this.a);
 			this.a.appendChild(this.canvasc);
 		}
 	}
-	let imgNameCount = 0;
 	let checkCars = 0;
 	let loadings;
 	let indexdot = 0;
