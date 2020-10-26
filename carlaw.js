@@ -136,6 +136,7 @@ class mycanvas{
 		document.querySelector(".divid").style.display = "none";
 	}
 	function resetDown() {
+		checkCars = 0;
 		this.remove = document.querySelector(".divid");
 		while (this.remove.hasChildNodes()) {
 			this.remove.removeChild(this.remove.firstChild);
