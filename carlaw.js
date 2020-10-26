@@ -135,6 +135,12 @@ class mycanvas{
 	function closeDown() {
 		document.querySelector(".divid").style.display = "none";
 	}
+	function resetDown() {
+		this.remove = document.querySelector(".divid");
+		while (this.remove.hasChildNodes()) {
+			this.remove.removeChild(this.remove.firstChild);
+		}
+	}
 	let focusRect = {
 		x: 130,
 		y: 80,
