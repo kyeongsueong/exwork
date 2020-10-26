@@ -41,8 +41,8 @@ class mycanvas{
 			
 			this.context.fillStyle = "white";
 			this.context.font = "bold 40px Arial";
-			this.context.strokeText(dataText3,0,100);
-			this.context.fillText(dataText3,0,100);
+			this.context.strokeText(dataText3,0,110);
+			this.context.fillText(dataText3,0,110);
 			
 			this.ctx.drawImage(this.img, 0, 0, 240, 320);
 			
