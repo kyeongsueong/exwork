@@ -36,13 +36,13 @@ class mycanvas{
 			
 			this.context.fillStyle = "white";
 			this.context.font = "40px Arial";
-			this.context.strokeText(dataText2,0,68);
-			this.context.fillText(dataText2,0,68);
+			this.context.strokeText(dataText2,0,70);
+			this.context.fillText(dataText2,0,70);
 			
 			this.context.fillStyle = "white";
 			this.context.font = "40px Arial";
-			this.context.strokeText(dataText3,0,98);
-			this.context.fillText(dataText3,0,98);
+			this.context.strokeText(dataText3,0,100);
+			this.context.fillText(dataText3,0,100);
 			
 			this.ctx.drawImage(this.img, 0, 0, 240, 320);
 			
