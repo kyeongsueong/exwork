@@ -28,6 +28,7 @@ class mycanvas{
 			this.nHours = this.day.getHours();
 			this.nMinut = this.day.getMinutes();
 			this.nSecon = this.day.getSeconds();
+			this.nM = this.nM + 1;
 			
 			this.page = document.getElementById("snapImgs");
 
