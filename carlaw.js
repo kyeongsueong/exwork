@@ -205,10 +205,10 @@ class mycanvas{
 		dataText2 = "위도: " + late;
 		dataText3 = "경도: " + long;
 		//dataText3 = exwaylocate(late, long);
-		//ks_canvas.capturDown(dataText, dataText2, dataText3);
+		ks_canvas.capturDown(dataText, dataText2, dataText3);
 		checkCars++;
 		document.getElementById('checkCar').innerHTML = checkCars;
-		ks_canvas.capturDown();
+		//ks_canvas.capturDown();
 		
     	}else if ( truck > 0.90) {
     		document.getElementById('data').innerHTML = "화물차"
