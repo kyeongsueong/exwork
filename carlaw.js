@@ -27,6 +27,7 @@ class mycanvas{
 			this.nE = this.day.getDate();
 			this.nHours = this.day.getHours();
 			this.nMinut = this.day.getMinutes();
+			this.nSecon = this.day.getSeconds();
 			
 			this.page = document.getElementById("snapImgs");
 
@@ -53,7 +54,7 @@ class mycanvas{
 			
 			this.ctx.drawImage(this.img, 0, 0, 240, 320);
 			this.a = document.createElement("a");
-			this.a.setAttribute('download', `${this.nY}${this.nM}${this.nE}${this.nHours}${this.nMinut}.png`); 
+			this.a.setAttribute('download', `${this.nY}${this.nM}${this.nE}${this.nHours}${this.nMinut}${this.nSecon}.png`); 
 			this.a.setAttribute('href', this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
 			
 			this.page.appendChild(this.a);
