@@ -194,7 +194,7 @@ class mycanvas{
     	let sisul = arrays[5];
     	let way = arrays[6];    
 
-    	if ( carslaw > 0.85) {
+    	if ( carslaw > 0.90) {
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
 		
@@ -210,7 +210,7 @@ class mycanvas{
 		document.getElementById('checkCar').innerHTML = checkCars;
 		//ks_canvas.capturDown();
 		
-    	}else if ( truck > 0.80) {
+    	}else if ( truck > 0.90) {
     		document.getElementById('data').innerHTML = "화물차"
     		document.getElementById('data1').innerHTML = truck * 100 + "%";
     	}else if ( car > 0.70) {
