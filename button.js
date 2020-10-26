@@ -55,3 +55,7 @@ function exwaylocate(x,y) {
 //let x = exwaylocate(35.56001277,126.6927703);
 //alert(x);
 
+function reloadBt() {
+	location.reload();
+}
+
