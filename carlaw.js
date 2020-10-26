@@ -30,17 +30,17 @@ class mycanvas{
 			this.ctx = this.canvasc.getContext('2d');
 			
 			this.context.fillStyle = "white";
-			this.context.font = "40px Arial";
+			this.context.font = "bold 40px Arial";
 			this.context.strokeText(dataText,0,30);
 			this.context.fillText(dataText,0,30);
 			
 			this.context.fillStyle = "white";
-			this.context.font = "40px Arial";
+			this.context.font = "bold 40px Arial";
 			this.context.strokeText(dataText2,0,70);
 			this.context.fillText(dataText2,0,70);
 			
 			this.context.fillStyle = "white";
-			this.context.font = "40px Arial";
+			this.context.font = "bold 40px Arial";
 			this.context.strokeText(dataText3,0,100);
 			this.context.fillText(dataText3,0,100);
 			
