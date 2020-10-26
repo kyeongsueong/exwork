@@ -31,18 +31,18 @@ class mycanvas{
 			
 			this.context.fillStyle = "white";
 			this.context.font = "40px Arial";
-			this.context.strokeText(dataText,1,30);
+			this.context.strokeText(dataText,0,30);
 			this.context.fillText(dataText,0,30);
 			
 			this.context.fillStyle = "white";
 			this.context.font = "40px Arial";
-			this.context.strokeText(dataText2,1,63);
-			this.context.fillText(dataText2,0,63);
+			this.context.strokeText(dataText2,0,68);
+			this.context.fillText(dataText2,0,68);
 			
 			this.context.fillStyle = "white";
 			this.context.font = "40px Arial";
-			this.context.strokeText(dataText3,1,93);
-			this.context.fillText(dataText3,0,93);
+			this.context.strokeText(dataText3,0,98);
+			this.context.fillText(dataText3,0,98);
 			
 			this.ctx.drawImage(this.img, 0, 0, 240, 320);
 			
