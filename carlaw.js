@@ -54,7 +54,8 @@ class mycanvas{
 			this.a.appendChild(this.canvasc);
 		}
 	}
-
+	
+	let checkCars = 0;
 	let loadings;
 	let indexdot = 0;
 	function loading(num) {
@@ -204,6 +205,8 @@ class mycanvas{
 		dataText3 = "경도: " + long;
 		//dataText3 = exwaylocate(late, long);
 		ks_canvas.capturDown(dataText, dataText2, dataText3);
+		checkCars++;
+		document.getElementById('checkCar').innerHTML = checkCars;
 		//ks_canvas.capturDown();  
     	}else if ( truck > 0.80) {
     		document.getElementById('data').innerHTML = "화물차"
