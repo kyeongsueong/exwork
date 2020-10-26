@@ -142,7 +142,9 @@ class mycanvas{
 	}
 	function resetDown() {
 		checkCars = 0;
-		this.remove = document.querySelector(".divid");
+		document.getElementById('checkCar').innerHTML = checkCars;
+		
+		this.remove = document.getElementById("snapImgs");
 		while (this.remove.hasChildNodes()) {
 			this.remove.removeChild(this.remove.firstChild);
 		}
