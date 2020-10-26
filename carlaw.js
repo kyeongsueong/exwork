@@ -197,8 +197,7 @@ class mycanvas{
     	if ( carslaw > 0.85) {
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
-		document.getElementById('data').style.color = "red";
-    		document.getElementById('data1').style.color = "red";
+		
     		//ks_canvas.captur();
 		getLocation();
 		dataText = mydate.writeDate();
@@ -230,8 +229,6 @@ class mycanvas{
     		document.getElementById('data').innerHTML = "노면"
     		document.getElementById('data1').innerHTML = way * 100 + "%";
     	}
-		document.getElementById('data').style.color = "black";
-		document.getElementById('data1').style.color = "black";
     	snap();
     }
     init();
