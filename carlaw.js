@@ -21,7 +21,7 @@ class mycanvas{
 			//setTimeout(function(){ document.querySelector(".divid").style.zIndex = "-1"; }, 2000);
 		}
 		capturDown(dataText, dataText2, dataText3){
-			this.page = document.querySelector(".divid");
+			this.page = document.getElementById("snapImgs");
 
 			this.img = document.getElementById('canvas');
 			this.canvasc = document.createElement("canvas");
