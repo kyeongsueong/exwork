@@ -148,6 +148,8 @@ class mycanvas{
 	let dataText2 = "";
 	let dataText3 = "";
 	function snap () {
+		document.getElementById('data').style.color = "black";
+    		document.getElementById('data1').style.color = "black";
                 ks_canvas.draw(video);
 		predict();
 		let data = ks_canvas.dataUrl;
@@ -195,6 +197,8 @@ class mycanvas{
     	let way = arrays[6];    
 
     	if ( carslaw > 0.85) {
+		document.getElementById('data').style.color = "red";
+    		document.getElementById('data1').style.color = "red";
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
     		//ks_canvas.captur();
@@ -207,7 +211,8 @@ class mycanvas{
 		ks_canvas.capturDown(dataText, dataText2, dataText3);
 		checkCars++;
 		document.getElementById('checkCar').innerHTML = checkCars;
-		//ks_canvas.capturDown();  
+		//ks_canvas.capturDown();
+		
     	}else if ( truck > 0.80) {
     		document.getElementById('data').innerHTML = "화물차"
     		document.getElementById('data1').innerHTML = truck * 100 + "%";
