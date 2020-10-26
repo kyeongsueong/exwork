@@ -168,9 +168,9 @@ class mycanvas{
 		let data = ks_canvas.dataUrl;
          }
 	function snap2 () {
-		dataText = 0;
-		dataText2 = 0;
-		dataText3 = 0;
+		dataText = "";
+		dataText2 = "";
+		dataText3 = "";
 		ks_canvas.capturDown(dataText, dataText2, dataText3);
 		checkCars++;
 		document.getElementById('checkCar').innerHTML = checkCars;	
