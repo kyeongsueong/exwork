@@ -159,11 +159,20 @@ class mycanvas{
 	let dataText = "";
 	let dataText2 = "";
 	let dataText3 = "";
+	
 	function snap () {
                 ks_canvas.draw(video);
 		predict();
 		let data = ks_canvas.dataUrl;
          }
+	function snap2 () {
+		dataText = 0;
+		dataText2 = 0;
+		dataText3 = 0;
+		ks_canvas.capturDown(dataText, dataText2, dataText3);
+		checkCars++;
+		document.getElementById('checkCar').innerHTML = checkCars;	
+	}
 
 
 	//const URL = "https://teachablemachine.withgoogle.com/models/XlpEGD_eD/";//적재불량
