@@ -48,3 +48,12 @@ span{
 	height: 80vh;
 	overflow: auto;	
 }
+.footerClose{
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	background-color: blue;
+	color: white;
+	text-align: center;
+}
