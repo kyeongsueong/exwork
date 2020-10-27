@@ -222,18 +222,19 @@ class mycanvas{
     	if ( carslaw > 0.90) {
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
-		
-    		//ks_canvas.captur();
-		getLocation();
-		dataText = mydate.writeDate();
-		//dataText2 = "위도:" + late + "-" + "경도:" + long;
-		dataText2 = "위도: " + late;
-		dataText3 = "경도: " + long;
-		//dataText3 = exwaylocate(late, long);
-		ks_canvas.capturDown(dataText, dataText2, dataText3);
-		checkCars++;
-		document.getElementById('checkCar').innerHTML = checkCars;
-		//ks_canvas.capturDown();
+		if(checkCars < 221){ 
+			//ks_canvas.captur();
+			getLocation();
+			dataText = mydate.writeDate();
+			//dataText2 = "위도:" + late + "-" + "경도:" + long;
+			dataText2 = "위도: " + late;
+			dataText3 = "경도: " + long;
+			//dataText3 = exwaylocate(late, long);
+			ks_canvas.capturDown(dataText, dataText2, dataText3);
+			checkCars++;
+			document.getElementById('checkCar').innerHTML = checkCars;
+			//ks_canvas.capturDown();
+		}
 		
     	}else if ( truck > 0.95) {
     		document.getElementById('data').innerHTML = "화물차"
