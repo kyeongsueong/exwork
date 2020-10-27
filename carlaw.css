@@ -42,11 +42,13 @@ span{
 	border: 0px solid blue;
 	text-align: center;
 	background-color: white;
+	overscroll-behavior: contain;
 }
 #snapImgs{
 	width: 50vh;
 	height: 85vh;
 	overflow: auto;	
+	overscroll-behavior: contain;
 }
 .footerClose{
 	position: fixed;
