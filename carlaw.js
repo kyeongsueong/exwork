@@ -211,13 +211,15 @@ class mycanvas{
     		prediction[i].className + ": " + prediction[i].probability.toFixed(2);
     		arrays[i] = prediction[i].probability.toFixed(2);
     	}
-    	let carslaw = arrays[0];
-    	let truck = arrays[1];
-    	let car = arrays[2];
-    	let excar = arrays[3];
-    	let ptroll = arrays[4];
-    	let sisul = arrays[5];
-    	let way = arrays[6];    
+	    let carslaw = arrays[0];
+	    let truck = arrays[1];
+	    let car = arrays[2];
+	    let excar = arrays[3];
+	    let ptroll = arrays[4];
+	    let sisul = arrays[5];
+	    let way = arrays[6];
+	    let overtruck = arrays[7];
+	
 
     	if ( carslaw > 0.90) {
     		document.getElementById('data').innerHTML = "적재불량"
@@ -253,6 +255,9 @@ class mycanvas{
     		document.getElementById('data1').innerHTML = sisul * 100 + "%";
     	}else if ( way > 0.70) {
     		document.getElementById('data').innerHTML = "노면"
+    		document.getElementById('data1').innerHTML = way * 100 + "%";
+    	}else if ( overtruck > 0.70) {
+    		document.getElementById('data').innerHTML = "화물덮개차량"
     		document.getElementById('data1').innerHTML = way * 100 + "%";
     	}
     	snap();
