@@ -44,8 +44,8 @@ span{
 	background-color: white;
 }
 #snapImgs{
-	width: 100vh;
-	height: 90vh;
+	width: 50vh;
+	height: 80vh;
 	overflow: auto;	
 }
 .footerClose{
@@ -56,5 +56,5 @@ span{
 	background-color: blue;
 	color: white;
 	text-align: center;
-	font-size: 20px;
+	font-size: 25px;
 }
