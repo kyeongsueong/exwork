@@ -43,3 +43,8 @@ span{
 	text-align: center;
 	background-color: white;
 }
+#snapImgs{
+	width: 100em;
+	height: 80vh;
+	overflow: auto;	
+}
