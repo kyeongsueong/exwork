@@ -67,7 +67,7 @@ function reloadBt() {
 }
 
 let removechilds;
-removechilds = setInterval(reframe, 10000);
+removechilds = setInterval(reframe, 20000);
 	function reframe() {
 		this.numb = document.getElementById('checkCar').innerHTML;
 		if ( (this.numb - 0) < 4) {
