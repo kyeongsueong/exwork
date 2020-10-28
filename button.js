@@ -69,11 +69,10 @@ function reloadBt() {
 let removechilds;
 removechilds = setInterval(reframe, 10000);
 	function reframe() {
-		
-		indexdot++;
-		if (indexdot > 4) {
-			indexdot = 0;
+	
+		if ( (this.numb - 0) < 4) {
+			checkCars = 0;
+			document.getElementById('checkCar').innerHTML = checkCars;
 		}
-		loading(indexdot);
 	}
 
