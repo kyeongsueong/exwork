@@ -239,7 +239,7 @@ class mycanvas{
 			//ks_canvas.capturDown();
 		}
 		
-    	}else if ( truck > 0.97) {
+    	}else if ( truck > 0.94) {
     		document.getElementById('data').innerHTML = "화물차"
     		document.getElementById('data1').innerHTML = truck * 100 + "%";
     	}else if ( car > 0.70) {
