@@ -3,8 +3,10 @@ let long = "";
 function getLocation() {
   if (navigator.geolocation) { // GPS를 지원하면
     navigator.geolocation.getCurrentPosition(function(position) {
-	    late = position.coords.latitude;
-	    long = position.coords.longitude;
+	    this.tmp1 = position.coords.latitude;
+	    this.tmp2 = position.coords.longitude;
+	    late = this.tmp1.slice(0, 6);
+	    long = this.tmp2.slice(0, 7);
 	    //alert(late +"/"+ long);
     }, function(error) {
       console.error(error);
