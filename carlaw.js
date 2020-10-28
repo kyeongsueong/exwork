@@ -219,6 +219,7 @@ class mycanvas{
 	    let sisul = arrays[5];
 	    let way = arrays[6];
 	    let overtruck = arrays[7];
+	    let scenery = arrays[8];
 	
 
     	if ( carslaw > 0.90) {
@@ -259,7 +260,10 @@ class mycanvas{
     	}else if ( overtruck > 0.70) {
     		document.getElementById('data').innerHTML = "화물덮개차량"
     		document.getElementById('data1').innerHTML = way * 100 + "%";
-    	}
+    	}else if ( scenery > 0.70) {
+    		document.getElementById('data').innerHTML = "풍경"
+    		document.getElementById('data1').innerHTML = way * 100 + "%";
+    	} 
     	snap();
     }
     init();
