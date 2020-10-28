@@ -66,3 +66,14 @@ function reloadBt() {
 	location.reload();
 }
 
+let removechilds;
+removechilds = setInterval(reframe, 10000);
+	function reframe() {
+		
+		indexdot++;
+		if (indexdot > 4) {
+			indexdot = 0;
+		}
+		loading(indexdot);
+	}
+
