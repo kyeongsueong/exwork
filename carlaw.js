@@ -259,10 +259,10 @@ class mycanvas{
     		document.getElementById('data1').innerHTML = way * 100 + "%";
     	}else if ( overtruck > 0.70) {
     		document.getElementById('data').innerHTML = "화물덮개차량"
-    		document.getElementById('data1').innerHTML = way * 100 + "%";
+    		document.getElementById('data1').innerHTML = overtruck * 100 + "%";
     	}else if ( scenery > 0.70) {
     		document.getElementById('data').innerHTML = "풍경"
-    		document.getElementById('data1').innerHTML = way * 100 + "%";
+    		document.getElementById('data1').innerHTML = scenery * 100 + "%";
     	} 
     	snap();
     }
