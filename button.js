@@ -1,12 +1,17 @@
 let late = "";
 let long = "";
+let late2 = "";
+let long2 = "";
 function getLocation() {
   if (navigator.geolocation) { // GPS를 지원하면
     navigator.geolocation.getCurrentPosition(function(position) {
 	    this.tmp1 = position.coords.latitude;
 	    this.tmp2 = position.coords.longitude;
-	    late = this.tmp1.slice(0, 6);
-	    long = this.tmp2.slice(0, 7);
+	    late2 = this.tmp1.slice(0, 6);
+	    long2 = this.tmp2.slice(0, 7);
+	    
+	    late = position.coords.latitude;
+	    long = position.coords.longitude;
 	    //alert(late +"/"+ long);
     }, function(error) {
       console.error(error);
