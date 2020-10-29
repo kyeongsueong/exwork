@@ -66,12 +66,3 @@ function reloadBt() {
 	location.reload();
 }
 
-let removechilds;
-removechilds = setInterval(reframe, 20000);
-	function reframe() {
-		this.numb = document.getElementById('checkCar').innerHTML;
-		if ( (this.numb - 0) < 4) {
-			resetDown();
-		}
-	}
-
