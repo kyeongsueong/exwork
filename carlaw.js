@@ -220,12 +220,15 @@ class mycanvas{
 	    let way = arrays[6];
 	    let overtruck = arrays[7];
 	    let scenery = arrays[8];
+	    let snapsw = true;
 	
-
     	if ( carslaw > 0.90) {
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
 		if(checkCars < 221){ 
+			if(snapsw){
+			   snapsw = false;
+			}
 			//ks_canvas.captur();
 			getLocation();
 			dataText = mydate.writeDate();
