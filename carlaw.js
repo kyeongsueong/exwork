@@ -226,8 +226,14 @@ class mycanvas{
     		document.getElementById('data').innerHTML = "적재불량"
     		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
 		if(checkCars < 221){ 
-			if(snapsw){
-			   snapsw = false;
+			if(snapsw == true){
+				snapsw = false;
+				this.numb = document.getElementById('checkCar').innerHTML;
+				setTimeout(function(){ 
+					if ( (this.numb - 0) < 4) {
+						resetDown();
+					}
+				}, 5000);
 			}
 			//ks_canvas.captur();
 			getLocation();
