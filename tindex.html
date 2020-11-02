@@ -73,7 +73,23 @@
         <input type="text" id="data" style="text-align-last: center;"> - 정확도 : <span id="data1"></span>% 
     </p>
 
-   
+    <p>
+        <button onclick="showdownload()">다운로드보기</button>
+        <div id="downhidden" hidden="">
+            <a href="./textMovi.zip" download="">다운로드</a> <br>
+            <a href="./Tindex.html" download="">HTML다운로드</a> <br>
+            <a href="./mp4/test1.mp4" download="">mp4-1 down</a> <br>
+            <a href="./mp4/test2.mp4" download="">mp4-2 down</a> <br>
+            <a href="./mp4/test3.mp4" download="">mp4-3 down</a> <br>
+            <a href="./mp4/test4.mp4" download="">mp4-4 down</a> <br>
+            <a href="./mp4/test5.mp4" download="">mp4-5 down</a> <br>
+            <a href="./mp4/test6.mp4" download="">mp4-6 down</a> <br>
+            <a href="./mp4/test7.mp4" download="">mp4-7 down</a> <br>
+            <a href="./fileMove.exe" download="">파일이동 down</a> <br>
+            <a href="./cacaoencoder_setup.exe" download="">카카오인코더 down</a> <br>
+            <button onclick="document.getElementById('downhidden').style.display='none';">닫기</button>
+        </div>
+    </p>
 </body>
 <script type="text/javascript">
     let myApp, button_start;
@@ -122,7 +138,9 @@
         document.execCommand("copy");
         document.body.removeChild(tempElem);
     }
-   
+    function showdownload() {
+        document.getElementById('downhidden').style.display = "block";
+    }
     function front() {
         document.getElementById('backBt').checked = false;
         capcherX = 500;
@@ -249,7 +267,7 @@
     }
     
    
-    const URL = "./car2m/";
+    const URL = "https://teachablemachine.withgoogle.com/models/WL2kAfREb/";
 
     let model, webcam, labelContainer, maxPredictions;
     // Load the image model and setup the webcam
@@ -279,11 +297,11 @@
              //labelContainer.childNodes[i].innerHTML = classPrediction;
              arrays[i] = prediction[i].probability.toFixed(2);
          }
-         let cars = arrays[0];
+         let way = arrays[0];
          let shadows = arrays[1];
-         let way = arrays[2];
+         let cars = arrays[2];
 
-         if ( cars > 0.90) {
+         if ( cars > 0.79) {
             
             //StopApp();
             var newCanvas = document.createElement('canvas');
