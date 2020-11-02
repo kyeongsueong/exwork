@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>capcher</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <style type="text/css">
+        .notselectable {
+            -webkit-user-select: none;
+            text-align: center;
+        }
+        .moveButton {
+            font-size: 20px;
+        }
+        .checkBox_car {
+            border: 3px solid red;
+            width: 320px;
+            height: 170px;
+        }
+    </style>
+</head>
+<body>
+    <div style="position: fixed; z-index: 1; background: white;">
+        <button type="button" id="aiBt" onclick="init()">AI - Ready</button>
+        <button type="button" id="startbt" onclick="start()" hidden="">StartApp</button>
+        <button id="fileBt" onclick="openFile()">file OPEN</button>
+        <button id="stopBt" type="button" onclick="StopApp()">StopApp</button>
+        <input type="checkbox" id="frontBt" onclick="front()">Front
+        <input type="checkbox" id="backBt" onclick="back()" checked="">Back &nbsp;&nbsp;
+        
+        <img src="" id="nextPlay" style="border: 8px solid green;">
+    </div>
+    <br>
+
+    <video oncontextmenu="return false;" id="video" width="640" height="360" class="center" controls autoplay>
+        <source src="" type="video/embm">
+        <source src="" type="video/mp4">
+        <source src="" type="video/ogg">
+        <source src="" type="video/webm">
+        sorry
+    </video> 
+    <p>
+        <canvas class="checkBox_car" id="canvas"></canvas>
+        <img class="checkBox_car" src="" id="photo">
+        <div class="notselectable">
+            <button class="moveButton" onmousedown="up()" onmouseup="clearBt()" ontouchstart="up()" ontouchend="clearBt()">Up</button> <br>
+            <button class="moveButton" onmousedown="left()" onmouseup="clearBt()" ontouchstart="left()" ontouchend="clearBt()"> <-- </button>
+            <button class="moveButton" onmousedown="down()" onmouseup="clearBt()" ontouchstart="down()" ontouchend="clearBt()">down</button>
+            <button class="moveButton" onmousedown="right()" onmouseup="clearBt()" ontouchstart="right()" ontouchend="clearBt()"> --> </button>
+            <p>
+                <button class="moveButton" onmousedown="zoomin()" onmouseup="clearBt()" ontouchstart="zoomin()" ontouchend="clearBt()"> Zoom-In </button>
+                <button class="moveButton" onmousedown="zoomout()" onmouseup="clearBt()" ontouchstart="zoomout()" ontouchend="clearBt()"> Zoom-Out </button>
+            </p>
+        </div>
+        
+    </p>
+    <br>
+   
+    
+    <button id="capcher" onclick="capcher()" hidden="">capcher</button>
+    
+    
+    
+    <p>
+        <button id="bu2" type="button" onclick="predict()" hidden="" disabled>확인</button>
+        <div>
+            총 ( <span id="allMp4"></span> ) 개 파일 선택 - ( <span id="checkingMp4"></span> ) 번째 파일 실행중
+        </div>
+        차량감지 : <mark style="background-color: lime;"> <b><span id="carcheckr" style="color: red; font-size: 20px;"></span></b></mark> 대
+        - 비디오 이름 : <input type="text" id="mp4Name"> <button id="copyBt" onclick="copyName()">복사</button> <br>
+        <input type="text" id="data" style="text-align-last: center;"> - 정확도 : <span id="data1"></span>% 
+    </p>
+
+   
+</body>
+<script type="text/javascript">
+    let myApp, button_start;
+    var carSum = 0;
+    var fileName = [];
+    var stop = 0;
+    let loopCheck = 1;
+    let capcherX = 970;
+    let capcherY = 400;
+    let cpacherZoomIn = 200;
+    let cpacherZoomOut = 200;
+    var files;
+    var j = 0;
+
+    class myvideo {
+
+        constructor(){
+            this.video = document.getElementById('video');
+            this.videoEnd = this.video.ended;
+            this.videoReady = this.video.readyState;
+            this.videoTime = this.video.currentTime;
+            this.videoSize = this.video.duration;
+        }
+
+        timeset() {
+           this.video.currentTime = 0; 
+        }
+        exitapp(files) {
+            let allMp4s = document.getElementById('allMp4').innerHTML;
+            this.tempMp4 = (allMp4s - 0);
+            if ( this.videoEnd == true && this.tempMp4 - files == 1) {
+                StopApp();
+                document.getElementById("stopBt").disabled = true;
+                copyName();
+                alert("모든 파일 실행 완료 - 실시간 감지 중지");
+            }
+        }
+    }
+    
+    function copyName() {
+        var tempElem = document.createElement('textarea');
+        tempElem.value = document.getElementById('mp4Name').value;  
+        document.body.appendChild(tempElem);
+
+        tempElem.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempElem);
+    }
+   
+    function front() {
+        document.getElementById('backBt').checked = false;
+        capcherX = 500;
+        capcherY = 200;
+    }
+    function back() {
+        document.getElementById('frontBt').checked = false;
+        capcherX = 970;
+        capcherY = 400;
+    }
+    function clearBt() {
+        clearInterval(button_start);
+    }
+    function zoomin() {
+         button_start = setInterval(_zoomIn, 30);
+    }
+    function _zoomIn() {
+        cpacherZoomIn = cpacherZoomIn + 5;
+        cpacherZoomOut = cpacherZoomOut + 5;
+        capcher(capcherX, capcherY, cpacherZoomIn, cpacherZoomOut);
+    }
+    function zoomout() {
+        button_start = setInterval(_zoomOut, 30);
+    }
+    function _zoomOut() {
+        cpacherZoomIn = cpacherZoomIn - 5;
+        cpacherZoomOut = cpacherZoomOut - 5;
+        capcher(capcherX, capcherY, cpacherZoomIn, cpacherZoomOut);
+    }
+    function up() {
+        button_start = setInterval(moveup, 30);
+    }
+    function moveup() {
+        capcherY = capcherY - 5;
+        capcher(capcherX, capcherY, cpacherZoomIn, cpacherZoomOut);
+    }
+    function left() {
+        button_start = setInterval(moveleft, 30);
+    }
+    function moveleft() {
+        capcherX = capcherX - 5;
+        capcher(capcherX, capcherY, cpacherZoomIn, cpacherZoomOut);
+    }
+    function right() {
+        button_start = setInterval(moveright, 30);
+    }
+    function moveright() {
+        capcherX = capcherX + 5;
+        capcher(capcherX, capcherY, cpacherZoomIn, cpacherZoomOut);
+    }
+    function down() {
+        button_start = setInterval(movedown, 30);
+    }
+    function movedown() {
+        capcherY = capcherY + 5;
+        capcher(capcherX, capcherY, cpacherZoomIn, cpacherZoomOut);
+    }
+    function start() {
+        document.getElementById('startbt').disabled = true;
+        //myApp = setInterval(StartMyApp, 50);
+        //StartMyApp();
+    }
+    function StartMyApp() {
+        capcher(capcherX, capcherY, cpacherZoomIn, cpacherZoomOut);
+        predict();
+    }
+    function StopApp() {
+        //clearInterval(myApp);
+        loopCheck = 0;
+    }
+   
+   function openFile() {
+        document.getElementById('fileBt').disabled = true;
+        var input = document.createElement("input");
+        input.type = "file";
+        input.multiple = true;
+
+        input.onchange = function (event) {
+        
+            files = input.files;
+            processFile(event.target.files[0]);
+            fileName[carSum] = event.target.files[0].name;
+
+            document.getElementById('allMp4').innerHTML = files.length;
+            document.getElementById('checkingMp4').innerHTML = 1;
+                  
+        }
+        input.click();
+       
+    }
+    
+    function processFile(file) {
+        var reader = new FileReader();
+        reader.onload = function () {
+            document.getElementById("video").src = reader.result;
+        };
+        
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function capcher(x, y, zoomIn, zoomOut) {
+        const videos = new myvideo;
+        videos.exitapp(j);
+        var video = document.getElementById('video');
+        var canvas = document.getElementById('canvas');
+        var context = canvas.getContext('2d');
+        var photo = document.getElementById('photo');
+        context.clearRect(0, 0, 300, 150);
+        context.drawImage(video, x, y, 600, 600, 0, 0, zoomIn, zoomOut);
+        //ctx.drawImage(img, 90, 140, 100, 100, 0, 0 , 140, 130);
+        let plays = document.getElementById('nextPlay');
+        
+
+        if (videos.videoReady == 4 && videos.videoEnd == true && videos.videoTime == videos.videoSize) {    
+            j++;
+            processFile(files[j]);
+            fileName[carSum] = files[j].name;
+            document.getElementById('checkingMp4').innerHTML = j + 1;
+            
+            videos.timeset();
+        }
+    }
+    
+   
+    const URL = "https://teachablemachine.withgoogle.com/models/WL2kAfREb/";
+
+    let model, webcam, labelContainer, maxPredictions;
+    // Load the image model and setup the webcam
+    async function init() {
+        document.getElementById('aiBt').disabled = true;
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        predict();
+        alert("Ready ok");
+        document.getElementById("bu2").disabled = false;
+    }
+    
+    async function predict() {
+      
+        var image = document.getElementById('canvas');
+
+        const prediction = await model.predict(image, false);
+        
+        let arrays = [];
+         for (let i = 0; i < maxPredictions; i++) {
+             const classPrediction =
+             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+             //labelContainer.childNodes[i].innerHTML = classPrediction;
+             arrays[i] = prediction[i].probability.toFixed(2);
+         }
+         let cars = arrays[0];
+         let shadows = arrays[1];
+         let way = arrays[2];
+
+         if ( cars > 0.79) {
+            
+            //StopApp();
+            var newCanvas = document.createElement('canvas');
+            var newImags = document.createElement('img');
+            var enter = document.createElement('br');
+            ctx = newCanvas.getContext('2d');
+            ctx.drawImage(video, 800, 100, 1100, 1000, 0, 0, 300, 200);
+            //ctx.drawImage(video, 1000, 200, 700, 700, 0, -100, 200, 300);
+            document.body.appendChild(newCanvas);
+            document.body.appendChild(newImags);
+            document.body.appendChild(enter);
+
+            document.getElementById('data').value = "car"
+            document.getElementById('data1').innerHTML = cars * 100;
+    
+            carSum++;
+            document.getElementById('carcheckr').innerHTML = carSum;
+            document.getElementById('mp4Name').value = fileName;
+           
+            photo.setAttribute('src', canvas.toDataURL('image/png'));
+            newImags.setAttribute('src', canvas.toDataURL('image/png'));
+
+            //setTimeout(function(){ start(); }, 1000);
+            loopCheck = 2;
+            setTimeout(function(){ StartMyApp(); }, 1000);
+         }else if ( shadows > 0.70) {
+            document.getElementById('data').value = "shadow"
+            document.getElementById('data1').innerHTML = shadows * 100;
+         }else if ( way > 0.70) {
+            document.getElementById('data').value = "Way"
+            document.getElementById('data1').innerHTML = way * 100;
+         }
+        if (loopCheck == 1) {
+         StartMyApp();  
+        }else if ( loopCheck == 0 ) {
+            alert("프로그램 종료");
+        }else{
+            loopCheck = 1;
+        }
+    }
+</script>
+</html>
