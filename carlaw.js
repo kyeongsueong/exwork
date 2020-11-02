@@ -249,12 +249,15 @@ class mycanvas{
 		}
 		
     	}else if ( truck > 0.94) {
+		snap2();
     		document.getElementById('data').innerHTML = "화물차"
     		document.getElementById('data1').innerHTML = truck * 100 + "%";
     	}else if ( car > 0.70) {
+		snap2();
     		document.getElementById('data').innerHTML = "일반차량"
     		document.getElementById('data1').innerHTML = car * 100 + "%";
     	}else if ( excar > 0.70) {
+		snap2();
     		document.getElementById('data').innerHTML = "작업차량"
     		document.getElementById('data1').innerHTML = excar * 100 + "%";
     	}else if ( ptroll > 0.70) {
@@ -267,9 +270,11 @@ class mycanvas{
     		document.getElementById('data').innerHTML = "노면"
     		document.getElementById('data1').innerHTML = way * 100 + "%";
     	}else if ( overtruck > 0.70) {
+		snap2();
     		document.getElementById('data').innerHTML = "화물덮개차량"
     		document.getElementById('data1').innerHTML = overtruck * 100 + "%";
     	}else if ( scenery > 0.70) {
+		snap2();
     		document.getElementById('data').innerHTML = "풍경"
     		document.getElementById('data1').innerHTML = scenery * 100 + "%";
     	} 
