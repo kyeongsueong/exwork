@@ -123,7 +123,7 @@ class mycanvas{
 	    zoomSliderValue.value = zoomSlider.value;
 	    
 	    zoomSlider.oninput = function() {
-	      zoomSliderValue.value = (zoomSlider.value + 2);
+	      zoomSliderValue.value = zoomSlider.value;
 	      videoTrack.applyConstraints({advanced : [{zoom: zoomSlider.value}] });
 	    }
 	  }, 500);
