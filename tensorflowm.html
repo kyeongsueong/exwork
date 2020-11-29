@@ -103,7 +103,11 @@
 	//카메라 
 	let camera;
     function environment_cam() {
-        camera = { facingMode: { exact: "environment" } };
+        camera = { video: { 
+            facingMode: { exact: "environment" },
+            width: { ideal: 400 },
+            height: { ideal: 600 }
+        } };
         start();
     }
     function user_cam() {
