@@ -84,8 +84,8 @@
            		this.views.appendChild(this.canvas);
 
 	            for (let i = 0; i < this.predict.length; i++) {
-	                this.ctx.fillText(this.predict[i].class, this.predict[i].bbox[0] - 5, this.predict[i].bbox[1] - 105);
-	                this.ctx.strokeRect(this.predict[i].bbox[0], this.predict[i].bbox[1] -100, this.predict[i].bbox[2], this.predict[i].bbox[3] -100 );
+	                this.ctx.fillText(this.predict[i].class, this.predict[i].bbox[0] - 5, this.predict[i].bbox[1] - 15);
+	                this.ctx.strokeRect(this.predict[i].bbox[0], this.predict[i].bbox[1] -10, this.predict[i].bbox[2], this.predict[i].bbox[3] -10 );
 	                if (this.predict[i].class == "truck") {
 	                	this.ctx_checkViews.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
 	                	this.ctx_checkViews.drawImage(this.imgView, this.predict[i].bbox[0], this.predict[i].bbox[1] - 30, this.predict[i].bbox[2], this.predict[i].bbox[3] - 20, 0, 0, 200, 250);
