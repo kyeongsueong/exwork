@@ -23,6 +23,7 @@
 	<div class="getView" hidden=""></div>
 	<div><span id="data"></span> - 정확도 : <span id="data1"></span></div>
 	<div><button onclick="snap()">snap</button></div>
+    <div><span id="wi"></span> - <span id="he"></span></div>
 </body>
 <script type="text/javascript">
 	let tt = 0;
@@ -74,7 +75,8 @@
         async drawCanvas(width, height) {
     		this.imgView = await document.getElementById('video');
     		this.predict = await load.detect(this.imgView);
-    		
+    		document.getElementById('wi').innerHTML = this.imgView.clientWidth;
+            document.getElementById('he').innerHTML = this.imgView.clientHeight;
     		this.ctx.drawImage(this.imgView, 0, 0, width, height);
            	this.views.appendChild(this.canvas);
 
