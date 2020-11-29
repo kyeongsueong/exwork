@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>tensorflow</title>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width">
+  	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+    <style type="text/css">
+    	.view{border: 1px solid red}
+    	.getView{border: 1px solid blue}
+ 	</style>
+</head>
+<body>
+    <div>
+        <input type="range" id="zoom-slider" min="0", max="0">
+        <output id="zoom-slider-value"></output>
+    </div>
+    <div><video id="video" autoplay></video></div>
+	<div class="view"></div>
+	<div class="checkView"></div>
+	<div class="getView" hidden=""></div>
+	<div><input type="text" id="data" style="text-align-last: center;"> - 정확도 : <span id="data1"></span>% <br></div>
+	<div><button onclick="snap()">snap</button></div>
+</body>
+<script type="text/javascript">
+	let tt = 0;
+	let load;
+	async function loadCoossd() {
+		 load = await cocoSsd.load();
+		 init();
+		 alert("ok");
+	}
+	loadCoossd();
+	class viewobj{
+		constructor(width, height){
+			this.canvas = document.createElement("canvas");
+			this.canvas.id = "canvas";
+            this.canvas.width = width;
+            this.canvas.height = height;
+            this.ctx = this.canvas.getContext('2d');
+            this.ctx.strokeStyle = "rgb(0, 255, 0)";
+        	this.ctx.fillStyle = "rgb(0, 0, 255)";
+        	this.ctx.lineWidth = 2;
+        	this.ctx.font = "18px Arial";
+
+            this.getImgs = document.querySelector(".getView");
+            this.imgs = document.createElement("img");
+            this.imgs.width = width;
+            this.imgs.height = height;
+
+            this.views = document.querySelector(".view");
+
+            this.checkViews = document.querySelector(".checkView");
+            this.checkCanvas = document.createElement("canvas");
+			this.checkCanvas.id = "checkCanvas";
+            this.checkCanvas.width = width;
+            this.checkCanvas.height = height;
+            this.ctx_checkViews = this.checkCanvas.getContext('2d');
+		}
+		getimgs(){
+			tt++;
+            this.imgs.id = "scrimg";
+            this.imgs.src = "./Result.jpg?" + tt;
+            this.getImgs.appendChild(this.imgs);
+            if (tt == 1000) {
+            	while (this.getImgs.hasChildNodes()) {
+					this.getImgs.removeChild(this.getImgs.firstChild);
+				}
+                tt = 0;
+            }
+		}
+        async drawCanvas(width, height) {
+    		this.imgView = await document.getElementById('video');
+    		this.predict = await load.detect(this.imgView);
+    		
+    		this.ctx.drawImage(this.imgView, 0, 0, width, height);
+           	this.views.appendChild(this.canvas);
+
+    		if (this.predict.length > 0) {
+	            this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
+	            this.ctx.drawImage(this.imgView, 0, 0, width, height);
+           		this.views.appendChild(this.canvas);
+
+	            for (let i = 0; i < this.predict.length; i++) {
+	                this.ctx.fillText(this.predict[i].class, this.predict[i].bbox[0] - 5, this.predict[i].bbox[1] - 5);
+	                this.ctx.strokeRect(this.predict[i].bbox[0], this.predict[i].bbox[1], this.predict[i].bbox[2], this.predict[i].bbox[3]);
+	                if (this.predict[i].class == "truck") {
+	                	this.ctx_checkViews.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
+	                	this.ctx_checkViews.drawImage(this.imgView, this.predict[i].bbox[0], this.predict[i].bbox[1] - 30, this.predict[i].bbox[2], this.predict[i].bbox[3] - 20, 0, 0, 200, 250);
+	                	this.checkViews.appendChild(this.checkCanvas);
+	                }
+	            }
+	        }
+	    }
+	}
+	let obj_width = 300;
+	let obj_height = 300;
+	const ks = new viewobj(obj_width, obj_height);
+	//카메라 
+	let camera;
+    function environment_cam() {
+        camera = { facingMode: { exact: "environment" } };
+        start();
+    }
+    function user_cam() {
+        camera = { facingMode: "user" };
+        start();
+    }
+    environment_cam();
+
+    var videoTag = document.getElementById('video');
+    var zoomSlider = document.getElementById("zoom-slider");
+    var zoomSliderValue = document.getElementById("zoom-slider-value");
+
+    function start() {
+      navigator.mediaDevices.getUserMedia({ video: camera })
+        .then(gotMedia)
+        .catch(e => { console.error('getUserMedia() failed: ', e); });
+    }
+
+    function gotMedia(mediastream) {
+      videoTag.srcObject = mediastream;
+      
+      var videoTrack = mediastream.getVideoTracks()[0];
+        
+      // Timeout needed in Chrome, see https://crbug.com/711524
+      setTimeout(() => {
+        const capabilities = videoTrack.getCapabilities()
+        // Check whether zoom is supported or not.
+        if (!capabilities.zoom) {
+          return;
+        }
+        
+        zoomSlider.min = capabilities.zoom.min;
+        zoomSlider.max = capabilities.zoom.max;
+        zoomSlider.step = capabilities.zoom.step;
+
+        zoomSlider.value = zoomSliderValue.value = videoTrack.getSettings().zoom;
+        zoomSliderValue.value = zoomSlider.value;
+        
+        zoomSlider.oninput = function() {
+          zoomSliderValue.value = zoomSlider.value;
+          videoTrack.applyConstraints({advanced : [{zoom: zoomSlider.value}] });
+        }
+      }, 500);
+      
+    }
+	//카메라
+	function snap() {
+		setInterval(function(){ 
+	       ks.drawCanvas(obj_width, obj_height);
+	       predict_t();
+	    }, 50);
+	}
+
+	const URL = "./carlaw/";
+	let model, webcam, labelContainer, maxPredictions;
+    
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+    }
+    async function predict_t() {
+        let image = document.getElementById('checkCanvas');
+        const prediction = await model.predict(image, false);
+        
+        let arrays = [];
+         for (let i = 0; i < maxPredictions; i++) {
+             const classPrediction =
+             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+             arrays[i] = prediction[i].probability.toFixed(2);
+         }
+        let carslaw = arrays[0];
+        let truck = arrays[1];
+        let car = arrays[2];
+        let excar = arrays[3];
+        let ptroll = arrays[4];
+        let sisul = arrays[5];
+        let way = arrays[6];
+        let overtruck = arrays[7];
+        let scenery = arrays[8];
+        let snapsw = true;
+    
+        if ( carslaw > 0.90) {
+            document.getElementById('data').innerHTML = "적재불량"
+            document.getElementById('data1').innerHTML = carslaw * 100 + "%";
+        }else if ( truck > 0.94) {
+        //snap2();
+            document.getElementById('data').innerHTML = "화물차"
+            document.getElementById('data1').innerHTML = truck * 100 + "%";
+        }else if ( car > 0.70) {
+        //snap2();
+            document.getElementById('data').innerHTML = "일반차량"
+            document.getElementById('data1').innerHTML = car * 100 + "%";
+        }else if ( excar > 0.70) {
+        //snap2();
+            document.getElementById('data').innerHTML = "작업차량"
+            document.getElementById('data1').innerHTML = excar * 100 + "%";
+        }else if ( ptroll > 0.70) {
+            document.getElementById('data').innerHTML = "순찰차"
+            document.getElementById('data1').innerHTML = ptroll * 100 + "%";
+        }else if ( sisul > 0.70) {
+            document.getElementById('data').innerHTML = "시설물"
+            document.getElementById('data1').innerHTML = sisul * 100 + "%";
+        }else if ( way > 0.70) {
+            document.getElementById('data').innerHTML = "노면"
+            document.getElementById('data1').innerHTML = way * 100 + "%";
+        }else if ( overtruck > 0.70) {
+        //snap2();
+            document.getElementById('data').innerHTML = "화물덮개차량"
+            document.getElementById('data1').innerHTML = overtruck * 100 + "%";
+        }else if ( scenery > 0.70) {
+        //snap2();
+            document.getElementById('data').innerHTML = "풍경"
+            document.getElementById('data1').innerHTML = scenery * 100 + "%";
+        } 
+    }
+</script>
+</html>
