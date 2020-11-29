@@ -17,7 +17,7 @@
         <input type="range" id="zoom-slider" min="0", max="0">
         <output id="zoom-slider-value"></output>
     </div>
-    <div><video id="video" autoplay></video></div>
+    <div><video id="video" width="414" height="450" autoplay></video></div>
 	<div class="view"></div>
 	<div class="checkView"></div>
 	<div class="getView" hidden=""></div>
@@ -95,8 +95,8 @@
 	        }
 	    }
 	}
-	let obj_width = 300;
-	let obj_height = 300;
+	let obj_width = 414;
+	let obj_height = 450;
 	const ks = new viewobj(obj_width, obj_height);
 	//카메라 
 	let camera;
