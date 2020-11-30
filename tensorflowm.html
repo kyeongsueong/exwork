@@ -8,10 +8,10 @@
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
     <style type="text/css">
-    	.view{border: 1px solid red}
+    	.view{border: 1px solid red; width: 390px; height: 600px;}
     	.getView{border: 1px solid blue}
-        video{position: absolute;}
-        #canvas{position: relative; z-index: 1;}
+        video{width: 390px; height: 600px; position: absolute; border: 1px solid red;}
+        #canvas{position: relative; z-index: 1; border: 1px solid yellow;}
  	</style>
 </head>
 <body>
@@ -81,7 +81,7 @@
     		this.predict = await load.detect(this.imgView);
     		
     		//this.ctx.drawImage(this.imgView, 0, 0, width, height);
-           	//this.views.appendChild(this.canvas);
+           	this.views.appendChild(this.canvas);
 
     		if (this.predict.length > 0) {
 	            this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
@@ -100,7 +100,7 @@
 	        }
 	    }
 	}
-	let obj_width = 385;
+	let obj_width = 390;
 	let obj_height = 600;
 	const ks = new viewobj(obj_width, obj_height);
 	//카메라 
