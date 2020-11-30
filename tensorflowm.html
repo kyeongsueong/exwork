@@ -10,7 +10,8 @@
     <style type="text/css">
     	.view{border: 1px solid red}
     	.getView{border: 1px solid blue}
-        video{width: 385px; height: 600px;}
+        video{width: 385px; height: 600px; position: absolute;}
+        #canvas{position: absolute;}
  	</style>
 </head>
 <body>
@@ -18,8 +19,8 @@
         <input type="range" id="zoom-slider" min="0", max="0">
         <output id="zoom-slider-value"></output>
     </div>
-    <div><video id="video" autoplay></video></div>
-	<div class="view"></div>
+    <div></div>
+	<div class="view"><video id="video" autoplay></video></div>
 	<div class="checkView"></div>
 	<div class="getView" hidden=""></div>
 	<div><span id="data"></span> - 정확도 : <span id="data1"></span></div>
@@ -76,14 +77,13 @@
         async drawCanvas(width, height) {
     		this.imgView = await document.getElementById('video');
     		this.predict = await load.detect(this.imgView);
-    		document.getElementById('wi').innerHTML = this.imgView.clientWidth;
-            document.getElementById('he').innerHTML = this.imgView.clientHeight;
-    		this.ctx.drawImage(this.imgView, 0, 0, width, height);
-           	this.views.appendChild(this.canvas);
+    		
+    		//this.ctx.drawImage(this.imgView, 0, 0, width, height);
+           	//this.views.appendChild(this.canvas);
 
     		if (this.predict.length > 0) {
 	            this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
-	            this.ctx.drawImage(this.imgView, 0, 0, width, height);
+	            //this.ctx.drawImage(this.imgView, 0, 0, width, height);
            		this.views.appendChild(this.canvas);
 
 	            for (let i = 0; i < this.predict.length; i++) {
