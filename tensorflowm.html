@@ -10,7 +10,7 @@
     <style type="text/css">
     	.view{border: 1px solid red}
     	.getView{border: 1px solid blue}
-        video{width: 385px; height: 600px; position: absolute;}
+        video{position: absolute;}
         #canvas{position: relative; z-index: 1;}
  	</style>
 </head>
@@ -28,7 +28,6 @@
 	<div class="getView" hidden=""></div>
 	<div><span id="data"></span> - 정확도 : <span id="data1"></span></div>
 	<div><button onclick="snap()">snap</button></div>
-    <div><span id="wi"></span> - <span id="he"></span></div>
 </body>
 <script type="text/javascript">
 	let tt = 0;
@@ -82,7 +81,7 @@
     		this.predict = await load.detect(this.imgView);
     		
     		//this.ctx.drawImage(this.imgView, 0, 0, width, height);
-           	this.views.appendChild(this.canvas);
+           	//this.views.appendChild(this.canvas);
 
     		if (this.predict.length > 0) {
 	            this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
