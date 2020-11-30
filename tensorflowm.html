@@ -79,7 +79,7 @@
     		this.predict = await load.detect(this.imgView);
     		
     		//this.ctx.drawImage(this.imgView, 0, 0, width, height);
-           	//this.views.appendChild(this.canvas);
+           	this.views.appendChild(this.canvas);
 
     		if (this.predict.length > 0) {
 	            this.ctx.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
