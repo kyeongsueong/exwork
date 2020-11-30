@@ -93,7 +93,7 @@
 	                this.ctx.strokeRect(this.predict[i].bbox[0] - 20, this.predict[i].bbox[1] -40, this.predict[i].bbox[2] -20, this.predict[i].bbox[3]-40);
 	                if (this.predict[i].class == "truck") {
 	                	this.ctx_checkViews.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
-	                	this.ctx_checkViews.drawImage(this.imgView, this.predict[i].bbox[0], this.predict[i].bbox[1] - 40, this.predict[i].bbox[2] + 10, this.predict[i].bbox[3] - 10, 0, 0, 200, 250);
+	                	this.ctx_checkViews.drawImage(this.imgView, this.predict[i].bbox[0]-10, this.predict[i].bbox[1] - 50, this.predict[i].bbox[2] + 10, this.predict[i].bbox[3] + 10, 0, 0, 200, 250);
 	                	this.checkViews.appendChild(this.checkCanvas);
 	                }
 	            }
