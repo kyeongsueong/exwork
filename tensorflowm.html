@@ -10,6 +10,7 @@
     <style type="text/css">
     	.view{border: 1px solid red}
     	.getView{border: 1px solid blue}
+        video{width: 385px; height: 600px;}
  	</style>
 </head>
 <body>
@@ -17,7 +18,7 @@
         <input type="range" id="zoom-slider" min="0", max="0">
         <output id="zoom-slider-value"></output>
     </div>
-    <div hidden=""><video id="video" autoplay></video></div>
+    <div><video id="video" autoplay></video></div>
 	<div class="view"></div>
 	<div class="checkView"></div>
 	<div class="getView" hidden=""></div>
@@ -87,7 +88,7 @@
 
 	            for (let i = 0; i < this.predict.length; i++) {
 	                this.ctx.fillText(this.predict[i].class, this.predict[i].bbox[0] - 5, this.predict[i].bbox[1] - 15);
-	                this.ctx.strokeRect(this.predict[i].bbox[0] - 10, this.predict[i].bbox[1] - 10, this.predict[i].bbox[2], this.predict[i].bbox[3] + 10);
+	                this.ctx.strokeRect(this.predict[i].bbox[0], this.predict[i].bbox[1], this.predict[i].bbox[2], this.predict[i].bbox[3]);
 	                if (this.predict[i].class == "truck") {
 	                	this.ctx_checkViews.clearRect(0, 0, this.canvas.clientWidth, this.canvas.clientHeight);
 	                	this.ctx_checkViews.drawImage(this.imgView, this.predict[i].bbox[0], this.predict[i].bbox[1] - 40, this.predict[i].bbox[2] + 10, this.predict[i].bbox[3] - 10, 0, 0, 200, 250);
@@ -97,7 +98,7 @@
 	        }
 	    }
 	}
-	let obj_width = 400;
+	let obj_width = 385;
 	let obj_height = 600;
 	const ks = new viewobj(obj_width, obj_height);
 	//카메라 
@@ -119,7 +120,7 @@
     function start() {
       navigator.mediaDevices.getUserMedia({ 
         video: { 
-            width: { min: 400 },
+            width: { min: 385 },
             height: { min: 600 },
             facingMode: { exact: "environment" }
         }})
