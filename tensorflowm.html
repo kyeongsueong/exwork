@@ -11,7 +11,7 @@
     	.view{border: 1px solid red}
     	.getView{border: 1px solid blue}
         video{width: 385px; height: 600px; position: absolute;}
-        #canvas{position: absolute; z-index: 1;}
+        #canvas{position: relative; z-index: 1;}
  	</style>
 </head>
 <body>
@@ -20,7 +20,10 @@
         <output id="zoom-slider-value"></output>
     </div>
     <div></div>
-	<div class="view"><video id="video" autoplay></video></div>
+	<div class="view">
+        <video id="video" autoplay></video>
+        <canvas id="canvas"></canvas>
+    </div>
 	<div class="checkView"></div>
 	<div class="getView" hidden=""></div>
 	<div><span id="data"></span> - 정확도 : <span id="data1"></span></div>
@@ -38,8 +41,8 @@
 	loadCoossd();
 	class viewobj{
 		constructor(width, height){
-			this.canvas = document.createElement("canvas");
-			this.canvas.id = "canvas";
+			this.canvas = document.getElementById("canvas");
+			
             this.canvas.width = width;
             this.canvas.height = height;
             this.ctx = this.canvas.getContext('2d');
