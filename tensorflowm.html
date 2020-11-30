@@ -103,7 +103,7 @@
 	//카메라 
 	let camera;
     function environment_cam() {
-        camera = { facingMode: { exact: "environment" } };
+        //camera = { facingMode: { exact: "environment" } };
         start();
     }
     function user_cam() {
@@ -117,7 +117,12 @@
     var zoomSliderValue = document.getElementById("zoom-slider-value");
 
     function start() {
-      navigator.mediaDevices.getUserMedia({ video: camera })
+      navigator.mediaDevices.getUserMedia({ 
+        video: { 
+            width: { min: 400 },
+            height: { min: 600 },
+            facingMode: { exact: "environment" }
+        }})
         .then(gotMedia)
         .catch(e => { console.error('getUserMedia() failed: ', e); });
     }
