@@ -184,18 +184,27 @@
              arrays[i] = prediction[i].probability.toFixed(2);
          }
         let carslaw = arrays[0];
-        let truck = arrays[1];
+        let trucklaw = arrays[1];
+        let truck = arrays[2];
+        let work = arrays[3];
         
         let snapsw = true;
     
         if ( carslaw > 0.90) {
-            document.getElementById('data').innerHTML = "적재불량 및 적재물"
+            document.getElementById('data').innerHTML = "적재불량 및 적재물";
             document.getElementById('data1').innerHTML = carslaw * 100 + "%";
-        }else if ( truck > 0.90) {
-            document.getElementById('data').innerHTML = "적재불량 및 차량"
+        }else if ( trucklaw > 0.90) {
+            document.getElementById('data').innerHTML = "적재불량 및 차량";
+            document.getElementById('data1').innerHTML = trucklaw * 100 + "%";
+        }else if ( truck > 0.80) {
+            document.getElementById('data').innerHTML = "차량 트럭";
             document.getElementById('data1').innerHTML = truck * 100 + "%";
+        }else if ( work > 0.80) {
+            document.getElementById('data').innerHTML = "작업차량";
+            document.getElementById('data1').innerHTML = work * 100 + "%";
         }else{
-            document.getElementById('data').innerHTML = "알수없음";
+             document.getElementById('data').innerHTML = "알수없음";
+             document.getElementById('data1').innerHTML = 0 + "%";
         }
     }
 </script>
