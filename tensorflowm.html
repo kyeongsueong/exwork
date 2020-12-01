@@ -60,8 +60,8 @@
             this.checkViews = document.querySelector(".checkView");
             this.checkCanvas = document.createElement("canvas");
 			this.checkCanvas.id = "checkCanvas";
-            this.checkCanvas.width = width;
-            this.checkCanvas.height = height;
+            this.checkCanvas.width = 200;
+            this.checkCanvas.height = 250;
             this.ctx_checkViews = this.checkCanvas.getContext('2d');
 		}
 		getimgs(){
@@ -100,7 +100,7 @@
 	        }
 	    }
 	}
-	let obj_width = 375;
+	let obj_width = 385;
 	let obj_height = 499;
 	const ks = new viewobj(obj_width, obj_height);
 	//카메라 
