@@ -276,9 +276,11 @@
         if ( carslaw > 0.90) {
             document.getElementById('data').innerHTML = "적재불량 및 적재물";
             document.getElementById('data1').innerHTML = carslaw * 100 + "%";
+		ks.capturDown();
         }else if ( trucklaw > 0.90) {
             document.getElementById('data').innerHTML = "적재불량 및 차량";
             document.getElementById('data1').innerHTML = trucklaw * 100 + "%";
+		ks.capturDown();
         }else if ( truck > 0.80) {
             document.getElementById('data').innerHTML = "차량 트럭";
             document.getElementById('data1').innerHTML = truck * 100 + "%";
