@@ -128,6 +128,48 @@
 	            }
 	        }
 	    }
+	
+		capturDown(dataText, dataText2, dataText3){
+			this.day = new Date();
+			this.nY = this.day.getFullYear();
+			this.nM = this.day.getMonth();
+			this.nE = this.day.getDate();
+			this.nHours = this.day.getHours();
+			this.nMinut = this.day.getMinutes();
+			this.nSecon = this.day.getSeconds();
+			this.nM = this.nM + 1;
+			
+			this.page = document.getElementById("snapImgs");
+
+			this.img = document.getElementById('video');
+			this.canvasc = document.createElement("canvas");
+			this.canvasc.width = 240;
+			this.canvasc.height = 320;
+			this.ctx = this.canvasc.getContext('2d');
+			
+			this.context.fillStyle = "white";
+			this.context.font = "40px Arial";
+			this.context.strokeText(dataText,0,30);
+			this.context.fillText(dataText,0,30);
+			
+			this.context.fillStyle = "white";
+			this.context.font = "40px Arial";
+			this.context.strokeText(dataText2,0,70);
+			this.context.fillText(dataText2,0,70);
+			
+			this.context.fillStyle = "white";
+			this.context.font = "40px Arial";
+			this.context.strokeText(dataText3,0,110);
+			this.context.fillText(dataText3,0,110);
+			
+			this.ctx.drawImage(this.img, 0, 0, 240, 320);
+			this.a = document.createElement("a");
+			this.a.setAttribute('download', `${this.nY}${this.nM}${this.nE}${this.nHours}${this.nMinut}${this.nSecon}.png`); 
+			this.a.setAttribute('href', this.canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+			
+			this.page.appendChild(this.a);
+			this.a.appendChild(this.canvasc);
+		}
 	}
 	let obj_width = 385;
 	let obj_height = 499;
