@@ -34,13 +34,12 @@
 	overscroll-behavior: contain;
 	}
 	#snapImgs{
+		position: fixed;
 	width: 50vh;
 	height: 85vh;
 	overflow: auto;	
 	overscroll-behavior: contain;
-	border: 1px solid blue; 
 	background-color : red;
-		z-index: 10;
 	}
  	</style>
 </head>
@@ -49,6 +48,12 @@
         <input type="range" id="zoom-slider" min="0", max="0">
         <output id="zoom-slider-value"></output>
     </div>
+	<div class="divid">
+		<div id="snapImgs"></div>
+		<div class="footerClose" onclick="closeDown()">
+			<span onclick="closeDown()">Cloas</span>
+		</div>
+	</div>
     <div></div>
 	<div class="view">
         <video id="video" autoplay></video>
@@ -59,12 +64,7 @@
 	<div class="getView" hidden=""></div>
 	<div><button onclick="snap()">snap</button></div>
 	
-	<div class="divid">
-		<div id="snapImgs"></div>
-		<div class="footerClose" onclick="closeDown()">
-			<span onclick="closeDown()">Cloas</span>
-		</div>
-	</div>
+	
 	<button onclick="opneDown()">다운로드 보기</button>
 </body>
 <script type="text/javascript">
