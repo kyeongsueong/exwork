@@ -12,35 +12,9 @@
     	.getView{border: 0px solid blue}
         video{width: 390px; height: 500px; position: absolute; border: 1px solid red;}
         #canvas{position: absolute; z-index: 1; border: 1px solid yellow; left: 0px;}
-	    .footerClose{
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	background-color: blue;
-	color: white;
-	text-align: center;
-	font-size: 30px;
-	}
-	.divid{
-	display: none;
-	position: absolute;
-	width: 100%;
-	height: 100vh;
-	z-index: -1;
-	border: 0px solid blue;
-	text-align: center;
-	background-color: white;
-	overscroll-behavior: contain;
-	}
-	#snapImgs{
-		z-index: 10;
-	width: 50vh;
-	height: 85vh;
-	overflow: auto;	
-	overscroll-behavior: contain;
-	background-color : red;
-	}
+	.footerClose{position: fixed;left: 0;top: 0;width: 100%;background-color: blue;color: white;text-align: center;font-size: 30px;}
+	.divid{	display: none;	position: absolute; width: 100%; height: 100vh;	z-index: -1; border: 0px solid blue; text-align: center; background-color: white; overscroll-behavior: contain;	}
+	#snapImgs{z-index: 10;width: 50vh;height: 85vh;overflow: auto;overscroll-behavior: contain;background-color : red;}
  	</style>
 </head>
 <body>
@@ -155,22 +129,7 @@
 			this.canvasc.width = 240;
 			this.canvasc.height = 320;
 			this.ctx2 = this.canvasc.getContext('2d');
-			
-			this.context.fillStyle = "white";
-			this.context.font = "40px Arial";
-			this.context.strokeText(dataText,0,30);
-			this.context.fillText(dataText,0,30);
-			
-			this.context.fillStyle = "white";
-			this.context.font = "40px Arial";
-			this.context.strokeText(dataText2,0,70);
-			this.context.fillText(dataText2,0,70);
-			
-			this.context.fillStyle = "white";
-			this.context.font = "40px Arial";
-			this.context.strokeText(dataText3,0,110);
-			this.context.fillText(dataText3,0,110);
-			
+				
 			this.ctx2.drawImage(this.img, 0, 0, 240, 320);
 			this.a = document.createElement("a");
 			this.a.setAttribute('download', `${this.nY}${this.nM}${this.nE}${this.nHours}${this.nMinut}${this.nSecon}.png`); 
