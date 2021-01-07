@@ -211,20 +211,13 @@ class mycanvas{
     		prediction[i].className + ": " + prediction[i].probability.toFixed(2);
     		arrays[i] = prediction[i].probability.toFixed(2);
     	}
-	    let carslaw = arrays[0];
-	    let truck = arrays[1];
-	    let car = arrays[2];
-	    let excar = arrays[3];
-	    let ptroll = arrays[4];
-	    let sisul = arrays[5];
-	    let way = arrays[6];
-	    let overtruck = arrays[7];
-	    let scenery = arrays[8];
-	    let snapsw = true;
+	    let crack = arrays[0];
+	    let spalling = arrays[1];
+	    let normal = arrays[2];
 	
-    	if ( carslaw > 0.90) {
-    		document.getElementById('data').innerHTML = "적재불량"
-    		document.getElementById('data1').innerHTML = carslaw * 100 + "%";
+    	if ( crack > 0.90) {
+    		document.getElementById('data').innerHTML = "크랙"
+    		document.getElementById('data1').innerHTML = crack * 100 + "%";
 		if(checkCars < 221){ 
 			if(snapsw == true){
 				snapsw = false;
@@ -248,36 +241,15 @@ class mycanvas{
 			//ks_canvas.capturDown();
 		}
 		
-    	}else if ( truck > 0.94) {
+    	}else if ( spalling > 0.90) {
 		//snap2();
-    		document.getElementById('data').innerHTML = "화물차"
-    		document.getElementById('data1').innerHTML = truck * 100 + "%";
-    	}else if ( car > 0.70) {
+    		document.getElementById('data').innerHTML = "스폴링";
+    		document.getElementById('data1').innerHTML = spalling * 100 + "%";
+    	}else if ( normal > 0.95) {
 		//snap2();
-    		document.getElementById('data').innerHTML = "일반차량"
-    		document.getElementById('data1').innerHTML = car * 100 + "%";
-    	}else if ( excar > 0.70) {
-		//snap2();
-    		document.getElementById('data').innerHTML = "작업차량"
-    		document.getElementById('data1').innerHTML = excar * 100 + "%";
-    	}else if ( ptroll > 0.70) {
-    		document.getElementById('data').innerHTML = "순찰차"
-    		document.getElementById('data1').innerHTML = ptroll * 100 + "%";
-    	}else if ( sisul > 0.70) {
-    		document.getElementById('data').innerHTML = "시설물"
-    		document.getElementById('data1').innerHTML = sisul * 100 + "%";
-    	}else if ( way > 0.70) {
-    		document.getElementById('data').innerHTML = "노면"
-    		document.getElementById('data1').innerHTML = way * 100 + "%";
-    	}else if ( overtruck > 0.70) {
-		//snap2();
-    		document.getElementById('data').innerHTML = "화물덮개차량"
-    		document.getElementById('data1').innerHTML = overtruck * 100 + "%";
-    	}else if ( scenery > 0.70) {
-		//snap2();
-    		document.getElementById('data').innerHTML = "풍경"
-    		document.getElementById('data1').innerHTML = scenery * 100 + "%";
-    	} 
+    		document.getElementById('data').innerHTML = "일반노면";
+    		document.getElementById('data1').innerHTML = normal * 100 + "%";
+    	}
     	snap();
     }
     init();
