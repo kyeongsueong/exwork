@@ -216,8 +216,9 @@ class mycanvas{
 	    let normal = arrays[2];
 	
     	if ( crack > 0.90) {
-    		document.getElementById('data').innerHTML = "크랙"
+    		document.getElementById('data').innerHTML = "크랙";
     		document.getElementById('data1').innerHTML = crack * 100 + "%";
+		/*
 		if(checkCars < 221){ 
 			if(snapsw == true){
 				snapsw = false;
@@ -239,12 +240,47 @@ class mycanvas{
 			checkCars++;
 			document.getElementById('checkCar').innerHTML = checkCars;
 			//ks_canvas.capturDown();
-		}
+		} */
+		dataText = mydate.writeDate();
+		dataText2 = "위도: " + late;
+		dataText3 = "경도: " + long;
+		ks_canvas.capturDown(dataText, dataText2, dataText3);
+			checkCars++;
+			document.getElementById('checkCar').innerHTML = checkCars;
 		
     	}else if ( spalling > 0.90) {
-		//snap2();
+		
     		document.getElementById('data').innerHTML = "스폴링";
     		document.getElementById('data1').innerHTML = spalling * 100 + "%";
+		/*
+		if(checkCars < 221){ 
+			if(snapsw == true){
+				snapsw = false;
+				this.numb = document.getElementById('checkCar').innerHTML;
+				setTimeout(function(){ 
+					if ( (this.numb - 0) < 4) {
+						resetDown();
+					}
+				}, 5000);
+			}
+			
+			getLocation();
+			dataText = mydate.writeDate();
+			//dataText2 = "위도:" + late + "-" + "경도:" + long;
+			dataText2 = "위도: " + late;
+			dataText3 = "경도: " + long;
+			
+			ks_canvas.capturDown(dataText, dataText2, dataText3);
+			checkCars++;
+			document.getElementById('checkCar').innerHTML = checkCars;
+			
+		}*/
+		dataText = mydate.writeDate();
+		dataText2 = "위도: " + late;
+		dataText3 = "경도: " + long;
+		ks_canvas.capturDown(dataText, dataText2, dataText3);
+			checkCars++;
+			document.getElementById('checkCar').innerHTML = checkCars;
     	}else if ( normal > 0.95) {
 		//snap2();
     		document.getElementById('data').innerHTML = "일반노면";
