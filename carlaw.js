@@ -214,7 +214,7 @@ class mycanvas{
 	    let carlaw = arrays[0];
 	    let normal = arrays[1];
 	
-    	if ( carlaw > normal) {
+    	if ( carlaw > 0.9) {
     		document.getElementById('data').innerHTML = "적재불량";
     		document.getElementById('data1').innerHTML = carlaw * 100 + "%";
 		/*
