@@ -211,13 +211,12 @@ class mycanvas{
     		prediction[i].className + ": " + prediction[i].probability.toFixed(2);
     		arrays[i] = prediction[i].probability.toFixed(2);
     	}
-	    let crack = arrays[0];
-	    let spalling = arrays[1];
-	    let normal = arrays[2];
+	    let carlaw = arrays[0];
+	    let normal = arrays[1];
 	
-    	if ( crack > 0.90) {
-    		document.getElementById('data').innerHTML = "크랙";
-    		document.getElementById('data1').innerHTML = crack * 100 + "%";
+    	if ( carlaw > normal) {
+    		document.getElementById('data').innerHTML = "적재불량";
+    		document.getElementById('data1').innerHTML = carlaw * 100 + "%";
 		/*
 		if(checkCars < 221){ 
 			if(snapsw == true){
@@ -248,42 +247,9 @@ class mycanvas{
 			checkCars++;
 			document.getElementById('checkCar').innerHTML = checkCars;
 		
-    	}else if ( spalling > 0.90) {
+    	}else {
 		
-    		document.getElementById('data').innerHTML = "스폴링";
-    		document.getElementById('data1').innerHTML = spalling * 100 + "%";
-		/*
-		if(checkCars < 221){ 
-			if(snapsw == true){
-				snapsw = false;
-				this.numb = document.getElementById('checkCar').innerHTML;
-				setTimeout(function(){ 
-					if ( (this.numb - 0) < 4) {
-						resetDown();
-					}
-				}, 5000);
-			}
-			
-			getLocation();
-			dataText = mydate.writeDate();
-			//dataText2 = "위도:" + late + "-" + "경도:" + long;
-			dataText2 = "위도: " + late;
-			dataText3 = "경도: " + long;
-			
-			ks_canvas.capturDown(dataText, dataText2, dataText3);
-			checkCars++;
-			document.getElementById('checkCar').innerHTML = checkCars;
-			
-		}*/
-		dataText = mydate.writeDate();
-		dataText2 = "위도: " + late;
-		dataText3 = "경도: " + long;
-		ks_canvas.capturDown(dataText, dataText2, dataText3);
-			checkCars++;
-			document.getElementById('checkCar').innerHTML = checkCars;
-    	}else if ( normal > 0.95) {
-		//snap2();
-    		document.getElementById('data').innerHTML = "일반노면";
+    		document.getElementById('data').innerHTML = "일반";
     		document.getElementById('data1').innerHTML = normal * 100 + "%";
     	}
     	snap();
