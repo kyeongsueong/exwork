@@ -215,7 +215,7 @@ class mycanvas{
 	    let normal = arrays[1];
 	
     	if ( carlaw > 0.9) {
-    		document.getElementById('data').innerHTML = "적재불량";
+    		document.getElementById('data').innerHTML = "위험";
     		document.getElementById('data1').innerHTML = carlaw * 100 + "%";
 		/*
 		if(checkCars < 221){ 
@@ -249,7 +249,7 @@ class mycanvas{
 		
     	}else {
 		
-    		document.getElementById('data').innerHTML = "일반";
+    		document.getElementById('data').innerHTML = "정상";
     		document.getElementById('data1').innerHTML = normal * 100 + "%";
     	}
     	snap();
